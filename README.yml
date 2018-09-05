@@ -1,0 +1,106 @@
+---
+owner:
+    hid: 340
+    firstname: Timothy
+    lastname: Thompson
+    HID: hid-sp18-705
+    semester: Fall 2017
+    course: Big Data Applications and Analytics (I523)
+    online: Yes
+    url: https://github.com/cloudmesh-community/hid-sp18-705
+notebook:
+    url: https://github.com/cloudmesh-community/hid-sp18-705/blob/master/notebook.md
+paper1:
+    abstract: >
+        Research libraries and archives have played a longstanding
+        role in information management and access. In the second half
+        of the twentieth century, libraries were at the forefront of
+        automation and networked access to information. Since the
+        advent of the internet, however, they have failed to keep pace
+        with technological advances and currently face serious
+        challenges in serving the evolving needs of researchers, whose
+        information-seeking strategies are now shaped by internet
+        search engines and online social media applications. To remain
+        relevant in the current information landscape, libraries and
+        archives must implement new strategies for converting legacy
+        metadata to new formats that can add value to the research
+        process. Although the data and metadata produced by libraries
+        and archives may not always qualify, prima facie, as big data,
+        an awareness among information professionals of the tools,
+        techniques, and affordances of big data can help make library
+        services more relevant to researchers.
+    author:
+        - Timothy A. Thompson
+    chapter: Media
+    hid:
+        - hid-sp18-705
+    status: "100% Oct 25 17"
+    title: Big Data Analytics for Research Libraries and Archives
+    url: https://github.com/cloudmesh-community/hid-sp18-705/tree/master/paper1
+paper2:
+    review: "100% Nov 8 17"
+    abstract: >
+        Decentralized systems such as Bitcoin, the Interplanetary File
+        System (IPFS), and Ethereum have been designed with the
+        intention of reengineering the architecture of online
+        information systems, minimizing exposure to centralized points
+        of failure, and creating new social models for the exchange of
+        data--which is posited as a valuable asset in and of itself.
+        Can these kinds of systems also support big data analytics and
+        processing? If so, what stands to be gained by taking a
+        blockchain-based approach to big data? Efforts to integrate
+        blockchains into big data pipelines must address the
+        inevitable tradeoffs between security and scalability.
+        BigchainDB is a new decentralized database framework that adds
+        blockchain-based features, such as immutability and asset
+        management, to traditional NoSQL distributed databases.
+        Although it is still in the early stages of development,
+        BigchainDB promises to make a significant contribution to the
+        ways in which data is shared and managed at scale.
+    author:
+        - Timothy A. Thompson
+    chapter: Technology
+    hid:
+        - hid-sp18-705
+    status: "100% Nov 8 17"
+    title: "BigchainDB: A Big Database for the Blockchain?"
+    url: https://github.com/cloudmesh-community/hid-sp18-705/tree/master/paper2
+project:
+    review: Dec 4 2017
+    author:
+        - Timothy A. Thompson
+    hid:
+        - hid-sp18-705
+    title: >
+        New Approaches to Managing Metadata at Scale in Research
+        Libraries
+    abstract: >
+        The analysis of big data often relies on distributed storage
+        and computation; however, access to big data--and to
+        the platforms capable of managing and processing it--
+        continues to be largely centralized. Centralization is
+        particularly evident in the case of the metadata produced and
+        disseminated by academic and research libraries. Libraries
+        typically produce and share their catalog records by uploading
+        them to a central data warehouse, which can then be
+        searched for existing records. This centralized model, which
+        operates on the basis of membership fees, has the advantage of
+        scalability and availability, but it comes at the cost of a loss of
+        control over the data itself, and it entails acquiescence to a
+        business model that, in effect, charges libraries for serving
+        their own data back to them. The blockchain-based database
+        BigchainDB (written in Python) provides an alternative, peer-
+        to-peer platform that would allow libraries to share their
+        data directly and to benefit from features such as data
+        immutability and an asset-based transactional model. A working
+        prototype installation of a BigchainDB node has the potential
+        to provide an example of how libraries can abandon centralized
+        models for managing their data at scale.
+    url: https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project
+    type: project
+    status: "66% Dec 7 17"
+    chapter: Media
+experiment:
+    url: https://github.com/cloudmesh-community/hid-sp18-705/tree/master/experiments/perceptron
+    title: Write Your Own Perceptron
+    status: "100% Nov 26 2017"
