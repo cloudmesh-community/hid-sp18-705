@@ -4,6 +4,7 @@
 * 08/23/17 Created accounts on FutureSystems and Chameleon
 * 08/24/17 Completed I523 entry survey
 * 08/29/17 Completed Doodle poll for online help sessions
+* 09/06/18 Completed required plagiarism test for I516
 
 # Theory
 
@@ -22,6 +23,7 @@
 * 11/20/17 Focused on [perceptron experiment](https://github.com/cloudmesh/book/blob/latex/notebooks/machinelearning/perceptronproblem.ipynb); spent time researching and learning about stochastic gradient descent; submitted perceptron experiment
 * 11/27/17 Continued researching multilayer perceptrons and neural networks for final project; iteratively worked on preparing and processing data for final project
 * 12/04/17 Continued work on final project
+* 09/05/18 Populated new Github repo to complete work on final project.
 
 # Writing
 
