@@ -2,7 +2,7 @@ FILE=report
 FLAGS=-interaction nonstopmode -halt-on-error -file-line-error 
 REVIEW=review
 DEFAULT=$(FILE)
-LATEX=pydflatex
+LATEX=pdflatex
 PDFLATEX=pdflatex
 
 UNAME := $(shell uname)
@@ -13,6 +13,12 @@ endif
 ifeq ($(UNAME), Linux)
 OPEN=xdg-open
 endif
+
+hack:
+	pdflatex report
+	bibtex report
+	pdflatex report
+	pdflatex report
 
 all:
 	$(LATEX) ${FILE} > tmp.log 2>&1

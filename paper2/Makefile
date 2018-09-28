@@ -14,6 +14,13 @@ ifeq ($(UNAME), Linux)
 OPEN=xdg-open
 endif
 
+
+hack:
+	pdflatex report
+	bibtex report
+	pdflatex report
+	pdflatex report
+
 all:
 	$(LATEX) ${FILE} > tmp.log 2>&1
 	make -f Makefile bibtex > report-latex.log 2>&1 || true
