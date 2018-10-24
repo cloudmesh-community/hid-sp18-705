@@ -1,0 +1,114 @@
+{
+    "@context": {
+        "bf": "http://id.loc.gov/ontologies/bibframe/",
+        "bflc": "http://id.loc.gov/ontologies/bflc/",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+    },
+    "@graph": [
+        {
+            "@id": "http://id.loc.gov/vocabulary/carriers/nc",
+            "@type": ["bf:Carrier"],
+            "bf:source": [{"@id": "_:Na8bdf44de4a547c1bd2efa45409a926d"}],
+            "rdfs:label": [{"@value": "volume"}]
+        },
+        {
+            "@id": "_:Na8bdf44de4a547c1bd2efa45409a926d",
+            "@type": ["bf:Source"],
+            "rdfs:label": [{"@value": "rdacarrier"}]
+        },
+        {
+            "@id": "http://id.loc.gov/vocabulary/mediaTypes/n",
+            "@type": ["bf:Media"],
+            "bf:source": [{"@id": "_:N5b344eab6fa6470db53eba07df58784e"}],
+            "rdfs:label": [{"@value": "unmediated"}]
+        },
+        {
+            "@id": "_:N5b344eab6fa6470db53eba07df58784e",
+            "@type": ["bf:Source"],
+            "rdfs:label": [{"@value": "rdamedia"}]
+        },
+        {
+            "@id": "http://example.org/ocm05084045#Instance",
+            "@type": ["bf:Instance"],
+            "bf:carrier": [{"@id": "http://id.loc.gov/vocabulary/carriers/nc"}],
+            "bf:dimensions": [{"@value": "fol. (36.3 cm)"}],
+            "bf:extent": [{"@id": "_:N98aa0c16247a476a8a19a17f5616ad86"}],
+            "bf:hasItem": [{"@id": "http://example.org/ocm05084045#Item050-8"}],
+            "bf:identifiedBy": [{"@id": "_:Nb4e1794e1bc848adaed9603a67c2516b"}],
+            "bf:instanceOf": [{"@id": "http://example.org/ocm05084045#Work"}],
+            "bf:issuance": [{"@id": "http://id.loc.gov/vocabulary/issuance/mono"}],
+            "bf:media": [{"@id": "http://id.loc.gov/vocabulary/mediaTypes/n"}],
+            "bf:provisionActivity": [
+                {"@id": "_:Naeccd7e46a354a8abb14dc156bd93534"},
+                {"@id": "_:Naebe6486ad104c5384214aacf7242489"}
+            ],
+            "bf:provisionActivityStatement": [{"@value": "[Mainz], [Printer of the 42-line Bible (i.e. Gutenberg, later Fust and Schoeffer?)], [approximately 1454-55]"}],
+            "bf:title": [{"@id": "_:Nef97f9f0666045bc8a6764f3c65b27cf"}],
+            "rdfs:label": [{"@value": "[The New Testament. The Vulgate version, with prologues of St. Jerome]."}]
+        },
+        {
+            "@id": "_:Naeccd7e46a354a8abb14dc156bd93534",
+            "@type": [
+                "bf:ProvisionActivity",
+                "bf:Publication"
+            ],
+            "bf:agent": [{"@id": "_:N0800c8fb604341378e6385bf9c3a649a"}],
+            "bf:date": [{"@value": "approximately 1454-55"}],
+            "bf:place": [{"@id": "_:N86e722a619ef4d1283fca7bef016e5aa"}]
+        },
+        {
+            "@id": "_:N0800c8fb604341378e6385bf9c3a649a",
+            "@type": ["bf:Agent"],
+            "rdfs:label": [{"@value": "Printer of the 42-line Bible (i.e. Gutenberg, later Fust and Schoeffer?)"}]
+        },
+        {
+            "@id": "_:N86e722a619ef4d1283fca7bef016e5aa",
+            "@type": ["bf:Place"],
+            "rdfs:label": [{"@value": "Mainz"}]
+        },
+        {
+            "@id": "_:Nef97f9f0666045bc8a6764f3c65b27cf",
+            "@type": ["bf:Title"],
+            "bflc:titleSortKey": [{"@value": "New Testament. The Vulgate version, with prologues of St. Jerome]."}],
+            "bf:mainTitle": [{"@value": "[The New Testament. The Vulgate version, with prologues of St. Jerome]"}],
+            "rdfs:label": [{"@value": "[The New Testament. The Vulgate version, with prologues of St. Jerome]."}]
+        },
+        {
+            "@id": "_:Nb4e1794e1bc848adaed9603a67c2516b",
+            "@type": ["bf:Local"],
+            "bf:source": [{"@id": "_:N1daf551b8fc64c7ebd9eb31fb18430a8"}],
+            "rdf:value": [{"@value": "5084045"}]
+        },
+        {
+            "@id": "_:N1daf551b8fc64c7ebd9eb31fb18430a8",
+            "@type": ["bf:Source"],
+            "rdfs:label": [{"@value": "OCoLC"}]
+        },
+        {
+            "@id": "_:Naebe6486ad104c5384214aacf7242489",
+            "@type": [
+                "bf:Publication",
+                "bf:ProvisionActivity"
+            ],
+            "bf:date": [{
+                "@type": "http://id.loc.gov/datatypes/edtf",
+                "@value": "1454"
+            }],
+            "bf:place": [{"@id": "http://id.loc.gov/vocabulary/countries/gw"}]
+        },
+        {
+            "@id": "_:N98aa0c16247a476a8a19a17f5616ad86",
+            "@type": ["bf:Extent"],
+            "rdfs:label": [{"@value": "[116] leaves (of 643)"}]
+        },
+        {
+            "@id": "http://id.loc.gov/vocabulary/countries/gw",
+            "@type": ["bf:Place"]
+        },
+        {
+            "@id": "http://id.loc.gov/vocabulary/issuance/mono",
+            "@type": ["bf:Issuance"]
+        }
+    ]
+}
