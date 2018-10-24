@@ -96,7 +96,7 @@ project:
         prototype installation of a BigchainDB node has the potential
         to provide an example of how libraries can abandon centralized
         models for managing their data at scale.
-    url: https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project
+    url: https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project-paper
     type: project
     status: "66% Dec 7 17"
     chapter: Media
