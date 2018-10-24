@@ -22,6 +22,7 @@ from bigchaindb_driver import BigchainDB
 from bigchaindb_driver.crypto import generate_keypair
 from rbac import BigchainRbac
 
+# Set constants and generate keypairs for admin users.
 BDB_ROOT_URL = "http://localhost:9984"
 YUL = generate_keypair()
 HLS = generate_keypair()
@@ -33,7 +34,8 @@ NAMESPACE = "org.library.catalog"
 # Connection to BigchainDB
 bdb = BigchainDB(BDB_ROOT_URL)
      
-# Cataloging resource assets
+# Stub data for creating assets for demo library catalog entries in 
+# BigchainDB.
 bf_work = {"data": {
     "@context": {
         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -63,13 +65,13 @@ bf_item = {"data": {
     "@type": "http://id.loc.gov/ontologies/bibframe/Item"
 }}
 
-with open('data/gutenberg/gutenberg-work.json') as work:
+with open('../../project-data/gutenberg-work.json') as work:
     work_data = json.load(work)
 
-with open('data/gutenberg/iul/json/gutenberg-iul-instance.json') as instance:
+with open('../../project-data/gutenberg-iul-instance.json') as instance:
     instance_data = json.load(instance)   
 
-with open('data/gutenberg/iul/json/gutenberg-iul-item.json') as item:
+with open('../../project-data/gutenberg-iul-item.json') as item:
     item_data = json.load(item)
 
 
