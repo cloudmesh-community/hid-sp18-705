@@ -24,6 +24,7 @@
 * 11/27/17 Continued researching multilayer perceptrons and neural networks for final project; iteratively worked on preparing and processing data for final project
 * 12/04/17 Continued work on final project
 * 09/05/18 Populated new Github repo to complete work on final project.
+* 10/24/18 Updated Github repo with final project deliverables (in progress).
 
 # Writing
 
