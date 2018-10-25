@@ -80,7 +80,7 @@ Libraries have a tradition of experience with record matching and
 automation~\cite{jM92}, but now stand to benefit from the increasingly
 mainstream availability of algorithms and routines developed within the
 context of data science and machine learning. Sophisticated algorithms for
-string comparison and probabilistic data record linkage have long been
+string comparison and probabilistic record linkage have long been
 available, but are not widely used by libraries, with the exception of
 large-scale projects such as the Social Networks and Archival Context
 Project (SNAC) (\url{http://snaccooperative.org/}) and the Virtual
@@ -98,13 +98,13 @@ however, large-scale, real-time access to library metadata has not
 necessarily followed suit. The catalog of a large academic library may
 contain around 10 million records~\cite{yul18}. By comparison, as of August
 2018, the OCLC catalog database, WorldCat, contained 427,501,671
-bibliographic records in 491 languages. As long as service providers such as
-OCLC maintain centralized control over the aggregated metadata of research
-libraries, large-scale computational analysis---and the innovation it could
-produce---will remain proprietary and locked away.
+bibliographic records in 491 languages~\cite{oclc18}. As long as service
+providers such as OCLC maintain centralized control over the aggregated
+metadata of research libraries, large-scale computational analysis---and the
+innovation it could produce---will remain proprietary and locked away.
 
-﻿New distributed technologies and protocols, including blockchains
-and distributed hash tables (DHTs), could allow research libraries to form
+﻿New distributed technologies and protocols, including blockchains and
+distributed hash tables (DHTs), could allow research libraries to form
 robust peer-to-peer networks that would enable data sharing on a larger
 scale. Although public blockchains such as Ethereum and Bitcoin are limited
 in the amount of data that can feasibly be stored on chain, alternative
@@ -114,9 +114,65 @@ provides a robust storage data solution while preserving the benefits of
 blockchain features such as data immutability and an asset-based
 transactional model. By running a consortial blockchain network of
 BigchainDB nodes, libraries could be empowered to abandon centralized models
-and begin managing their data collectively. 
+and begin managing their data collectively.
 
-Shown in Figure~\ref{f:rbac}. Shown in Figure~\ref{f:bdb1}.
+\section{Blockchains for Research Libraries}
+﻿Some in the library profession have been skeptical of blockchain
+applications for their domain, arguing that blockchains are slow, expensive,
+append-only databases that have been overhyped as a panacea~\cite{sjsu18}.
+Even core developers of the Bitcoin blockchain have argued that the
+constraints imposed by blockchain technology (such as immutability and
+decentralized consensus) make it appropriate for a very limited set of
+applications---namely, currency and the exchange of value~\cite{jSong18}.
+For individuals and organizations who are investigating blockchains as a
+technical solution, it is important from the outset to establish a framework
+for evaluating their applicability and appropriateness~\cite{bS28}. For
+example, a blockchain-based solution may be appropriate in a scenario in
+which there is a lack of trust among participants, or in which processes and
+collaboration would be more efficient if the need for trust were
+eliminated~\cite{bS28}. In the case of a shared library catalog, trust is an
+issue because not all participants can be trusted to provide data that
+conforms to an expected level of quality. A commercial, centralized solution
+mitigates these concerns by requiring participants to pay a membership fee.
+A blockchain solution addresses issues of trust by enforcing a decentralized
+consensus mechanism, which may take different forms, but which is designed
+to ensure that participants can trust the network to maintain a consistent
+state across all transactions~\cite{buchman2018latest}. 
+
+The Proof-of-Stake consensus algorithm, employed by some blockchain
+networks as an alternative to Bitcoin's resource-intensive Proof-of-Work
+mechanism, is similar to the membership fee model in that validator nodes
+are elected based on their share of ``stake'' in the network, measured by
+their allocation of network tokens~\cite{gMarin18}. For research library
+applications, a variation of Proof-of-Stake known as Proof-of-Authority may
+be most appropiate~\cite{gMarin18, vButerin15}. In contrast to public
+blockchains such as Ethereum and Bitcoin, or fully private blockchains
+restricted to a single organization, so-called consortium blockchains may be
+the preferred solution, one in which consensus ``is controlled by a
+pre-selected set of nodes''~\cite{vButerin15}. The model implemented by the
+BigchainDB project fits the parameters of a consortium
+blockchain~\cite{bdb18b}.
+
+\section{BigchainDB 2.0 Architecture}
+\subsection{BigchainDB Server}
+
+
+As of version 2.0, BigchainDB is Byzantine Fault Tolerant.
+
+﻿In BigchainDB 2.0, as is the case in general with systems that are
+Byzantine fault tolerant, $3f + 1$ nodes are necessary to run a network,
+where $f$ is the number of faulty nodes to be tolerated~\cite{bdb18}.
+\subsection{Tendermint}
+\subsection{MongoDB}
+
+
+
+
+
+
+Shown in Figure~\ref{f:rbac}. 
+Shown in Figure~\ref{f:bdb1}. 
+Shown in Figure~\ref{f:bdb2}.
 
 
 \begin{figure}[!htb]

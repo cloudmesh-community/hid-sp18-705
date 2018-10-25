@@ -1,0 +1,4 @@
+[submodule "project-code/bigchaindb"]
+	path = project-code/bigchaindb
+	url = https://github.com/timathom/bigchaindb
+	branch = rbac
