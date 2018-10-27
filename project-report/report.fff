@@ -1,0 +1,19 @@
+\begin{figure}[!htb]
+\centering\includegraphics[width=\columnwidth]{images/rbac-graph.pdf}
+\caption{Graph of permissions in BigchainDB using Role-Based Access
+Control}\label{f:rbac}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htb]
+\centering\includegraphics[width=\columnwidth]{images/bdb-seq.pdf}
+\caption{BigchainDB Sequence Diagram~\cite{aA17}}\label{f:bdb1}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htb]
+\centering\includegraphics[width=\columnwidth]{images/bdb-arch.pdf}
+\caption{BigchainDB Architecture Diagram~\cite{aA17}}\label{f:bdb2}
+\end{figure}
+\efloatseparator
+ 
