@@ -95,9 +95,9 @@ project:
         intermediary.
     url: https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project-paper
     type: project
-    status: "75% Oct 18"
+    status: "75% Oct 29 18"
     chapter: Media
 experiment:
     url: https://github.com/cloudmesh-community/hid-sp18-705/tree/master/experiments/perceptron
     title: Write Your Own Perceptron
-    status: "100% Nov 26 2017"
+    status: "100% Nov 26 17"
