@@ -95,7 +95,7 @@ class BigchainRbac():
             
         return self.create_new_asset(asset, data)    
     
-    
+              
     def create_new_asset(self, asset, data, keypair=None, multiple=False):
         """Create a new BigchainDB asset.
         

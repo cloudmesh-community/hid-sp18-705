@@ -68,6 +68,9 @@ bf_item = {"data": {
 
 with open('../../project-data/gutenberg-work.json') as work:
     work_data = json.load(work)
+    
+with open('../../project-data/gutenberg-iul-record.json') as record:
+    work_record= json.load(record)
 
 with open('../../project-data/gutenberg-iul-instance.json') as instance:
     instance_data = json.load(instance)   
@@ -146,10 +149,16 @@ def main():
     
     print("BIBFRAME Works Group: ", TX_URL + bf_works_group_id)
 
+
+    # Add administrative metadata to metadata for Work asset
+    work_data["@graph"].insert(0, work_record["@graph"][0])
+    
     # Test RBAC permissions.
     # A cataloger should be able to create a new asset representing
-    # an instance of the Work type.
+    # an instance of the Work type.    
     try:
+        
+        
         cataloger_work_asset = iul.create_type_instance("BIBFRAME_work", 
                                                         bf_works_group_id, 
                                                         bf_work, work_data, 

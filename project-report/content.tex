@@ -1,7 +1,7 @@
-% status: 75
+% status: 70
 % chapter: TBD
 
-\def\paperstatus{75} % a number from 0-100 indicating your status. 100
+\def\paperstatus{70} % a number from 0-100 indicating your status. 100
                 % means completed
 \def\paperchapter{TBD} % This section is typically a single keyword. from
                    % a small list. Consult with theinstructors about
@@ -103,17 +103,18 @@ providers such as OCLC maintain centralized control over the aggregated
 metadata of research libraries, large-scale computational analysis---and the
 innovation it could produce---will remain proprietary and locked away.
 
-Although decentralization may be appealing as an ideal, librarians who
-manage bibliographic metadata are also immersed in a discourse that centers on
-the idea of control: they use terms such as authority control, controlled
-vocabularies, and intellectual and physical control of
-collections~\cite{olson01}. The idea of control is closely related to the
-idea of trust: when workflows and systems are centralized, it becomes easier
-to enforce norms and standards, but it also becomes more likely that
-potential contributors may be excluded, especially when they are unable to
-afford the price of membership in a proprietary system.
+The situation is further complicated by professional and cultural norms
+within libraries. Although decentralization may be appealing as an ideal,
+librarians who manage bibliographic metadata are also immersed in a
+discourse that centers on the idea of control: they use terms such as
+authority control, controlled vocabularies, and intellectual and physical
+control of collections~\cite{olson01}. The idea of control is closely
+related to the idea of trust: when workflows and systems are centralized, it
+becomes easier to enforce norms and standards, but it also becomes more
+likely that potential contributors may be excluded, especially when they are
+unable to afford the price of membership in a proprietary system.
 
-﻿New distributed technologies and protocols, including blockchains and
+New distributed technologies and protocols, including blockchains and
 distributed hash tables (DHTs), could allow research libraries to form
 robust peer-to-peer networks that would enable data sharing on a larger
 scale. Although public blockchains such as Ethereum and Bitcoin are limited
@@ -122,11 +123,9 @@ platforms that address this limitation have recently emerged. The
 blockchain-based database service BigchainDB, implemented in Python,
 provides a robust storage data solution while preserving the benefits of
 blockchain features such as data immutability and an asset-based
-transactional model. By running a consortial blockchain network of
-BigchainDB nodes, libraries could be empowered to abandon centralized models
-and begin managing their data collectively.
-
-
+transactional model. By running a consortium blockchain network of
+BigchainDB nodes~\cite{vButerin15}, libraries could be empowered to abandon 
+centralized models and begin managing their data collectively.
 
 \section{Blockchains for Research Libraries}
 Some in the library profession have been skeptical of blockchain
@@ -156,58 +155,384 @@ The Proof-of-Stake consensus algorithm, employed by some blockchain
 networks as an alternative to Bitcoin's resource-intensive Proof-of-Work
 mechanism, is similar to the membership fee model in that validator nodes
 are elected based on their share of ``stake'' in the network, measured by
-their allocation of network tokens~\cite{gMarin18}. For research library
-applications, a variation of Proof-of-Stake known as Proof-of-Authority may
-be most appropiate solution~\cite{gMarin18, vButerin15}. In contrast to
-public blockchains such as Ethereum and Bitcoin, or fully private
-blockchains restricted to a single organization, so-called consortium
-blockchains may be the preferred approach, one in which consensus ``is
-controlled by a pre-selected set of nodes''~\cite{vButerin15}. The model
-implemented by the BigchainDB project fits the parameters of a consortium
-blockchain that implements a Proof-of-Authority approach to
-consensus~\cite{bdb18b}.
+their willingness to commit or stake an allocation of network tokens as a
+proof of honesty~\cite{gMarin18}. For research library applications, a
+variation of Proof-of-Stake known as Proof-of-Authority may be the most
+appropiate solution~\cite{gMarin18, vButerin15}. In contrast to public
+blockchains such as Ethereum and Bitcoin, or fully private blockchains
+restricted to a single organization, so-called consortium blockchains may be
+the preferred approach, one in which consensus ``is controlled by a
+pre-selected set of nodes''~\cite{vButerin15}. The model implemented by the
+BigchainDB project fits the parameters of a consortium blockchain that
+implements a Proof-of-Authority approach to consensus~\cite{bdb18b}.
 
-\section{Design}
-A blockchain-based library catalog should support the creation of a
-decentralized marketplace for library metadata. Rather than paying a
-centralized exchange to distribute their catalog records, libraries could
-buy and sell records in a peer-to-peer exchange. Catalog records could thus
-become a source of revenue rather than a costly expenditure. Many blockchain
-systems support the creation of ``smart assets,'' or the creation of tokens
-to represent real-word assets. 
+\section{Design Requirements}
+A blockchain-based catalog for research libraries should support the
+creation of a decentralized marketplace for library metadata. Rather than
+paying a centralized exchange to distribute their catalog records, libraries
+could buy and sell records in a peer-to-peer exchange. Catalog records could
+thus become a source of revenue rather than a costly expenditure. Many
+blockchain systems support the creation of ``smart assets'', or the creation
+of tokens to represent real-word assets. A new token could be minted to
+facilitate the exchange of metadata objects, and payment and settlement
+channels could be created using smart contracts on a public blockchain such
+as Ethereum. However, a public blockchain solution does not fully satisfy
+the requirements of decentralization for this use case. A data asset cannot
+be represented exclusively by a token---it also needs to be stored in a
+decentralized system optimized for read and write transactions. Public
+blockchains such as Ethereum have been designed for exchange, not storage.
+At the current price of the Ethereum blockchain's native token, Ether (ETH),
+at approximately \$200.00, storing 1 Gigabyte of data on the blockchain
+would cost over \$7,000,000.00~\cite{tHess16}. A decentralized system for
+library metadata must be able to scale and store big data out of the box.
+BigchainDB is a production-ready solution that meets the requirements for
+this use case: it supports the creation of tokens and the direct storage of
+metadata objects on its blockchain.~\cite{bdb18c}.
 
+\section{Project Scope}
+The current project presents findings from an exploration of BigchainDB as a 
+blockchain database solution for a shared library catalog. It includes a 
+preliminary analysis of library metadata requirements and whether they can be 
+satisified using BigchainDB.
 
-%Taking this a step farther and also thinking about it in the context of linked data, which breaks down 
-%metadata to the level of individual statements, or triples of subject-predicate-object, one could begin 
-%to think about the valuation of metadata in different ways. For example, how much is a triple for a 
-%subject heading worth in relation to a triple for a publication statement? The former presumably 
-%requires more expertise to create, whereas the later can simply be transcribed.
+\section{BigchainDB}
+\subsection{Evolution}
+BigchainDB arose as an attempt to address the scalability and storage
+limitations of traditional blockchains such as Bitcoin and Ethereum and to
+create a hybrid solution that builds a blockchain layer on top of an
+existing big data system~\cite{bigDB18}. Development of the BigchainDB
+framework initially focused on integration with the RethinkDB system
+(\url{https://www.rethinkdb.com/}), but now works exclusively with MongoDB
+(\url{https://www.mongodb.com/})~\cite{ks16, bigDB18}.
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
 
-\section{Architecture}
-\subsection{BigchainDB}
-\subsubsection{The Evolution of BigchainDB}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+\subsection{Architecture}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
 
 \subsubsection{BigchainDB Server}
-
 
 As of version 2.0, BigchainDB is Byzantine Fault Tolerant.
 
 ﻿In BigchainDB 2.0, as is the case in general with systems that are
 Byzantine fault tolerant, $3f + 1$ nodes are necessary to run a network,
 where $f$ is the number of faulty nodes to be tolerated~\cite{bdb18}.
-\subsubsection{Tendermint}
-\subsubsection{MongoDB}
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+\subsubsection{Tendermint}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+\subsubsection{MongoDB}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
 
 
 \section{Dataset}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
 
 \section{Implementation}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
 
 %Benchmark
 
 \section{Conclusion}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
+eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
+Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
+nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
+auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
+enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
+quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
+eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
+mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
+ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
+nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
 
 
 
@@ -215,21 +540,26 @@ where $f$ is the number of faulty nodes to be tolerated~\cite{bdb18}.
 
 
 
-
-Shown in Figure~\ref{f:rbac}. 
-Shown in Figure~\ref{f:bdb1}. 
+Shown in Figure~\ref{f:rbac}.
+Shown in Figure~\ref{f:rbac2}.
+Shown in Figure~\ref{f:bdb}. 
 Shown in Figure~\ref{f:bdb2}.
 
 
 \begin{figure}[!htb]
+	\centering\includegraphics[width=\columnwidth]{images/assets-metadata.pdf}  
+	\caption{Graph of asset and metadata objects in BigchainDB}\label{f:rbac}
+\end{figure}
+
+\begin{figure}[!htb]
 	\centering\includegraphics[width=\columnwidth]{images/rbac-graph.pdf}  
 	\caption{Graph of permissions in BigchainDB using Role-Based Access 
-	Control}\label{f:rbac}
+	Control}\label{f:rbac2}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering\includegraphics[width=\columnwidth]{images/bdb-seq.pdf}  
-	\caption{BigchainDB Sequence Diagram~\cite{aA17}}\label{f:bdb1}
+	\caption{BigchainDB Sequence Diagram~\cite{aA17}}\label{f:bdb}
 \end{figure}
 
 \begin{figure}[!htb]

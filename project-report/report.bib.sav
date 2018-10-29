@@ -234,7 +234,7 @@
   author       = {killerstorm},
   title        = {BigchainDB: A Prime Example of Blockchain Bullshit},
   howpublished = {r/bitcoin},
-  month        = {May},
+  month        = may,
   year         = {2016},
   note         = {Accessed 2018},
 }

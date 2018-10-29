@@ -51,6 +51,18 @@
   url    = {https://www.bigchaindb.com/developers/guide/key-concepts-of-bigchaindb/},
 }
 
+@TechReport{bigDB18,
+  author      = {{BigchainDB GmbH}},
+  title       = {BigchainDB 2.0: The Blockchain Database},
+  institution = {BigchainDB GmbH},
+  year        = {2018},
+  address     = {Berlin, Germany},
+  month       = {May},
+  note        = {Accessed 2018},
+  pages       = {14},
+  url         = {https://www.bigchaindb.com/whitepaper/bigchaindb-whitepaper.pdf},
+}
+
 @TechReport{bigDB17a,
   author      = {{BigchainDB GmbH}},
   title       = {A BigchainDB Primer},
@@ -70,18 +82,6 @@
   year         = {2017},
   note         = {Accessed 2018},
   url          = {https://docs.bigchaindb.com/en/latest/index.html},
-}
-
-@TechReport{bigDB18,
-  author      = {{BigchainDB GmbH}},
-  title       = {BigchainDB 2.0: The Blockchain Database},
-  institution = {BigchainDB GmbH},
-  year        = {2018},
-  address     = {Berlin, Germany},
-  month       = {May},
-  note        = {Accessed 2018},
-  pages       = {14},
-  url         = {https://www.bigchaindb.com/whitepaper/bigchaindb-whitepaper.pdf},
 }
 
 
@@ -228,15 +228,6 @@
     several new ideas and open challenges.},
     doi       = {10.1007/978-3-662-53357-4_8},
     isbn      = {978-3-662-53357-4},
-}
-
-@Misc{ks16,
-  author       = {killerstorm},
-  title        = {BigchainDB: A Prime Example of Blockchain Bullshit},
-  howpublished = {r/bitcoin},
-  month        = {May},
-  year         = {2016},
-  note         = {Accessed 2018},
 }
 
 @Book{nM15,
