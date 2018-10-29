@@ -1,0 +1,60 @@
+# Composed with http://viz-js.com/
+
+digraph G {
+rankdir=RL;
+graph [fontname=Arial, fontsize=14];
+node [shape = record];
+
+    subgraph cluster_2 {		
+        node [style=filled];
+		label = "Work";
+		A; 
+	    subgraph cluster_2a {
+		    label = "";
+		    color=blue;
+		    B -> C
+		    B -> D
+		}
+	}
+    
+    subgraph cluster_1 {
+		node [style=filled];
+		label = "Instance";
+		E;
+		subgraph cluster_1a {
+		  label = "";
+		  color=blue;
+		  F -> G
+		  F -> H
+		  G -> C [color=red, penwidth=2.0];
+		}		
+	}
+    
+    subgraph cluster_0 {
+	    node [style=filled];
+	    label = "Item";
+	    I;
+	    subgraph cluster_0a {
+	        label = "";
+	        color=blue;
+	        J -> K
+	        J -> L
+	        K -> G [color=red, penwidth=2.0];
+	    }		
+    }	
+
+	A [label="Asset"]
+	B [label="Metadata"]
+	C [label="Descriptive"]
+	D [label="Administrative"]
+	
+	E [label="Asset"]
+	F [label="Metadata"]
+	G [label="Descriptive"]
+	H [label="Administrative"]
+	
+	I [label="Asset"]
+	J [label="Metadata"]
+	K [label="Descriptive"]
+	L [label="Administrative"]
+}

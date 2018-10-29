@@ -1,0 +1,28 @@
+# Composed with http://viz-js.com/
+
+digraph rbac {
+node [shape = record];
+
+A -> B [label="can_link", color=red, penwidth=2.0];
+B -> F [label="can_link", color=red, penwidth=2.0];
+F -> B [label="\n\nlink"];
+G -> B [label="can_link", color=red, penwidth=2.0];
+G -> A [label="link"];
+H -> G [label="link"];
+I -> A [label="link"];
+I -> B [label="can_link", color=red, penwidth=2.0];
+J -> I [label="link"];
+K -> A [label="link"];
+K -> G [label="can_link", color=red, penwidth=2.0];
+L -> K [label="link"];
+A [label="Catalog App"];
+B [label="Admin Group"];
+F [label="Admin User"];
+G [label="Catalogers Group"];
+H [label="Cataloger User"];
+I [label="Paraprofessional Group"];
+J [label="Paraprofessional User"];
+K [label="BIBFRAME Work Group"];
+L [label="BIBFRAME Work"];
+}
+

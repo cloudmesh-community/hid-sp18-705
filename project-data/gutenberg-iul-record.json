@@ -1,0 +1,102 @@
+{
+    "@context": {
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "bf": "http://id.loc.gov/ontologies/bibframe/",
+        "bflc": "http://id.loc.gov/ontologies/bflc/",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    },
+    "@graph": [{
+        "@id": "http://example.org/work-metadata-graph",
+        "@graph": [
+            {
+                "@id": "http://example.org/ocm05084045#Record",
+                "@type": ["http://purl.org/spar/biro/BibliographicRecord"],
+                "bf:adminMetadata": [{"@id": "_:N444bc03264214b40948100d9fe030472"}],
+                "bf:identifiedBy": [
+                    {"@id": "_:N82662f27a2b940e087e6aabee0a60cfe"},
+                    {"@id": "_:N768dfa77ba2246038dce3077b0b005d1"}
+                ],
+                "foaf:topic": [{"@id": "http://example.org/work-graph"}]
+            },
+            {
+                "@id": "_:N82662f27a2b940e087e6aabee0a60cfe",
+                "@type": ["bf:Local"],
+                "rdf:value": [{"@value": "ocm05084045"}]
+            },
+            {
+                "@id": "_:N768dfa77ba2246038dce3077b0b005d1",
+                "@type": ["bf:Local"],
+                "bf:source": [{"@id": "_:Ndbcd3ee62de34b91ae1889757e58f168"}],
+                "rdf:value": [{"@value": "ocn685392767"}]
+            },
+            {
+                "@id": "_:Ndbcd3ee62de34b91ae1889757e58f168",
+                "@type": ["bf:Source"],
+                "rdf:label": [{"@value": "OCoLC"}]
+            },
+            {
+                "@id": "_:N444bc03264214b40948100d9fe030472",
+                "@type": ["bf:AdminMetadata"],
+                "bflc:encodingLevel": [{"@id": "_:Na8c914986d7c40229271303fab6d750e"}],
+                "bf:changeDate": [{
+                    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                    "@value": "2018-05-29T11:56:18"
+                }],
+                "bf:creationDate": [{
+                    "@type": "http://www.w3.org/2001/XMLSchema#date",
+                    "@value": "1992-08-12"
+                }],
+                "bf:descriptionConventions": [{"@id": "_:N63b4813a7b6449fe9d7b5420c8ff5407"}],
+                "bf:generationProcess": [{"@id": "_:N8b53cbc53d24454f9f52cd128cd82a0d"}],
+                "bf:identifiedBy": [{"@id": "_:Ndaeb6143507442d79d8dd1a934f32166"}],
+                "bf:source": [
+                    {"@id": "_:Naedea4d5f62049d1a6ca45855dd7010c"},
+                    {"@id": "_:N8982eb7b4e0a4d76997043c55bef5e0a"}
+                ],
+                "bf:status": [{"@id": "_:Ncd04c5d5a59e447fa75232fa22cb99bf"}]
+            },
+            {
+                "@id": "_:Ndaeb6143507442d79d8dd1a934f32166",
+                "@type": ["bf:Local"],
+                "rdf:value": [{"@value": "ocm05084045"}]
+            },
+            {
+                "@id": "_:Ncd04c5d5a59e447fa75232fa22cb99bf",
+                "@type": ["bf:Status"],
+                "bf:code": [{"@value": "c"}]
+            },
+            {
+                "@id": "_:N8b53cbc53d24454f9f52cd128cd82a0d",
+                "@type": ["bf:GenerationProcess"],
+                "rdf:label": [{"@value": "DLC marc2bibframe2 v1.4.0-SNAPSHOT: 2018-09-30T20:39:37-04:00"}]
+            },
+            {
+                "@id": "_:Naedea4d5f62049d1a6ca45855dd7010c",
+                "@type": [
+                    "bf:Agent",
+                    "bf:Source"
+                ],
+                "rdf:label": [{"@value": "IUL"}]
+            },
+            {
+                "@id": "_:N63b4813a7b6449fe9d7b5420c8ff5407",
+                "@type": ["bf:DescriptionConventions"],
+                "bf:code": [{"@value": "unknown"}]
+            },
+            {
+                "@id": "_:Na8c914986d7c40229271303fab6d750e",
+                "@type": ["bflc:EncodingLevel"],
+                "bf:code": [{"@value": "1"}]
+            },
+            {
+                "@id": "_:N8982eb7b4e0a4d76997043c55bef5e0a",
+                "@type": [
+                    "bf:Source",
+                    "bf:Agent"
+                ],
+                "rdf:label": [{"@value": "IUL"}]
+            }
+        ]
+    }]
+}
