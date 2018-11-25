@@ -93,7 +93,7 @@ project:
         alternative approach, one that would allow libraries to share
         their data directly without having to pay an expensive
         intermediary.
-    url: https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project-paper
+    url: https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project-report
     type: project
     status: "75% Oct 29 18"
     chapter: Media
