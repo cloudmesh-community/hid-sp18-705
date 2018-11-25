@@ -172,22 +172,23 @@ creation of a decentralized marketplace for library metadata. Rather than
 paying a centralized exchange to distribute their catalog records, libraries
 could buy and sell records in a peer-to-peer exchange. Catalog records could
 thus become a source of revenue rather than a costly expenditure. Many
-blockchain systems support the creation of ``smart assets'', or the creation
-of tokens to represent real-word assets. A new token could be minted to
-facilitate the exchange of metadata objects, and payment and settlement
-channels could be created using smart contracts on a public blockchain such
-as Ethereum. However, a public blockchain solution does not fully satisfy
-the requirements of decentralization for this use case. A data asset cannot
-be represented exclusively by a token---it also needs to be stored in a
-decentralized system optimized for read and write transactions. Public
-blockchains such as Ethereum have been designed for exchange, not storage.
-At the current price of the Ethereum blockchain's native token, Ether (ETH),
-at approximately \$200.00, storing 1 Gigabyte of data on the blockchain
-would cost over \$7,000,000.00~\cite{tHess16}. A decentralized system for
-library metadata must be able to scale and store big data out of the box.
-BigchainDB is a production-ready solution that meets the requirements for
-this use case: it supports the creation of tokens and the direct storage of
-metadata objects on its blockchain.~\cite{bdb18c}.
+blockchain systems support the creation of so-called smart assets, or the
+creation of tokens to represent real-word assets. A new token could be
+minted to facilitate the exchange of metadata objects, and payment and
+settlement channels could be created using smart contracts on a public
+blockchain such as Ethereum. However, a public blockchain solution does not
+fully satisfy the requirements of decentralization for this use case. A data
+asset cannot be represented exclusively by a token---it also needs to be
+stored in a decentralized system optimized for read and write transactions.
+Public blockchains such as Ethereum have been designed for exchange, not
+storage. At the current price of the Ethereum blockchain's native token,
+Ether (ETH), at approximately \$200.00, storing 1 Gigabyte of data on the
+blockchain would cost over \$7,000,000.00~\cite{tHess16}. A decentralized
+system for library metadata must be able to scale and store big data out of
+the box. BigchainDB is a production-ready solution that meets the
+requirements for this use case: it supports the creation of tokens and the
+direct storage of metadata objects on its
+blockchain~\cite{bdb18c}.
 
 \section{Project Scope}
 The current project presents findings from an exploration of BigchainDB as a 
@@ -205,211 +206,148 @@ framework initially focused on integration with the RethinkDB system
 (\url{https://www.rethinkdb.com/}), but now works exclusively with MongoDB
 (\url{https://www.mongodb.com/})~\cite{ks16, bigDB18}.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+The early focus of BigchainDB development was to create an
+architecture that would allow existing big data databases to be
+``blockchainified''~\cite{bigDB16a}. The original BigchainDB whitepaper,
+released in June 2016, focused on the scalability limitations of traditional
+blockchain networks such as Bitcoin and claimed that it should be possible
+to develop a blockchain-based distributed database that would enable ``1
+million writes per second throughput, storing petabytes of data, and
+sub-second latency''---in contrast to the storage restrictions and 7
+transaction-per-second (tps) limit of the Bitcoin network~\cite{bigDB16a}.
+The advantages of adding a blockchain layer to an existing distributed
+database would be to incorporate ``decentralized control, immutability, and
+creation [and] movement of digital assets''~\cite{bigDB16a}. 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+The primary challenge in designing a decentralized system is how to
+defend against both arbitrary failure and malicious actors. In so-called
+Sybil attacks, an attacker attempts to generate false identities in order to
+gain majority control over a network~\cite{dJ02}. To address Sybil attacks,
+BigchainDB proposes a governance model that would create a federation of
+trusted nodes. Because all participants are known, any attempt by one
+participant to gain control over the network would be obvious. A more
+pervasive vulnerability comes in the form of the so-called Byzantine
+Generals' Problem~\cite{bigDB16a}. Nodes in a distributed network must be
+able to reach consensus about the final order of transactions at each state
+of the system, even in the presence of node failure or malicious attempts to
+manipulate system state in order to gain an unfair advantage---for example,
+in double-spending, in which a transaction is replayed so that the same
+asset can be used again (a particular problem in the case of financial
+transactions)~\cite{bigDB16a, aA17}.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+In its original design, BigchainDB relied on the consensus algorithm of
+its underlying database to manage benign node failure and incorporated
+additional constraints to verify the integrity of the voting process by
+which nodes in the network approved transactions---and the blocks containing
+them---as valid~\cite{bigDB16a}. However, in its initial version, BigchainDB
+did not claim to be Byzantine Fault Tolerant (or BFT---the term used to
+indicate that a system can withstand unexpected node behavior, whether
+benign or malicious, up to a certain threshold~\cite{bigDB16a}). In the
+original design, all nodes belonged to a single logical database. This made
+the system overly centralized and vulnerable to attack: a malicious actor
+who gained control over a single node would be able to drop the entire
+database, which was shared among all nodes in the network~\cite{ks16, bigDB18}.
+BigchainDB 2.0, released in June 2018, underwent a complete redesign and
+incorporated full Byzantine fault tolerance through integration with
+Tendermint, an application for managing consensus and state machine
+replication in blockchain systems~\cite{troyM18b, tender18}. As a result of
+implementing Byzantine fault tolerance through Tendermint, BigchainDB's
+original goal of supporting 1 million tps was no longer viable. A recent
+benchmark of BigchainDB 2.0 throughput performed by the BigchainDB team
+indicated that the system was able to process approximately 300
+tps~\cite{troyM18a}.
 
 \subsection{Architecture}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+The architecture of a BigchainDB 2.0 network is shown in
+Figure~\ref{f:bdb}. Each node in the network is self-contained and
+includes its own MongoDB database and Tendermint application server.
+Tendermint is used to manage consensus, communication, and state replication
+among nodes, whereas the software that is unique to BigchainDB is
+responsible for ``registering and tracking the
+ownership of `assets'\thinspace''~\cite{troyM18b}. ﻿In BigchainDB 2.0, as is
+the case in general with systems that are Byzantine Fault Tolerant, $3f + 1$
+nodes are necessary to run a network, where $f$ is the number of faulty
+nodes to be tolerated~\cite{bdb18}. Therefore, at least four nodes are
+required in order to run a BigchainDB network: if one of the four nodes
+becomes unresponsive or attempts to approve an invalid transaction, the
+network will continue to function based on the majority consensus of the
+other three nodes~\cite{bdb18}.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+A BigchainDB client can potentially connect to any node in the network.
+Each MongoDB instance contains a full replication of the data stored in the
+network~\cite{bdb18}. The BigchainDB project officially supports three
+client drivers to connect to a node server (in Python, Node.js, and
+Java)~\cite{bdb18f}.
 
 \subsubsection{BigchainDB Server}
+The BigchainDB Server, written in Python, implements the logic to
+model, construct, validate, and store transactions in the BigchainDB
+blockchain~\cite{troyM18b}. The server also incorporates a Python
+implementation of the Crypto-Conditions specification, which is a standard
+for enforcing complex boolean conditions for fulfillment (asset transfer)
+using cryptographic signatures~\cite{cryptocon}.
 
-As of version 2.0, BigchainDB is Byzantine Fault Tolerant.
+All objects in BigchainDB are modeled as \emph{assets}. Two transaction types 
+are available for managing assets: CREATE and TRANSFER~\cite{troyM18c}. Each 
+transaction must be cryptographically signed with the private key of its 
+``owner'' (the agent who created an asset through a CREATE transaction or to 
+whom an asset was assigned through a TRANSFER transaction). Public/private 
+keypairs are implemented using the Edwards-curve Digital Signature Algorithm 
+Ed25519~\cite{troyM18c}. A transaction is encoded using a dictionary or 
+associative array that can be serialized as a JSON object. The BigchainDB 
+Transactions Specification defines the structure and usage of a BigchainDB 
+transaction object~\cite{troyM18c}. Valid transactions must include the 
+following keys:
 
-﻿In BigchainDB 2.0, as is the case in general with systems that are
-Byzantine fault tolerant, $3f + 1$ nodes are necessary to run a network,
-where $f$ is the number of faulty nodes to be tolerated~\cite{bdb18}.
+\begin{verbatim}
+{
+    "id": ctnull,
+    "version": version,
+    "inputs": inputs,
+    "outputs": outputs,
+    "operation": operation,
+    "asset": asset,
+    "metadata": metadata
+}	
+\end{verbatim}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+Conditions for fulfillment and asset transfer are defined in the values
+of the ``inputs'' and ``outputs'' keys. An object representing the asset
+itself is stored as the value of the ``asset'' key and cannot be modified
+once an asset has been created and committed to a block in the BigchainDB
+blockchain. The ``metadata'' key is used to store an arbitrary object that
+records additional information about the asset or its state: in contrast to
+the asset object, the metadata object \emph{can} be modified with each
+TRANSFER transaction~\cite{troyM18c}.
 
 \subsubsection{Tendermint}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+Tendermint is a BFT consensus engine for blockchain applications. It
+implements a set of protocols and exposes an interface (called the
+Application Blockchain Interface---ABCI) for replicating deterministic
+finite state machines~\cite{tender18}. 
 
 \subsubsection{MongoDB}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+MongoDB is an enterprise-grade NoSQL database optimized for storing
+JSON objects as documents. It supports both high availability (replication)
+and scalability (sharding)~\cite{mongo18}. Early verions of BigchainDB used
+a single MongoDB replication set and were able to take advantage of these
+core MongoDB features. In BigchainDB 2.0, because each node maintains a
+separate MongoDB instance, replication and sharding are not supported out of
+the box~\cite{troyM18b}. In order to enforce practical immutability and
+decrease the likelihood of data tampering, the BigchainDB server limits
+access to MongoDB and does not expose any interfaces for deleting or making
+arbitary modifications to database documents. Although it is technically
+possible for a systems administrator to modify the MongoDB database
+directly, each BigchainDB transaction is signed with a public/private
+cryptographic keypair---thus any tampering would result in a modified
+signature, which would be detectable by other nodes in the network and would
+violate its social contract~\cite{bigDB18}.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+BigchainDB does take advantage of MongoDB's query facility for
+read-only queries. It exposes a simple search interface through its HTTP
+API, but also allows node administrators to create custom indexes and
+leverage the full range of MongoDB query
+functionality~\cite{bdb18d}.
 
 
 \section{Dataset}
@@ -542,9 +480,14 @@ nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
 
 Shown in Figure~\ref{f:rbac}.
 Shown in Figure~\ref{f:rbac2}.
-Shown in Figure~\ref{f:bdb}. 
+
 Shown in Figure~\ref{f:bdb2}.
 
+\begin{figure}[!htb]
+	\centering\includegraphics[width=\columnwidth]{images/bdb-arch.pdf}  
+	\caption{High-Level Architecture of BigchainDB 
+		2.0~\cite{bdb18d}}\label{f:bdb}
+\end{figure}
 
 \begin{figure}[!htb]
 	\centering\includegraphics[width=\columnwidth]{images/assets-metadata.pdf}  
@@ -559,21 +502,17 @@ Shown in Figure~\ref{f:bdb2}.
 
 \begin{figure}[!htb]
 	\centering\includegraphics[width=\columnwidth]{images/bdb-seq.pdf}  
-	\caption{BigchainDB Sequence Diagram~\cite{aA17}}\label{f:bdb}
+	\caption{BigchainDB Sequence Diagram~\cite{aA17}}\label{f:bdb2}
 \end{figure}
 
-\begin{figure}[!htb]
-	\centering\includegraphics[width=\columnwidth]{images/bdb-arch.pdf}  
-	\caption{BigchainDB Architecture Diagram~\cite{aA17}}\label{f:bdb2}
-\end{figure}
 
 \section{Conclusion}
 
 
 \begin{acks}
 The author would like to thank Dr.~Gregor~von~Laszewski and the i523
-teaching assistants for their support and suggestions in writing this
-report.
+and i516 teaching assistants for their support and suggestions in writing
+this report.
 \end{acks}
 
 \bibliographystyle{ACM-Reference-Format}
