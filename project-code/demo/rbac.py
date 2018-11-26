@@ -42,7 +42,10 @@ class BigchainRbac():
 
     
     def bootstrap_admin_group(self):
+        """Bootstrap an asset to represent the admin group.               
         
+        """
+     
         asset = {"data": {
             "@context": {
                 "foaf": "http://xmlns.com/foaf/0.1/",
@@ -71,7 +74,13 @@ class BigchainRbac():
     
         
     def bootstrap_app(self, admin_group_id):
+        """Bootstrap an asset to represent the app.
         
+        Args:
+            admin_group_id: ID of the asset representing the admin group
+        
+        """
+          
         asset = {"data": {
             "@context": "http://schema.org/",
             "@type": "SoftwareApplication",
