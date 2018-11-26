@@ -259,11 +259,11 @@ tps~\cite{troyM18a}.
 
 \subsection{Architecture}
 The architecture of a BigchainDB 2.0 network is shown in
-Figure~\ref{f:bdb}. Each node in the network is self-contained and
-includes its own MongoDB database and Tendermint application server.
-Tendermint is used to manage consensus, communication, and state replication
-among nodes, whereas the software that is unique to BigchainDB is
-responsible for ``registering and tracking the
+Figure~\ref{f:bdb}, prepared by the BigchainDB development team. Each node
+in the network is self-contained and includes its own MongoDB database and
+Tendermint application server. Tendermint is used to manage consensus,
+communication, and state replication among nodes, whereas the software that
+is unique to BigchainDB is responsible for ``registering and tracking the
 ownership of `assets'\thinspace''~\cite{troyM18b}. ﻿In BigchainDB 2.0, as is
 the case in general with systems that are Byzantine Fault Tolerant, $3f + 1$
 nodes are necessary to run a network, where $f$ is the number of faulty
@@ -281,7 +281,7 @@ Java)~\cite{bdb18f}.
 
 \subsubsection{BigchainDB Server}
 The BigchainDB Server, written in Python, implements the logic to
-model, construct, validate, and store transactions in the BigchainDB
+model, validate, and store transactions in the BigchainDB
 blockchain~\cite{troyM18b}. The server also incorporates a Python
 implementation of the Crypto-Conditions specification, which is a standard
 for enforcing complex boolean conditions for fulfillment (asset transfer)
@@ -321,10 +321,29 @@ the asset object, the metadata object \emph{can} be modified with each
 TRANSFER transaction~\cite{troyM18c}.
 
 \subsubsection{Tendermint}
-Tendermint is a BFT consensus engine for blockchain applications. It
-implements a set of protocols and exposes an interface (called the
-Application Blockchain Interface---ABCI) for replicating deterministic
-finite state machines~\cite{tender18}. 
+Tendermint provides an application interface and BFT consensus
+algorithm for replicating application state across the nodes in a
+decentralized network~\cite{tender18}. Tendermint Core implements the
+consensus algorithm, which ensures that all nodes agree on a single order
+for transactions. Tendermint's Application Blockchain Interface (ABCI)
+provides a language-agnostic interface for blockchain applications to use
+when validating and processing transactions~\cite{tender18}.
+
+Figure \ref{f:bdb2} is a sequence diagram, prepared by the BigchainDB
+development team, that illustrates the role of Tendermint in processing
+BigchainDB transactions. After a client prepares and signs a transaction,
+typically using a BigchainDB driver, the transaction is submitted to the
+BigchainDB server for initial validation. The server then sends the
+transaction to Tendermint, which includes it in a local memory pool.
+Tendermint returns its own validation request to the server and, upon
+confirmation, proposes a new block and begins a round of voting as part of
+its consensus algorithm. Each node in the network votes on the order and
+validity of transactions in the block, and if consensus is reached, the
+block is committed to the application's blockchain~\cite{gautam18, bigDB18}.
+BigchainDB stores a queryable copy of each block in MongoDB, while
+Tendermint appends each block to its canonical blockchain, which is stored
+in an internal LevelDB database and used for replicating transaction state
+to network peers~\cite{tender18, bigDB18}.
 
 \subsubsection{MongoDB}
 MongoDB is an enterprise-grade NoSQL database optimized for storing
@@ -337,7 +356,7 @@ the box~\cite{troyM18b}. In order to enforce practical immutability and
 decrease the likelihood of data tampering, the BigchainDB server limits
 access to MongoDB and does not expose any interfaces for deleting or making
 arbitary modifications to database documents. Although it is technically
-possible for a systems administrator to modify the MongoDB database
+possible for a system administrator to modify the MongoDB database
 directly, each BigchainDB transaction is signed with a public/private
 cryptographic keypair---thus any tampering would result in a modified
 signature, which would be detectable by other nodes in the network and would
@@ -348,7 +367,6 @@ read-only queries. It exposes a simple search interface through its HTTP
 API, but also allows node administrators to create custom indexes and
 leverage the full range of MongoDB query
 functionality~\cite{bdb18d}.
-
 
 \section{Dataset}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
@@ -481,12 +499,15 @@ nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
 Shown in Figure~\ref{f:rbac}.
 Shown in Figure~\ref{f:rbac2}.
 
-Shown in Figure~\ref{f:bdb2}.
-
 \begin{figure}[!htb]
 	\centering\includegraphics[width=\columnwidth]{images/bdb-arch.pdf}  
 	\caption{High-Level Architecture of BigchainDB 
 		2.0~\cite{bdb18d}}\label{f:bdb}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering\includegraphics[width=\columnwidth]{images/bdb-seq.pdf}  
+	\caption{BigchainDB Sequence Diagram~\cite{gautam18}}\label{f:bdb2}
 \end{figure}
 
 \begin{figure}[!htb]
@@ -500,10 +521,7 @@ Shown in Figure~\ref{f:bdb2}.
 	Control}\label{f:rbac2}
 \end{figure}
 
-\begin{figure}[!htb]
-	\centering\includegraphics[width=\columnwidth]{images/bdb-seq.pdf}  
-	\caption{BigchainDB Sequence Diagram~\cite{aA17}}\label{f:bdb2}
-\end{figure}
+
 
 
 \section{Conclusion}
