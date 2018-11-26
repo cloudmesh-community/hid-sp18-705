@@ -73,7 +73,7 @@ class BigchainRbac():
     def bootstrap_app(self, admin_group_id):
         
         asset = {"data": {
-            "@context": "http://schema.org",
+            "@context": "http://schema.org/",
             "@type": "SoftwareApplication",
             "name": self.app_name,
             "identifier": {
