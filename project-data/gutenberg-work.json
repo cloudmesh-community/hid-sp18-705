@@ -1,101 +1,101 @@
 {
-    "@context": {
-        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-        "bf": "http://id.loc.gov/ontologies/bibframe/",
-        "bflc": "http://id.loc.gov/ontologies/bflc/"
-    },
-    "@graph": [{
-        "@id": "http://example.org/work-graph",
-        "@graph": [
-            {
-                "@id": "http://example.org/3391099#Work",
-                "@type": [
-                    "bf:Work",
-                    "bf:Text"
-                ],
-                "bf:contribution": {"@id": "_:Nddabf10c48704d948be179c369ceb93a"},
-                "bf:hasInstance": [{"@id": "http://example.org/3391099#Instance"}],
-                "bf:hasPart": {"@id": "http://example.org/3391099#Work740-34"},
-                "bf:language": [
-                    {"@id": "http://id.loc.gov/vocabulary/languages/lat"},
-                    {"@id": "_:N8d72861e6b584aa2b19676d84873d234"}
-                ],
-                "bf:originDate": "1454",
-                "bf:title": {"@id": "_:N4be9089a649646ef8cb10f6bb8e67a03"},
-                "bf:translationOf": {"@id": "http://example.org/3391099#Work130-10"},
-                "bf:version": "Vulgate",
-                "rdfs:label": "Bible. Latin. Vulgate. 1454."
-            },
-            {
-                "@id": "_:Nddabf10c48704d948be179c369ceb93a",
-                "@type": "bf:Contribution",
-                "bf:agent": {"@id": "http://id.loc.gov/authorities/names/n50034916"},
-                "bf:role": {"@id": "http://id.loc.gov/vocabulary/relators/prt"}
-            },
-            {
-                "@id": "_:N8d72861e6b584aa2b19676d84873d234",
-                "@type": "bf:Language",
-                "rdfs:label": "Latin"
-            },
-            {
-                "@id": "_:N4be9089a649646ef8cb10f6bb8e67a03",
-                "@type": "bf:Title",
-                "bf:mainTitle": "Bible",
-                "bflc:title30MarcKey": "1300 $aBible.$lLatin.$sVulgate.$f1454.",
-                "bflc:title30MatchKey": "Bible. Latin. Vulgate. 1454.",
-                "bflc:titleSortKey": "Bible. Latin. Vulgate. 1454.",
-                "rdfs:label": "Bible. Latin. Vulgate. 1454."
-            },
-            {
-                "@id": "http://id.loc.gov/vocabulary/languages/lat",
-                "@type": "bf:Language"
-            },
-            {
-                "@id": "http://example.org/3391099#Work130-10",
-                "@type": "bf:Work",
-                "bf:originDate": "1454",
-                "bf:title": {"@id": "_:N7fca2fa41dbc4495ba059291930d0afe"},
-                "bf:version": "Vulgate",
-                "rdfs:label": "Bible. Vulgate. 1454."
-            },
-            {
-                "@id": "_:N7fca2fa41dbc4495ba059291930d0afe",
-                "@type": "bf:Title",
-                "bf:mainTitle": "Bible",
-                "bflc:title30MarcKey": "1300 $aBible.$lLatin.$sVulgate.$f1454.",
-                "bflc:title30MatchKey": "Bible. Vulgate. 1454.",
-                "bflc:titleSortKey": "Bible. Vulgate. 1454.",
-                "rdfs:label": "Bible. Vulgate. 1454."
-            },
-            {
-                "@id": "http://example.org/3391099#Work740-34",
-                "@type": "bf:Work",
-                "bf:title": {"@id": "_:N4282a8d7e1c746a0ac140121027e504e"},
-                "rdfs:label": "Gutenberg Bible."
-            },
-            {
-                "@id": "_:N4282a8d7e1c746a0ac140121027e504e",
-                "@type": "bf:Title",
-                "bf:mainTitle": "Gutenberg Bible",
-                "bflc:titleSortKey": "Gutenberg Bible.",
-                "rdfs:label": "Gutenberg Bible."
-            },
-            {
-                "@id": "http://id.loc.gov/vocabulary/relators/prt",
-                "@type": "bf:Role",
-                "bflc:relatorMatchKey": "printer",
-                "rdfs:label": "printer."
-            },
-            {
-                "@id": "http://id.loc.gov/authorities/names/n50034916",
-                "@type": [
-                    "bf:Agent",
-                    "bf:Person"
-                ],
-                "bflc:name00MarcKey": "7001 $aGutenberg, Johann,$d1397?-1468,$eprinter.",
-                "bflc:name00MatchKey": "Gutenberg, Johann, 1397?-1468,",
-                "rdfs:label": "Gutenberg, Johann, 1397?-1468,"
-            }
-        ]
-    }]
+  "@context": {
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "bf": "http://id.loc.gov/ontologies/bibframe/",
+    "bflc": "http://id.loc.gov/ontologies/bflc/"
+  },
+  "@graph": [{
+    "@id": "http://example.org/work-graph",
+    "@graph": [
+      {
+        "@id": "http://example.org/3391099#Work",
+        "@type": [
+          "bf:Work",
+          "bf:Text"
+        ],
+        "bf:contribution": {"@id": "_:Nddabf10c48704d948be179c369ceb93a"},
+        "bf:hasInstance": [{"@id": "http://example.org/3391099#Instance"}],
+        "bf:hasPart": {"@id": "http://example.org/3391099#Work740-34"},
+        "bf:language": [
+          {"@id": "http://id.loc.gov/vocabulary/languages/lat"},
+          {"@id": "_:N8d72861e6b584aa2b19676d84873d234"}
+        ],
+        "bf:originDate": "1454",
+        "bf:title": {"@id": "_:N4be9089a649646ef8cb10f6bb8e67a03"},
+        "bf:translationOf": {"@id": "http://example.org/3391099#Work130-10"},
+        "bf:version": "Vulgate",
+        "rdfs:label": "Bible. Latin. Vulgate. 1454."
+      },
+      {
+        "@id": "_:Nddabf10c48704d948be179c369ceb93a",
+        "@type": "bf:Contribution",
+        "bf:agent": {"@id": "http://id.loc.gov/authorities/names/n50034916"},
+        "bf:role": {"@id": "http://id.loc.gov/vocabulary/relators/prt"}
+      },
+      {
+        "@id": "_:N8d72861e6b584aa2b19676d84873d234",
+        "@type": "bf:Language",
+        "rdfs:label": "Latin"
+      },
+      {
+        "@id": "_:N4be9089a649646ef8cb10f6bb8e67a03",
+        "@type": "bf:Title",
+        "bf:mainTitle": "Bible",
+        "bflc:title30MarcKey": "1300 $aBible.$lLatin.$sVulgate.$f1454.",
+        "bflc:title30MatchKey": "Bible. Latin. Vulgate. 1454.",
+        "bflc:titleSortKey": "Bible. Latin. Vulgate. 1454.",
+        "rdfs:label": "Bible. Latin. Vulgate. 1454."
+      },
+      {
+        "@id": "http://id.loc.gov/vocabulary/languages/lat",
+        "@type": "bf:Language"
+      },
+      {
+        "@id": "http://example.org/3391099#Work130-10",
+        "@type": "bf:Work",
+        "bf:originDate": "1454",
+        "bf:title": {"@id": "_:N7fca2fa41dbc4495ba059291930d0afe"},
+        "bf:version": "Vulgate",
+        "rdfs:label": "Bible. Vulgate. 1454."
+      },
+      {
+        "@id": "_:N7fca2fa41dbc4495ba059291930d0afe",
+        "@type": "bf:Title",
+        "bf:mainTitle": "Bible",
+        "bflc:title30MarcKey": "1300 $aBible.$lLatin.$sVulgate.$f1454.",
+        "bflc:title30MatchKey": "Bible. Vulgate. 1454.",
+        "bflc:titleSortKey": "Bible. Vulgate. 1454.",
+        "rdfs:label": "Bible. Vulgate. 1454."
+      },
+      {
+        "@id": "http://example.org/3391099#Work740-34",
+        "@type": "bf:Work",
+        "bf:title": {"@id": "_:N4282a8d7e1c746a0ac140121027e504e"},
+        "rdfs:label": "Gutenberg Bible."
+      },
+      {
+        "@id": "_:N4282a8d7e1c746a0ac140121027e504e",
+        "@type": "bf:Title",
+        "bf:mainTitle": "Gutenberg Bible",
+        "bflc:titleSortKey": "Gutenberg Bible.",
+        "rdfs:label": "Gutenberg Bible."
+      },
+      {
+        "@id": "http://id.loc.gov/vocabulary/relators/prt",
+        "@type": "bf:Role",
+        "bflc:relatorMatchKey": "printer",
+        "rdfs:label": "printer."
+      },
+      {
+        "@id": "http://id.loc.gov/authorities/names/n50034916",
+        "@type": [
+          "bf:Agent",
+          "bf:Person"
+        ],
+        "bflc:name00MarcKey": "7001 $aGutenberg, Johann,$d1397?-1468,$eprinter.",
+        "bflc:name00MatchKey": "Gutenberg, Johann, 1397?-1468,",
+        "rdfs:label": "Gutenberg, Johann, 1397?-1468,"
+      }
+    ]
+  }]
 }

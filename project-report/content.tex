@@ -48,8 +48,8 @@ libraries to share their data directly without having to pay an expensive
 intermediary.
 \end{abstract}
 
-\keywords{i523, hid-sp18-705, Research Libraries, Library Catalogs, 
-Peer-to-Peer, Blockchain}
+\keywords{i523, hid-sp18-705, Research Libraries, Library Catalogs,
+	Blockchain, BigchainDB}
 
 \maketitle
 
@@ -186,9 +186,8 @@ Ether (ETH), at approximately \$200.00, storing 1 Gigabyte of data on the
 blockchain would cost over \$7,000,000.00~\cite{tHess16}. A decentralized
 system for library metadata must be able to scale and store big data out of
 the box. BigchainDB is a production-ready solution that meets the
-requirements for this use case: it supports the creation of tokens and the
-direct storage of metadata objects on its
-blockchain~\cite{bdb18c}.
+requirements for this use case: it supports the creation of assets and the
+direct storage of metadata objects on its blockchain~\cite{bdb18c}.
 
 \section{Project Scope}
 The current project presents findings from an exploration of BigchainDB as a 
@@ -198,13 +197,12 @@ satisified using BigchainDB.
 
 \section{BigchainDB}
 \subsection{Evolution}
-BigchainDB arose as an attempt to address the scalability and storage
+BigchainDB was created to address the scalability and storage
 limitations of traditional blockchains such as Bitcoin and Ethereum and to
-create a hybrid solution that builds a blockchain layer on top of an
-existing big data system~\cite{bigDB18}. Development of the BigchainDB
-framework initially focused on integration with the RethinkDB system
-(\url{https://www.rethinkdb.com/}), but now works exclusively with MongoDB
-(\url{https://www.mongodb.com/})~\cite{ks16, bigDB18}.
+create a hybrid solution that builds a blockchain layer on top of an existing
+big data system~\cite{bigDB18}. Development of the BigchainDB framework
+initially focused on integration with the RethinkDB system, but now works
+exclusively with MongoDB~\cite{ks16, bigDB18}.
 
 The early focus of BigchainDB development was to create an
 architecture that would allow existing big data databases to be
@@ -235,31 +233,41 @@ in double-spending, in which a transaction is replayed so that the same
 asset can be used again (a particular problem in the case of financial
 transactions)~\cite{bigDB16a, aA17}.
 
-In its original design, BigchainDB relied on the consensus algorithm of
-its underlying database to manage benign node failure and incorporated
-additional constraints to verify the integrity of the voting process by
-which nodes in the network approved transactions---and the blocks containing
+In its original design, BigchainDB relied on the consensus algorithm
+of its underlying database to manage benign node failure and incorporated
+additional constraints to verify the integrity of the voting process by which
+nodes in the network approved transactions---and the blocks containing
 them---as valid~\cite{bigDB16a}. However, in its initial version, BigchainDB
 did not claim to be Byzantine Fault Tolerant (or BFT---the term used to
-indicate that a system can withstand unexpected node behavior, whether
-benign or malicious, up to a certain threshold~\cite{bigDB16a}). In the
-original design, all nodes belonged to a single logical database. This made
-the system overly centralized and vulnerable to attack: a malicious actor
-who gained control over a single node would be able to drop the entire
-database, which was shared among all nodes in the network~\cite{ks16, bigDB18}.
+indicate that a system can withstand unexpected node behavior, whether benign
+or malicious, up to a certain threshold~\cite{bigDB16a}). In the original
+design, all nodes belonged to a single logical database. This made the system
+overly centralized and vulnerable to attack: a malicious actor who gained
+control over a single node would have been able to drop the entire database,
+which was shared among all nodes in the network~\cite{ks16, bigDB18}.
 BigchainDB 2.0, released in June 2018, underwent a complete redesign and
 incorporated full Byzantine fault tolerance through integration with
 Tendermint, an application for managing consensus and state machine
 replication in blockchain systems~\cite{troyM18b, tender18}. As a result of
 implementing Byzantine fault tolerance through Tendermint, BigchainDB's
-original goal of supporting 1 million tps was no longer viable. A recent
-benchmark of BigchainDB 2.0 throughput performed by the BigchainDB team
-indicated that the system was able to process approximately 300
-tps~\cite{troyM18a}.
+original goal of supporting 1 million tps was no longer viable. 
+
+\subsection{Benchmark}
+A recent benchmark of BigchainDB 2.0 throughput performed by the
+BigchainDB development team indicated that the system was able to process
+approximately 300 tps~\cite{troyM18a, bdb18g}. Benchmarking was carried out on
+a four-node network on Microsoft Azure-hosted virtual machines located in the
+same data center. Three separate experiments were run to test different
+options, and a full report of configurations and results is available for
+review~\cite{bdb18g}. The primary experiment tested how long it would take to
+commit 1 million transactions of 765 bytes each to the BigchainDB blockchain
+under default settings. Results showed an average rate of 299.0 tps and a
+median rate of 309.0 tps. All 1 million transactions were finalized in 56
+minutes with no failures~\cite{bdb18g}.
 
 \subsection{Architecture}
 The architecture of a BigchainDB 2.0 network is shown in
-Figure~\ref{f:bdb}, prepared by the BigchainDB development team. Each node
+Figure~\ref{f:bdb}, created by the BigchainDB development team. Each node
 in the network is self-contained and includes its own MongoDB database and
 Tendermint application server. Tendermint is used to manage consensus,
 communication, and state replication among nodes, whereas the software that
@@ -296,20 +304,8 @@ keypairs are implemented using the Edwards-curve Digital Signature Algorithm
 Ed25519~\cite{troyM18c}. A transaction is encoded using a dictionary or 
 associative array that can be serialized as a JSON object. The BigchainDB 
 Transactions Specification defines the structure and usage of a BigchainDB 
-transaction object~\cite{troyM18c}. Valid transactions must include the 
-following keys:
-
-\begin{verbatim}
-{
-    "id": ctnull,
-    "version": version,
-    "inputs": inputs,
-    "outputs": outputs,
-    "operation": operation,
-    "asset": asset,
-    "metadata": metadata
-}	
-\end{verbatim}
+transaction object~\cite{troyM18c}. Figure~\ref{c:bdb3} shows the key/value 
+pairs that all valid BigchainDB transactions must include. 
 
 Conditions for fulfillment and asset transfer are defined in the values
 of the ``inputs'' and ``outputs'' keys. An object representing the asset
@@ -329,7 +325,7 @@ for transactions. Tendermint's Application Blockchain Interface (ABCI)
 provides a language-agnostic interface for blockchain applications to use
 when validating and processing transactions~\cite{tender18}.
 
-Figure \ref{f:bdb2} is a sequence diagram, prepared by the BigchainDB
+Figure~\ref{f:bdb2} is a sequence diagram, created by the BigchainDB
 development team, that illustrates the role of Tendermint in processing
 BigchainDB transactions. After a client prepares and signs a transaction,
 typically using a BigchainDB driver, the transaction is submitted to the
@@ -365,90 +361,129 @@ violate its social contract~\cite{bigDB18}.
 BigchainDB does take advantage of MongoDB's query facility for
 read-only queries. It exposes a simple search interface through its HTTP
 API, but also allows node administrators to create custom indexes and
-leverage the full range of MongoDB query
-functionality~\cite{bdb18d}.
+leverage the full range of MongoDB query functionality~\cite{bdb18d}.
 
 \section{Dataset}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+The dataset for this project is intentionally small and meant to test a
+potential use case for BigchainDB as a library catalog application.
+Currently, library catalog records are stored in a set of industry-specific
+formats maintained by the Library of Congress: the MAchine Readable
+Cataloging (MARC) formats for bibliographic and authority data (standardized
+as ISO 2709 and ANSI/NISO Z39.2)~\cite{kF12, lcnetdev}. In recent years, the
+Library of Congress has undertaken an effort to update library metadata
+standards and adopt standards and formats maintained by the World Wide Web
+Consortium (W3C)---specifically those related to linked data and the
+Semantic Web, such as the core data model known as the Resource Description
+Framework (RDF)~\cite{lcbf, rdf11}. A new domain-specific data model and
+ontology for library metadata, expressed using the W3C's OWL standard for
+semantic ontologies, is currently being developed and
+implemented~\cite{owl2}. The data used here for testing with BigchainDB
+follows this model, known as the Bibliographic Framework Initiative
+(BIBFRAME)~\cite{lcbf}.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+In the basic model proposed by BIBFRAME, descriptions of library
+resources are divided into three entity types or classes: Work (the abstract
+concept of the resource), Instance (the embodiment of a Work in a particular
+publication), and Item (a physical copy of an Instance)~\cite{lcbf}. As an
+example for this project, a catalog record from the Indiana University
+Library catalog was chosen. This record describes the Lilly Library's
+partial copy of the Gutenberg Bible. The data is divided into six
+files:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+\begin{verbatim}
+ocm05084045.xml
+gutenberg-iul-item.rdf
+gutenberg-iul-instance.json
+gutenberg-iul-item.json
+gutenberg-iul-record.json
+gutenberg-work.json
+\end{verbatim}
+
+The file \verb|ocm05084045.xml| represents the original MARC-format
+record, encoded as XML. The file \verb|gutenberg-iul-item.rdf| provides an
+example of a partial conversion of the original MARC record to the BIBFRAME
+model using the RDF/XML serialization~\cite{liam}. The remaining files
+represent the data used to create assets for storage in BigchainDB and are
+encoded in BIBFRAME using the JSON-LD serialization of RDF~\cite{liam}.
+Several preprocessing steps of data conversion and cleanup were necessary.
+The original MARC/XML catalog record was converted to BIBFRAME RDF/XML using
+a suite of XSLT stylesheets provided by the Library of
+Congress~\cite{lcnetdev2}. The RDF/XML documents were then converted to
+JSON-LD using the Python RDFLib library (see the \verb|convert_rdf.py|
+script in the \verb|project-code| directory for a brief example). The
+JSON-LD produced by RDFLib was then broken into separate files to allow for
+the creation of individual assets in BigchainDB.
 
 \section{Implementation}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+Currently, most large library catalogs are stored in enterprise
+relational databases such as Oracle. The catalog is one module in a suite of
+services known as an Integrated Library System (ILS), which also includes
+modules for circulation and ordering or acquisitions. The cataloging module
+in an ILS includes a public-facing interface for search and retrieval and a
+staff-facing interface for data entry and management. One advantage of using
+a distributed system such as BigchainDB for library cataloging functions
+would be to allow libraries to share their data more easily with peer
+institutions. BigchainDB's asset-based data model might also allow libraries
+to perform inventory and lending functions more efficiently. However, many
+functional components would need to be considered before determining whether
+a blockchain platform such as BigchainDB would be appropriate for the
+library catalog use case. This project focuses on one such component:
+namely, the management of roles and permissions for data entry.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+The Python component of this project implements an extension to
+BigchainDB that adds support for Role-Based Access Control (RBAC)
+functionality~\cite{gautam18b}. The code is based on a Node.js example
+created by the BigchainDB development team to demonstrate the RBAC
+extension~\cite{bdb18i}. Support for RBAC is important for library
+cataloging because library personnel roles are typically divided between
+professional librarians (catalogers) and paraprofessional technicians.
+Librarians are expected to create ``original'' descriptions of library
+resources, whereas paraprofessionals are responsible for copying existing
+data from a shared database such as OCLC WorldCat. Public blockchain systems
+do not usually impose write restrictions, so support for RBAC is an
+important consideration when evaluating BigchainDB.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-eleifend pharetra. Phasellus interdum augue nec sapien pretium accumsan.
-Proin dapibus massa in enim pulvinar facilisis. Proin venenatis nisl metus,
-nec tincidunt lorem viverra at. Quisque sagittis lectus a mi varius, a
-auctor tortor dapibus. Nam magna ex, rutrum et mauris et, eleifend iaculis
-enim. Sed non tortor quis ligula placerat lacinia. Proin consectetur, sapien
-quis molestie volutpat, velit lacus faucibus quam, id rutrum dui est et
-eros. Ut fermentum malesuada hendrerit. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit. Fusce tempus, ante at suscipit facilisis,
-mauris urna auctor urna, eget pretium mi massa accumsan massa. Duis semper,
-ex eu rhoncus elementum, est est tristique est, nec tristique orci nunc eget
-nibh. In vestibulum purus at nibh egestas, eget convallis mi molestie.
+The Python script \verb|rbac_demo.py| connects to a BigchainDB server
+instance and populates it with the BIBFRAME data described above. All
+BigchainDB CREATE transactions must include a JSON-serializable object to
+represent the asset being recorded on the blockchain. The \verb|asset| field
+of a CREATE transaction takes an object with the required key \verb|data|.
+The content of the \verb|asset| field is treated as immutable---it cannot be
+changed once a CREATE transaction has been committed, or when ownership of
+an asset is subsequently changed using a TRANSFER transaction.
+Figure~\ref{c:bfw} shows how a Work asset might be represented in
+BigchainDB. Because this data cannot be changed, it makes sense to represent
+it simply using its RDF type (in this case, it is a BIBFRAME Work with a
+subtype of Text), as well as a human-readable label. Any BigchainDB
+transaction may also include an optional \verb|metadata| key that takes as
+its value an arbitrary JSON object. This flexible design makes it possible
+to effectively ``update'' data by using a TRANSFER transaction to indicate
+that the state of an asset has changed---and recording that change in the
+metadata object. The code in \verb|rbac_demo.py| creates separate BigchainDB assets
+to represent the BIBFRAME types Work, Instance, and Item. The project data and code also illustrate 
+how JSON-LD named graphs may be used to include
+both descriptive and administrative metadata about the same BigchainDB asset
+in a single transaction. 
 
-%Benchmark
+\subsection{Role-Based Access Control in BigchainDB}
+The file \verb|rbac.py| contains a single Python class, \verb|BigchainRbac()|, that provides an 
+interface to create new assets, users, types, and type instances for Role-Based Access Control in 
+BigchainDB. In the BigchainDB RBAC extension, roles and permissions, like everything else, are 
+modeled as assets~\cite{gautam18b}. Two basic assets are necessary for bootstrapping: an 
+asset to represent the application in which RBAC is being used and an asset to represent an admin 
+group for admin users who can assign permissions. 
+
+The BigchainDB impl
+
+
+The \verb|gutenberg-work.json| file comprises two
+named graphs: one representing the Work entity and one representing a
+separate Record entity (which is not part of the core BIBFRAME model).
+Within the named graph for the Record entity, there is an RDF property
+(\verb|foaf:topic|) that links to the URI for the named graph representing
+the Work entity. Figure~\ref{f:rbac} illustrates this pattern, indicating
+how BigchainDB metadata objects may be used to create internal linkages
+among assets conforming to the BIBFRAME data model.
 
 \section{Conclusion}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
@@ -511,6 +546,96 @@ Shown in Figure~\ref{f:rbac2}.
 \end{figure}
 
 \begin{figure}[!htb]
+    \begin{verbatim}
+{
+  "id": ctnull,
+  "version": version,
+  "inputs": inputs,
+  "outputs": outputs,
+  "operation": operation,
+  "asset": asset,
+  "metadata": metadata
+}	
+    \end{verbatim}
+    \caption{Required key/value pairs in a valid BigchainDB 
+    transaction~\cite{troyM18c}}\label{c:bdb3}
+\end{figure}
+
+\begin{figure}[!htb]
+	\begin{verbatim}
+{
+  "data": {
+    "@context": {
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "schema": "http://schema.org/"
+    },
+    "@type": [
+      "http://id.loc.gov/ontologies/bibframe/Work",
+      "http://id.loc.gov/ontologies/bibframe/Text"
+    ],
+    "rdfs:label": "Bible. Latin. Vulgate. 1454."
+  }
+}
+	\end{verbatim}
+	\caption{Representation of a Work asset in BigchainDB}\label{c:bfw}
+\end{figure}
+
+
+\begin{figure}[!htb]
+    \begin{verbatim}
+<rdf:RDF xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+  xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+  xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <bf:Item rdf:about="http://example.org/ocm05084045#Item050-8">
+    <bf:shelfMark>
+      <bf:ShelfMarkLcc>
+        <rdfs:label>BS75 1454</rdfs:label>
+      </bf:ShelfMarkLcc>
+    </bf:shelfMark>
+    <bf:heldBy 
+      rdf:resource="http://id.loc.gov/vocabulary/organizations/inuli"/>
+  </bf:Item>
+</rdf:RDF>
+    \end{verbatim}
+    \caption{Excerpt of Indiana University Library catalog record converted to 
+        RDF/XML}\label{c:rdfxml}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{verbatim}
+[  
+  {    
+    "@id": "http://example.org/ocm05084045#Item050-8",
+    "@type": ["http://id.loc.gov/ontologies/bibframe/Item"],
+    "http://id.loc.gov/ontologies/bibframe/heldBy": [{
+      "@id": "http://id.loc.gov/vocabulary/organizations/inuli"
+    }],
+    "http://id.loc.gov/ontologies/bibframe/itemOf": [{
+      "@id": "http://example.org/ocm05084045#Instance"
+    }],
+    "http://id.loc.gov/ontologies/bibframe/shelfMark": [{
+      "@id": "_:Nb346817b2a894e1894d7c37a823ed84b"
+    }]
+  },
+  {
+    "@id": "_:Nb346817b2a894e1894d7c37a823ed84b",
+    "@type": [
+      "http://id.loc.gov/ontologies/bibframe/ShelfMarkLcc"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [{
+      "@value": "BS75 1454"
+    }]
+  }
+]
+    \end{verbatim}
+    \caption{Excerpt of Indiana University Library catalog record converted 
+        from RDF/XML to JSON-LD using the RDFLib library}\label{c:jsonld}
+\end{figure}
+
+
+\begin{figure}[!htb]
 	\centering\includegraphics[width=\columnwidth]{images/assets-metadata.pdf}  
 	\caption{Graph of asset and metadata objects in BigchainDB}\label{f:rbac}
 \end{figure}
@@ -522,9 +647,6 @@ Shown in Figure~\ref{f:rbac2}.
 \end{figure}
 
 
-
-
-\section{Conclusion}
 
 
 \begin{acks}

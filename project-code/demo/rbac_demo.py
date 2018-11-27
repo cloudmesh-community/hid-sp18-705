@@ -104,118 +104,118 @@ def main():
     
     print("Admin Group: ", TX_URL + admin_group_id)
     
-#    # Create the asset representing the top-level App.
-#    app_id = iul.bootstrap_app(admin_group_id)["id"]
-#
-#    print(APP_NAME + ": ", TX_URL + app_id)
-#    
-#    # Create an individual Admin user asset, linked to the Admin group.
-#    iul_admin_user_id = iul.create_new_user(admin_group_id, "admins", 
-#                                            IUL.public_key)["id"]
-#    
-#    print("Lilly Library Admin User: ", TX_URL + iul_admin_user_id)     
-#    
-#    # Create a new user type for catalogers.
-#    cataloging_group_id = iul.create_type("catalogers", app_id, 
-#                                          admin_group_id)["id"]    
-#    
-#    print("Catalogers Group: ", TX_URL + cataloging_group_id)
-#    
-#    # Create an asset to represent an individual cataloger.
-#    iul_cataloger_id = iul.create_new_user(cataloging_group_id, 
-#                                           "catalogers", 
-#                                           iul_cataloger.public_key)["id"]
-#    
-#    print("IUL Cataloger: ", TX_URL + iul_cataloger_id)
-#    
-#    # Create a new user type for paraprofessionals.
-#    technician_group_id = iul.create_type("paraprofessionals", app_id,
-#                                          admin_group_id)["id"]    
-#    
-#    print("Paraprofessionals Group: ", TX_URL + technician_group_id)
-#    
-#    # Create an asset to represent an individual paraprofessional.
-#    iul_technician_id = iul.create_new_user(technician_group_id,
-#                                            "paraprofessionals",
-#                                            iul_technician.public_key)["id"]
-#    
-#    print("IUL Paraprofessional: ", TX_URL + iul_technician_id)
-#    
-#    
-#    # Create assets for cataloging resources.
-#    # Create a new type for BIBFRAME Work descriptions.
-#    bf_works_group_id = iul.create_type("BIBFRAME_works", app_id, 
-#                                        cataloging_group_id)["id"]
-#    
-#    print("BIBFRAME Works Group: ", TX_URL + bf_works_group_id)
-#
-#
-#    # Add administrative metadata to metadata for Work asset
-#    work_data["@graph"].insert(0, work_record["@graph"][0])
-#    
-#    # Test RBAC permissions.
-#    # A cataloger should be able to create a new asset representing
-#    # an instance of the Work type.    
-#    try:
-#        
-#        
-#        cataloger_work_asset = iul.create_type_instance("BIBFRAME_work", 
-#                                                        bf_works_group_id, 
-#                                                        bf_work, work_data, 
-#                                                        iul_cataloger)        
-#        
-#        print("BIBFRAME Work (IUL Catalogers): ", 
-#              TX_URL + cataloger_work_asset["id"])
-#        
-#    except Exception as e:
-#        print(e)
-#    
-#    # A paraprofessional should not be able to create a new asset 
-#    # representing an instance of the Work type. This transaction
-#    # should fail with a ValidationError.
-#    try:        
-#        technician_work_asset = iul.create_type_instance("BIBFRAME_work",
-#                                                         bf_works_group_id, 
-#                                                         bf_work, work_data, 
-#                                                         iul_technician)    
-#        
-#        print("BIBFRAME Work (IUL Paraprofessionals): ", 
-#              TX_URL + technician_work_asset["id"])
-#        
-#    except Exception as e:        
-#        print("BIBFRAME Work (IUL Paraprofessionals): ", e)
-#    
-#    # Create local cataloging resource assets (Instance and Item)
-#    # and associate them with two "owners": the Admin user and
-#    # the cataloger.
-#    try:
-#        instance_data["@graph"][0].update(
-#                {"parent": cataloger_work_asset["id"]})
-#        
-#        iul_instance_asset = iul.create_new_asset(bf_instance, instance_data,
-#                                                  iul_cataloger,
-#                                                  (iul_cataloger.public_key,
-#                                                   IUL.public_key))
-#        
-#        print("IUL BIBFRAME Instance: ", TX_URL + iul_instance_asset["id"])
-#        
-#    except Exception as e:
-#        print(e)
-#    
-#    try:    
-#        item_data["@graph"][0].update(
-#                {"parent": iul_instance_asset["id"]})
-#        
-#        iul_item_asset = iul.create_new_asset(bf_item, item_data, 
-#                                              iul_cataloger,
-#                                              (iul_cataloger.public_key, 
-#                                               IUL.public_key))
-#        
-#        print("IUL BIBFRAME Item: ", TX_URL + iul_item_asset["id"])
-#        
-#    except Exception as e:
-#        print(e)
-#        
+    # Create the asset representing the top-level App.
+    app_id = iul.bootstrap_app(admin_group_id)["id"]
+
+    print(APP_NAME + ": ", TX_URL + app_id)
+    
+    # Create an individual Admin user asset, linked to the Admin group.
+    iul_admin_user_id = iul.create_new_user(admin_group_id, "admins", 
+                                            IUL.public_key)["id"]
+    
+    print("Lilly Library Admin User: ", TX_URL + iul_admin_user_id)     
+    
+    # Create a new user type for catalogers.
+    cataloging_group_id = iul.create_type("catalogers", app_id, 
+                                          admin_group_id)["id"]    
+    
+    print("Catalogers Group: ", TX_URL + cataloging_group_id)
+    
+    # Create an asset to represent an individual cataloger.
+    iul_cataloger_id = iul.create_new_user(cataloging_group_id, 
+                                           "catalogers", 
+                                           iul_cataloger.public_key)["id"]
+    
+    print("IUL Cataloger: ", TX_URL + iul_cataloger_id)
+    
+    # Create a new user type for paraprofessionals.
+    technician_group_id = iul.create_type("paraprofessionals", app_id,
+                                          admin_group_id)["id"]    
+    
+    print("Paraprofessionals Group: ", TX_URL + technician_group_id)
+    
+    # Create an asset to represent an individual paraprofessional.
+    iul_technician_id = iul.create_new_user(technician_group_id,
+                                            "paraprofessionals",
+                                            iul_technician.public_key)["id"]
+    
+    print("IUL Paraprofessional: ", TX_URL + iul_technician_id)
+    
+    
+    # Create assets for cataloging resources.
+    # Create a new type for BIBFRAME Work descriptions.
+    bf_works_group_id = iul.create_type("BIBFRAME_works", app_id, 
+                                        cataloging_group_id)["id"]
+    
+    print("BIBFRAME Works Group: ", TX_URL + bf_works_group_id)
+
+
+    # Add administrative metadata to metadata for Work asset
+    work_data["@graph"].insert(0, work_record["@graph"][0])
+    
+    # Test RBAC permissions.
+    # A cataloger should be able to create a new asset representing
+    # an instance of the Work type.    
+    try:
+        
+        
+        cataloger_work_asset = iul.create_type_instance("BIBFRAME_work", 
+                                                        bf_works_group_id, 
+                                                        bf_work, work_data, 
+                                                        iul_cataloger)        
+        
+        print("BIBFRAME Work (IUL Catalogers): ", 
+              TX_URL + cataloger_work_asset["id"])
+        
+    except Exception as e:
+        print(e)
+    
+    # A paraprofessional should not be able to create a new asset 
+    # representing an instance of the Work type. This transaction
+    # should fail with a ValidationError.
+    try:        
+        technician_work_asset = iul.create_type_instance("BIBFRAME_work",
+                                                         bf_works_group_id, 
+                                                         bf_work, work_data, 
+                                                         iul_technician)    
+        
+        print("BIBFRAME Work (IUL Paraprofessionals): ", 
+              TX_URL + technician_work_asset["id"])
+        
+    except Exception as e:        
+        print("BIBFRAME Work (IUL Paraprofessionals): ", e)
+    
+    # Create local cataloging resource assets (Instance and Item)
+    # and associate them with two "owners": the Admin user and
+    # the cataloger.
+    try:
+        instance_data["@graph"][0].update(
+                {"parent": cataloger_work_asset["id"]})
+        
+        iul_instance_asset = iul.create_new_asset(bf_instance, instance_data,
+                                                  iul_cataloger,
+                                                  (iul_cataloger.public_key,
+                                                   IUL.public_key))
+        
+        print("IUL BIBFRAME Instance: ", TX_URL + iul_instance_asset["id"])
+        
+    except Exception as e:
+        print(e)
+    
+    try:    
+        item_data["@graph"][0].update(
+                {"parent": iul_instance_asset["id"]})
+        
+        iul_item_asset = iul.create_new_asset(bf_item, item_data, 
+                                              iul_cataloger,
+                                              (iul_cataloger.public_key, 
+                                               IUL.public_key))
+        
+        print("IUL BIBFRAME Item: ", TX_URL + iul_item_asset["id"])
+        
+    except Exception as e:
+        print(e)
+        
     
 if __name__ == "__main__":
     # Execute only if run as a script

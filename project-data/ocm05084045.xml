@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record xmlns="http://www.loc.gov/MARC21/slim">
+    <leader>02118cam a2200325I 4500</leader>
+    <controlfield tag="001">ocm05084045 </controlfield>
+    <controlfield tag="003">OCoLC</controlfield>
+    <controlfield tag="005">20181016224149.0</controlfield>
+    <controlfield tag="008">790619s1454 gw 000 0 lat d</controlfield>
+    <datafield tag="040" ind1=" " ind2=" ">
+        <subfield code="a">IUL</subfield>
+        <subfield code="b">eng</subfield>
+        <subfield code="c">IUL</subfield>
+        <subfield code="d">OCL</subfield>
+        <subfield code="d">OCLCQ</subfield>
+        <subfield code="d">OCLCG</subfield>
+        <subfield code="d">OCLCQ</subfield>
+        <subfield code="d">OCLCO</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+        <subfield code="a">(OCoLC)5084045</subfield>
+    </datafield>
+    <datafield tag="050" ind1=" " ind2="4">
+        <subfield code="a">BS75</subfield>
+        <subfield code="b">1454</subfield>
+    </datafield>
+    <datafield tag="130" ind1="0" ind2=" ">
+        <subfield code="a">Bible.</subfield>
+        <subfield code="l">Latin.</subfield>
+        <subfield code="s">Mainz. Gutenberg (42 lines).</subfield>
+        <subfield code="f">1454.</subfield>
+    </datafield>
+    <datafield tag="245" ind1="1" ind2="5">
+        <subfield code="a">[The New Testament. The Vulgate version, with
+            prologues of St. Jerome].</subfield>
+    </datafield>
+    <datafield tag="260" ind1=" " ind2=" ">
+        <subfield code="a">[Mainz],</subfield>
+        <subfield code="b">[Printer of the 42-line Bible (i.e. Gutenberg,
+            later Fust and Schoeffer?)],</subfield>
+        <subfield code="c">[approximately 1454-55]</subfield>
+    </datafield>
+    <datafield tag="300" ind1=" " ind2=" ">
+        <subfield code="a">[116] leaves (of 643)</subfield>
+        <subfield code="c">fol. (36.3 cm)</subfield>
+    </datafield>
+    <datafield tag="336" ind1=" " ind2=" ">
+        <subfield code="a">text</subfield>
+        <subfield code="b">txt</subfield>
+        <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield tag="337" ind1=" " ind2=" ">
+        <subfield code="a">unmediated</subfield>
+        <subfield code="b">n</subfield>
+        <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield tag="338" ind1=" " ind2=" ">
+        <subfield code="a">volume</subfield>
+        <subfield code="b">nc</subfield>
+        <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">Initials supplied in colors, incipits in red,
+            chapter numbers red and/or black.</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">Assigned title; first leaf present begins:
+            Beatissimo pape damaso ieronim(us) ...</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">First book printed from movable types in Europe;
+            New Testament only from v. 2,in itself imperfect. GKW 4201 ("not
+            after Aug. 1456"). BMC I, p. 17; Lilly Library Publication V, no.
+            1 (this copy, described in extenso); Goff B-526. Removed in 1953
+            from copy of v. 2 known as Trier II, in censuses as De Ricci 15
+            [b], Schwenke 14, Lazare 42, Norman 34.</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">Imperfect: lacks all before II:190; for numbers
+            and text of missing N.T. leaves, cf. Lilly Library Publication
+            V.</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">Misbound. Collates (as GKW): [II--t9 ( -t10)
+            v-x&#xB9;&#x2070; y&#xB9;&#x2070; ( -y6,9) z&#xB9;&#x2070;
+            A&#xB9;&#x2070; ( -A4) B-C&#xB9;&#x2070; E&#xB9;&#xB9; ( -E2,6)
+            D&#xB9;&#xB2; ( -D1) F-G&#xB9;&#x2070; H&#x2075; ( -H1)
+            I&#xB9;&#x2070; ( -I5-10)]. Missing leaves replaced with
+            blanks.</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">A few contemporary and later marginalia; ms.
+            table of contents v. 2 dated 1569; later notes by Wyttenbach and
+            others of Trier Stadtbibliothek.</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">Provenance:
+            Trier--Wiernick--Rosenbach--Houghton--Scribner--Poole.</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+        <subfield code="a">Bound in 16th-century calf over wooden boards,
+            tooled in blind, defective; rebacked.</subfield>
+    </datafield>
+    <datafield tag="700" ind1="1" ind2=" ">
+        <subfield code="a">Gutenberg, Johann,</subfield>
+        <subfield code="d">1397?-1468.</subfield>
+    </datafield>
+    <datafield tag="994" ind1=" " ind2=" ">
+        <subfield code="a">Z0</subfield>
+        <subfield code="b">PUL</subfield>
+    </datafield>
+    <datafield tag="948" ind1=" " ind2=" ">
+        <subfield code="h">NO HOLDINGS IN PUL - 1 OTHER HOLDINGS</subfield>
+    </datafield>
+</record>

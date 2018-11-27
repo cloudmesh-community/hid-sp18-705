@@ -1,0 +1,118 @@
+\begin{figure}[!htb]
+\centering\includegraphics[width=\columnwidth]{images/bdb-arch.pdf}
+\caption{High-Level Architecture of BigchainDB
+2.0~\cite{bdb18d}}\label{f:bdb}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htb]
+\centering\includegraphics[width=\columnwidth]{images/bdb-seq.pdf}
+\caption{BigchainDB Sequence Diagram~\cite{gautam18}}\label{f:bdb2}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htb]
+    \begin{verbatim}
+{
+  "id": ctnull,
+  "version": version,
+  "inputs": inputs,
+  "outputs": outputs,
+  "operation": operation,
+  "asset": asset,
+  "metadata": metadata
+}
+    \end{verbatim}
+    \caption{Required key/value pairs in a valid BigchainDB
+    transaction~\cite{troyM18c}}\label{c:bdb3}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htb]
+\begin{verbatim}
+{
+  "data": {
+    "@context": {
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "schema": "http://schema.org/"
+    },
+    "@type": [
+      "http://id.loc.gov/ontologies/bibframe/Work",
+      "http://id.loc.gov/ontologies/bibframe/Text"
+    ],
+    "rdfs:label": "Bible. Latin. Vulgate. 1454."
+  }
+}
+\end{verbatim}
+\caption{Representation of a Work asset in BigchainDB}\label{c:bfw}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htb]
+    \begin{verbatim}
+<rdf:RDF xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+  xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+  xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <bf:Item rdf:about="http://example.org/ocm05084045#Item050-8">
+    <bf:shelfMark>
+      <bf:ShelfMarkLcc>
+        <rdfs:label>BS75 1454</rdfs:label>
+      </bf:ShelfMarkLcc>
+    </bf:shelfMark>
+    <bf:heldBy
+      rdf:resource="http://id.loc.gov/vocabulary/organizations/inuli"/>
+  </bf:Item>
+</rdf:RDF>
+    \end{verbatim}
+    \caption{Excerpt of Indiana University Library catalog record converted to
+        RDF/XML}\label{c:rdfxml}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htb]
+    \begin{verbatim}
+[
+  {
+    "@id": "http://example.org/ocm05084045#Item050-8",
+    "@type": ["http://id.loc.gov/ontologies/bibframe/Item"],
+    "http://id.loc.gov/ontologies/bibframe/heldBy": [{
+      "@id": "http://id.loc.gov/vocabulary/organizations/inuli"
+    }],
+    "http://id.loc.gov/ontologies/bibframe/itemOf": [{
+      "@id": "http://example.org/ocm05084045#Instance"
+    }],
+    "http://id.loc.gov/ontologies/bibframe/shelfMark": [{
+      "@id": "_:Nb346817b2a894e1894d7c37a823ed84b"
+    }]
+  },
+  {
+    "@id": "_:Nb346817b2a894e1894d7c37a823ed84b",
+    "@type": [
+      "http://id.loc.gov/ontologies/bibframe/ShelfMarkLcc"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [{
+      "@value": "BS75 1454"
+    }]
+  }
+]
+    \end{verbatim}
+    \caption{Excerpt of Indiana University Library catalog record converted
+        from RDF/XML to JSON-LD using the RDFLib library}\label{c:jsonld}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htb]
+\centering\includegraphics[width=\columnwidth]{images/assets-metadata.pdf}
+\caption{Graph of asset and metadata objects in BigchainDB}\label{f:rbac}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!htb]
+\centering\includegraphics[width=\columnwidth]{images/rbac-graph.pdf}
+\caption{Graph of permissions in BigchainDB using Role-Based Access
+Control}\label{f:rbac2}
+\end{figure}
+\efloatseparator
+ 

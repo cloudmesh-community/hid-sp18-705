@@ -30,7 +30,8 @@ class BigchainRbac():
             app_name (str): Name of the app.
             admin_kp (str): The public/private keypair of the admin
                 user. The admin creates roles and assigns permissions.
-            admin_pks (list): The public keys of all admin users for the network.
+            admin_pks (list): The public keys of all admin users for the 
+                network.
                     
         """
         
