@@ -2,7 +2,8 @@
 
 The BigchainDB repository has been added here as a submodule. When
 cloning the repository, include the `--recursive` switch to ensure that the
-submoule contents are cloned as well:
+submoule contents are cloned as well, or run `git submodule update --init
+--recursive` if the repository has already been cloned.
 
 ```
 git clone --recursive https://github.com/cloudmesh-community/hid-sp18-705.git
