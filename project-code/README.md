@@ -12,8 +12,11 @@ make run
 ```
 
 Executing `make run` will launch three Docker containers, one for each
-component of BigchainDB (BigchainDB Server, Tendermint, and MongoDB). Once
-stopped, the containers can be reset with `make reset`.
+component of BigchainDB (BigchainDB Server, Tendermint, and MongoDB).
+Several seconds after starting up, BigchainDB will be ready to process
+transactions.
+
+Once stopped, the containers can be reset with `make reset`.
 
 Once the containers are running, the Python script `rbac_demo.py` in
 the `demo` directory can the be executed and will send a series of 
