@@ -633,7 +633,7 @@ is rejected if it violates the logic of the permissions
 scheme [@dhameja-17-role]. 
 
 ![Graph of permissions in BigchainDB using Role-Based Access
-Control](images/rbac-graph.png){#f:rbac2}
+Control](images/rbac-graph.png){#fig:rbac2}
 
 The application logic proceeds according to the following steps:
 
