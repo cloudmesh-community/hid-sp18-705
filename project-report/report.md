@@ -9,8 +9,7 @@
 
 ---
 
-Keywords: i523, hid-sp18-705, Research Libraries, Library Catalogs,
-    Blockchain, BigchainDB
+Keywords: i523, Research Libraries, Library Catalogs, Blockchain, BigchainDB
 
 ---
 
