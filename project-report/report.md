@@ -721,9 +721,9 @@ Linking is not authorized for:
 Conclusion
 ==========
 
-BigchainDB is a new blockchain-based solution for managing big data,
-and undertook a preliminary examination of whether BigchainDB could be
-adapted for use as a library catalog database. The primary advantage of
+BigchainDB is a new blockchain-based solution for managing big data. A
+preliminary examination was undertaken to explore whether BigchainDB could
+be adapted for use as a library catalog database. The primary advantage of
 using a blockchain system instead of a conventional or distributed database
 is that it enables peer-to-peer interaction and exchange in a more
 fundamental way. Participants in a BigchainDB network are required to
