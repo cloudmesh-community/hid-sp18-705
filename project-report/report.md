@@ -381,24 +381,22 @@ Interface (ABCI) provides a language-agnostic interface for blockchain
 applications to use when validating and processing
 transactions [@tendermintcontributors-18-tendermint].
 
-+@fig:bdb2 is a 
-sequence diagram, created by the BigchainDB development team, that
-illustrates the role of Tendermint in processing BigchainDB
-transactions. After a client prepares and signs a transaction, typically
-using a BigchainDB driver, the transaction is submitted to the
-BigchainDB server for initial validation. The server then sends the
-transaction to Tendermint, which includes it in a local memory pool.
-Tendermint returns its own validation request to the server and, upon
-confirmation, proposes a new block and begins a round of voting as part
-of its consensus algorithm. Each node in the network votes on the order
-and validity of transactions in the block, and if consensus is reached,
-the block is committed to the application's
-blockchain [@dhameja-18-lifecycle; @bigchaindbgmbh-18-bigchaindb].
-BigchainDB stores a queryable copy of each block in MongoDB, while
-Tendermint appends each block to its canonical blockchain, which is
-stored in an internal LevelDB database and used for replicating
-transaction state to network
-peers [@tendermintcontributors-18-tendermint; @bigchaindbgmbh-18-bigchaindb].
++@fig:bdb2 is a sequence diagram, created by the BigchainDB development
+team, that illustrates the role of Tendermint in processing BigchainDB
+transactions. After a client prepares and signs a transaction, typically using
+a BigchainDB driver, the transaction is submitted to the BigchainDB server for
+initial validation. The server then sends the transaction to Tendermint, which
+includes it in a local memory pool. Tendermint returns its own validation
+request to the server and, upon confirmation, proposes a new block and begins
+a round of voting as part of its consensus algorithm. Each node in the network
+votes on the order and validity of transactions in the block, and if consensus
+is reached, the block is committed to the application's
+blockchain [@dhameja-18-lifecycle; @bigchaindbgmbh-18-bigchaindb]. BigchainDB
+stores a queryable copy of each block in MongoDB, while Tendermint appends
+each block to its canonical blockchain, which is stored in an internal LevelDB
+database and used for replicating transaction state to network
+peers [@tendermintcontributors-18-tendermint;
+@bigchaindbgmbh-18-bigchaindb].
 
 ![BigchainDB Sequence Diagram [@dhameja-18-lifecycle]](images/bdb-seq.png){#fig:bdb2}
 
