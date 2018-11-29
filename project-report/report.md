@@ -471,21 +471,21 @@ gutenberg-iul-record.json
 gutenberg-work.json
 ```
 
-The file `ocm05084045.xml` represents the original MARC-format record,
-encoded as XML. The file `gutenberg-iul-item.rdf` provides an example of
-a partial conversion of the original MARC record to the BIBFRAME model
-using the RDF/XML serialization [@morgan-13-rdf]. The remaining files
-represent the data used to create assets for storage in BigchainDB and
-are encoded in BIBFRAME using the JSON-LD serialization of
+The file `ocm05084045.xml` represents the original MARC-format record
+from the Indiana University Library catalog, encoded as XML
+[@indianauniversitylibrary-18-iucat]. The file `gutenberg-iul-item.rdf`
+provides an example of a partial conversion of the original MARC record to
+the BIBFRAME model using the RDF/XML serialization [@morgan-13-rdf]. The
+remaining files represent the data used to create assets for storage in
+BigchainDB and are encoded in BIBFRAME using the JSON-LD serialization of
 RDF [@morgan-13-rdf]. Several preprocessing steps of data conversion and
-cleanup were necessary. The original MARC/XML catalog record was
-converted to BIBFRAME RDF/XML using a suite of XSLT stylesheets provided
-by the Library of Congress [@github-lcnetdev-marc2bibframe2]. The
-RDF/XML documents were then converted to JSON-LD using the Python RDFLib
-library (see the `convert_rdf.py` script in the `project-code` directory
-for a brief example). The JSON-LD produced by RDFLib was then broken
-into separate files to allow for the creation of individual assets in
-BigchainDB.
+cleanup were necessary. The original MARC/XML catalog record was converted
+to BIBFRAME RDF/XML using a suite of XSLT stylesheets provided by the
+Library of Congress [@github-lcnetdev-marc2bibframe2]. The RDF/XML documents
+were then converted to JSON-LD using the Python RDFLib library (see the
+`convert_rdf.py` script in the `project-code` directory for a brief
+example). The JSON-LD produced by RDFLib was then broken into separate files
+to allow for the creation of individual assets in BigchainDB.
 
 The JSON-LD output produced by RDFLib was further modified to support
 the inclusion of named graphs, a feature of RDF 1.1 that makes it
