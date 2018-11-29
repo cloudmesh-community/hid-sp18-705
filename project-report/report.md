@@ -16,8 +16,8 @@ Keywords: i523, Research Libraries, Library Catalogs, Blockchain, BigchainDB
 ## Abstract
 
 The analysis of big data often relies on distributed storage and
-computation; however, access to big data---and to the platforms capable of
-managing and processing it---continues to be largely centralized.
+computation; however, access to big data--and to the platforms capable of
+managing and processing it--continues to be largely centralized.
 Centralization is particularly evident in the case of the metadata produced,
 managed, and disseminated by academic and research libraries. Libraries
 typically create and share their catalog records by uploading them to a
