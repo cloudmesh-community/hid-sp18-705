@@ -751,8 +751,8 @@ querying capabilities internal to MongoDB. Extensions to BigchainDB provide
 support for features such as Role-Based Access Control, which would be
 important for enabling library cataloging workflows. More systemic analysis
 would be needed before recommending BigchainDB as a solution for library
-catalogs, but the results indicate that the possibility would merit further
-exploration.
+catalogs, but preliminary results indicate that the possibility would merit 
+further exploration.
 
 ## Acknowledgment
 
