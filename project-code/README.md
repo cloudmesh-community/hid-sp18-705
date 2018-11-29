@@ -16,5 +16,5 @@ component of BigchainDB (BigchainDB Server, Tendermint, and MongoDB). Once
 stopped, the containers can be reset with `make reset`.
 
 Once the containers are running, the Python script `rbac_demo.py` in
-the `demo` directory can be executed and will send a series of transactions
-to the BigchainDB server.
+the `demo` directory can the be executed and will send a series of 
+transactions to the BigchainDB server.
