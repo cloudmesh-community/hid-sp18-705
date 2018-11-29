@@ -25,7 +25,7 @@
 * 12/04/17 Continued work on final project
 * 09/05/18 Populated new GitHub repo to complete work on final project
 * 10/24/18 Updated GitHub repo with final project deliverables (in progress)
-* 11/28/18 Finished updates to GitHub for final project and changed status to 100%
+* 11/29/18 Finished updates to GitHub for final project and changed status to 100%
 
 # Writing
 
@@ -44,7 +44,7 @@
 * 11/06/17 Was ill over the weekend and unable to finish work on Paper 2; manually changed Paper 2 review date to "Nov 8 17"
 * 11/20/17 Writing code for final project
 * 12/04/17 Continued working on final project
-* 11/28/18 Finished final report
+* 11/29/18 Finished final report
 
 # Meetings
 
