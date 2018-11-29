@@ -95,7 +95,7 @@ project:
         intermediary.
     url: https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project-report
     type: project
-    status: "80% Nov 25 18"
+    status: "95% Nov 28 18"
     chapter: Media
 experiment:
     url: https://github.com/cloudmesh-community/hid-sp18-705/tree/master/experiments/perceptron
