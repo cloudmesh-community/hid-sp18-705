@@ -17,14 +17,15 @@
 * 09/04/17 Purchased Raspberry Pi 3, including [SunFounder 37-module sensor kit with breadboard and jump wires](https://www.amazon.com/gp/product/B014PF05ZA/)
 * 09/08/17 Set up Raspberry Pi and ran initial tests with LED actuators; began researching Raspbery Pi projects
 * 09/12/17 Enabled Python 2 and 3 via pyenv on home workstation (in addition to VirtualBox)
-* 10/30/17 Added `project` branch to Github repo; added initial Python scripts
-* 11/06/17 Added `assignment` branch to Github; copied .ipnyb file for cross-validation assignment; ~~opened an issued thread and tagged/assigned team members in an effort to coordinate work on the assignment~~
+* 10/30/17 Added `project` branch to GitHub repo; added initial Python scripts
+* 11/06/17 Added `assignment` branch to GitHub; copied .ipnyb file for cross-validation assignment; ~~opened an issued thread and tagged/assigned team members in an effort to coordinate work on the assignment~~
 * 11/13/17 Began experimenting with classification problems, using a dataset of library catalog records from day job; reading [Python 3 Object-Oriented Programming](https://www.amazon.com/Python-3-Object-Oriented-Programming-Second/dp/1784398780/ref=sr_1_1?ie=UTF8&qid=1511192689&sr=8-1&keywords=object-oriented+python) for improved knowledge of Python
 * 11/20/17 Focused on [perceptron experiment](https://github.com/cloudmesh/book/blob/latex/notebooks/machinelearning/perceptronproblem.ipynb); spent time researching and learning about stochastic gradient descent; submitted perceptron experiment
 * 11/27/17 Continued researching multilayer perceptrons and neural networks for final project; iteratively worked on preparing and processing data for final project
 * 12/04/17 Continued work on final project
-* 09/05/18 Populated new Github repo to complete work on final project.
-* 10/24/18 Updated Github repo with final project deliverables (in progress).
+* 09/05/18 Populated new GitHub repo to complete work on final project
+* 10/24/18 Updated GitHub repo with final project deliverables (in progress)
+* 11/28/18 Finished updates to GitHub for final project and changed status to 100%
 
 # Writing
 
@@ -43,6 +44,7 @@
 * 11/06/17 Was ill over the weekend and unable to finish work on Paper 2; manually changed Paper 2 review date to "Nov 8 17"
 * 11/20/17 Writing code for final project
 * 12/04/17 Continued working on final project
+* 11/28/18 Finished final report
 
 # Meetings
 
