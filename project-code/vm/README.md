@@ -6,5 +6,5 @@ playbook to set up the VM network.
 
 **This method is not recommended**. It is error prone (the install process
 has to be run multiple times before each node is able to connect) and has
-been included here only to document that I made a failed attempt to use it
-for this project.
+been included here only to document that I made an attempt to use it for 
+this project.
