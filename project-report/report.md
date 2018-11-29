@@ -310,7 +310,7 @@ self-contained and includes its own MongoDB database and Tendermint
 application server. Tendermint is used to manage consensus, communication,
 and state replication among nodes, whereas the software that is unique to
 BigchainDB is responsible for "registering and tracking the ownership of
-'assets'" [@mcconaghy-18-bigchaindb]. ﻿In BigchainDB 2.0, as is the case in
+'assets'" [@mcconaghy-18-bigchaindb]. In BigchainDB 2.0, as is the case in
 general with systems that are Byzantine Fault Tolerant, $3f + 1$ nodes are
 necessary to run a network, where $f$ is the number of faulty nodes to be
 tolerated [@mcconaghy-18-reply-a]. Therefore, at least four nodes are
@@ -443,7 +443,7 @@ authority data (standardized as ISO 2709 and ANSI/NISO
 Z39.2) [@ford-12-lcs; @ndmarcso-13-library]. In recent years, the
 Library of Congress has undertaken an effort to update library metadata
 standards and adopt standards and formats maintained by the World Wide
-Web Consortium (W3C)---specifically those related to linked data and the
+Web Consortium (W3C)--specifically those related to linked data and the
 Semantic Web, such as the core data model known as the Resource
 Description Framework
 (RDF) [@librarycongress-18-bibliographic; @cwl-14-rdf]. A new
