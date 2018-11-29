@@ -740,7 +740,7 @@ A blockchain data model also allows for richer data modeling. Rather
 than a repository of records, a library catalog can be modeled as a
 collection of assets: actual books, journals, and multimedia resources,
 as well as the records that describe them. This could facilitate
-operations beyond cataloging, such as interlibrary lending and make it
+operations beyond cataloging, such as interlibrary lending, and make it
 easier to determine which library holds copies of which books, or
 subscribes to which journals. BigchainDB is flexible enough to
 accommodate the semantic data models, such as BIBFRAME, that are
