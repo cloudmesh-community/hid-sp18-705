@@ -241,7 +241,7 @@ limit of the Bitcoin network [@github-bigchaindb-whitepaper-a]. The
 advantages of adding a blockchain layer to an existing distributed
 database would be to incorporate "decentralized control, immutability,
 and creation \[and\] movement of digital
-assets" [@github-bigchaindb-whitepaper-a p. 1].
+assets" [@github-bigchaindb-whitepaper-a].
 
 The primary challenge in designing a decentralized system is how to
 defend against both arbitrary failure and malicious actors. In so-called
