@@ -215,6 +215,15 @@ class BigchainRbac():
     
     
     def create_type(self, type_name, app_id, can_link_asset_id):
+        """Creates asset type under RBAC regime.
+        
+        Args:
+            type_name (str): Name of the asset type.
+            app_id (str): ID of the applications.
+            can_link_asset_id (str): ID of the group asset that has permission
+                to create new instances of this asset type.
+        
+        """
         
         asset = {"data": {
             "@context": {

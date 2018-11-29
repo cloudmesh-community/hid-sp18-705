@@ -156,9 +156,7 @@ def main():
     # Test RBAC permissions.
     # A cataloger should be able to create a new asset representing
     # an instance of the Work type.    
-    try:
-        
-        
+    try:              
         cataloger_work_asset = iul.create_type_instance("BIBFRAME_work", 
                                                         bf_works_group_id, 
                                                         bf_work, work_data, 
