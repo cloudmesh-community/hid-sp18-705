@@ -1,3 +1,37 @@
+# New Approaches to Managing Metadata at Scale in Research Libraries :hand: hid-sp18-705
+
+| Timothy A. Thompson
+| timathom@indiana.edu
+| Indiana University
+| hid: hid-sp18-705
+| github: [:cloud:](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-report/report.md)
+| code: [:cloud:](https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project-code)
+
+---
+
+Keywords: i523, hid-sp18-705, Research Libraries, Library Catalogs,
+    Blockchain, BigchainDB
+
+---
+
+## Abstract
+
+The analysis of big data often relies on distributed storage and
+computation; however, access to big data---and to the platforms capable of
+managing and processing it---continues to be largely centralized.
+Centralization is particularly evident in the case of the metadata produced,
+managed, and disseminated by academic and research libraries. Libraries
+typically create and share their catalog records by uploading them to a
+centrally managed database, which can then be searched by other libraries for
+records that can be copied and added to an institution's local catalog. This
+centralized approach, which operates on the basis of membership fees, has the
+advantage of scalability and availability, but it comes at the cost of a loss
+of autonomy. Although technical innovation is possible within the current
+paradigm, the growing maturity of peer-to-peer protocols and decentralized
+solutions points toward an alternative approach, one that would allow
+libraries to share their data directly without having to pay an expensive
+intermediary.
+
 Introduction
 ============
 
@@ -271,22 +305,23 @@ median rate of 309.0 tps. All 1 million transactions were finalized in
 Architecture
 ------------
 
-The architecture of a BigchainDB 2.0 network is shown in
-Figure [1](#f:bdb){reference-type="ref" reference="f:bdb"}, created by
-the BigchainDB development team. Each node in the network is
+The architecture of a BigchainDB 2.0 network is shown in +@fig:bdb,
+created by the BigchainDB development team. Each node in the network is
 self-contained and includes its own MongoDB database and Tendermint
-application server. Tendermint is used to manage consensus,
-communication, and state replication among nodes, whereas the software
-that is unique to BigchainDB is responsible for "registering and
-tracking the ownership of 'assets'" [@mcconaghy-18-bigchaindb]. ﻿In
-BigchainDB 2.0, as is the case in general with systems that are
-Byzantine Fault Tolerant, $3f + 1$ nodes are necessary to run a network,
-where $f$ is the number of faulty nodes to be
+application server. Tendermint is used to manage consensus, communication,
+and state replication among nodes, whereas the software that is unique to
+BigchainDB is responsible for "registering and tracking the ownership of
+'assets'" [@mcconaghy-18-bigchaindb]. ﻿In BigchainDB 2.0, as is the case in
+general with systems that are Byzantine Fault Tolerant, $3f + 1$ nodes are
+necessary to run a network, where $f$ is the number of faulty nodes to be
 tolerated [@mcconaghy-18-reply-a]. Therefore, at least four nodes are
 required in order to run a BigchainDB network: if one of the four nodes
 becomes unresponsive or attempts to approve an invalid transaction, the
 network will continue to function based on the majority consensus of the
 other three nodes [@mcconaghy-18-reply-a].
+
+![High-Level Architecture of BigchainDB
+2.0 [@bigchaindbcontributors-18-querying]](images/bdb-arch.png){#fig:bdb}
 
 A BigchainDB client can potentially connect to any node in the network.
 Each MongoDB instance contains a full replication of the data stored in
@@ -303,20 +338,31 @@ Python implementation of the Crypto-Conditions specification, which is a
 standard for enforcing complex boolean conditions for fulfillment (or
 transfer of assets) using cryptographic signatures [@trh-17-crypto].
 
-All objects in BigchainDB are modeled as *assets*. Two transaction types
-are available for managing assets: CREATE and
+All objects in BigchainDB are modeled as *assets*. Two transaction
+types are available for managing assets: CREATE and
 TRANSFER [@github-bigchaindb-beps-a]. Each transaction must be
-cryptographically signed with the private key of its "owner" (the agent
-who created an asset through a CREATE transaction or to whom an asset
-was assigned through a TRANSFER transaction). Public/private keypairs
-are implemented using the Edwards-curve Digital Signature Algorithm
+cryptographically signed with the private key of its "owner" (the agent who
+created an asset through a CREATE transaction or to whom an asset was
+assigned through a TRANSFER transaction). Public/private keypairs are
+implemented using the Edwards-curve Digital Signature Algorithm
 Ed25519 [@github-bigchaindb-beps-a]. A transaction is encoded using a
-dictionary or associative array that can be serialized as a JSON object.
-The BigchainDB Transactions Specification defines the structure and
-usage of a BigchainDB transaction object [@github-bigchaindb-beps-a].
-Figure [\[c:bdb3\]](#c:bdb3){reference-type="ref" reference="c:bdb3"}
-shows the key/value pairs that all valid BigchainDB transactions must
-include.
+dictionary or associative array that can be serialized as a JSON object. The
+BigchainDB Transactions Specification defines the structure and usage of a
+BigchainDB transaction object [@github-bigchaindb-beps-a]. The key/value
+pairs that all valid BigchainDB transactions must include are listed
+here:
+
+```
+{
+  "id": ctnull,
+  "version": version,
+  "inputs": inputs,
+  "outputs": outputs,
+  "operation": operation,
+  "asset": asset,
+  "metadata": metadata
+} 
+```
 
 Conditions for fulfillment and asset transfer are defined in the values
 of the "inputs" and "outputs" keys. An object representing the asset
@@ -338,7 +384,7 @@ Interface (ABCI) provides a language-agnostic interface for blockchain
 applications to use when validating and processing
 transactions [@tendermintcontributors-18-tendermint].
 
-Figure [2](#f:bdb2){reference-type="ref" reference="f:bdb2"} is a
++@fig:bdb2 is a 
 sequence diagram, created by the BigchainDB development team, that
 illustrates the role of Tendermint in processing BigchainDB
 transactions. After a client prepares and signs a transaction, typically
@@ -356,6 +402,9 @@ Tendermint appends each block to its canonical blockchain, which is
 stored in an internal LevelDB database and used for replicating
 transaction state to network
 peers [@tendermintcontributors-18-tendermint; @bigchaindbgmbh-18-bigchaindb].
+
+![BigchainDB Sequence
+Diagram [@dhameja-18-lifecycle]](images/bdb-seq.png){#fig:bdb2}
 
 ### MongoDB
 
@@ -414,12 +463,14 @@ project, a catalog record from the Indiana University Library catalog
 was chosen. This record describes the Lilly Library's partial copy of
 the Gutenberg Bible. The data is divided into six files:
 
-    ocm05084045.xml
-    gutenberg-iul-item.rdf
-    gutenberg-iul-instance.json
-    gutenberg-iul-item.json
-    gutenberg-iul-record.json
-    gutenberg-work.json
+```
+ocm05084045.xml
+gutenberg-iul-item.rdf
+gutenberg-iul-instance.json
+gutenberg-iul-item.json
+gutenberg-iul-record.json
+gutenberg-work.json
+```
 
 The file `ocm05084045.xml` represents the original MARC-format record,
 encoded as XML. The file `gutenberg-iul-item.rdf` provides an example of
@@ -515,14 +566,30 @@ Data Management
 ---------------
 
 All BigchainDB CREATE transactions must include a JSON-serializable
-object to represent the asset being recorded on the blockchain. The
-`asset` field of a CREATE transaction takes an object with the required
-key `data`. The content of the `asset` field is treated as
-immutable--it cannot be changed once a CREATE transaction has been
-committed, or when ownership of an asset is subsequently changed using a
-TRANSFER transaction. Figure [\[c:bfw\]](#c:bfw){reference-type="ref"
-reference="c:bfw"} shows how a Work asset might be represented in
-BigchainDB. Because this data cannot be changed, it makes sense to
+object to represent the asset being recorded on the blockchain. The `asset`
+field of a CREATE transaction takes an object with the required key `data`.
+The content of the `asset` field is treated as immutable--it cannot be
+changed once a CREATE transaction has been committed, or when ownership of
+an asset is subsequently changed using a TRANSFER transaction. The following
+listing shows how a Work asset might be represented in BigchainDB:
+
+```
+{
+  "data": {
+    "@context": {
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "schema": "http://schema.org/"
+    },
+    "@type": [
+      "http://id.loc.gov/ontologies/bibframe/Work",
+      "http://id.loc.gov/ontologies/bibframe/Text"
+    ],
+    "rdfs:label": "Bible. Latin. Vulgate. 1454."
+  }
+}
+```
+
+Because this data cannot be changed, it makes sense to
 represent it simply using its RDF type (in this case, it is a BIBFRAME
 Work with a subtype of Text), as well as a human-readable label. Any
 BigchainDB transaction may also include an optional `metadata` key that
@@ -534,18 +601,19 @@ changed--and recording that change in the metadata object. The code in
 BIBFRAME types Work, Instance, and Item.
 
 The project data and code also illustrate how JSON-LD named graphs may
-be used to include both descriptive and administrative metadata about
-the same BigchainDB asset in a single transaction. The `rbac_demo.py`
-script inserts a second named graph into the `gutenberg-work.json` file
-so that it contains two named graphs: one representing the Work entity
-and one representing a separate Record entity (which is not part of the
-core BIBFRAME model). Within the named graph for the Record entity,
-there is an RDF property (`foaf:topic`) that links to the URI for the
-named graph representing the Work entity.
-Figure [3](#f:rbac){reference-type="ref" reference="f:rbac"} illustrates
-this pattern, indicating how BigchainDB metadata objects may be used to
-create internal linkages among assets conforming to the BIBFRAME data
-model.
+be used to include both descriptive and administrative metadata about the
+same BigchainDB asset in a single transaction. The `rbac_demo.py` script
+inserts a second named graph into the `gutenberg-work.json` file so that it
+contains two named graphs: one representing the Work entity and one
+representing a separate Record entity (which is not part of the core
+BIBFRAME model). Within the named graph for the Record entity, there is an
+RDF property (`foaf:topic`) that links to the URI for the named graph
+representing the Work entity. +@fig:rbac illustrates this pattern,
+indicating how BigchainDB metadata objects may be used to create internal
+linkages among assets conforming to the BIBFRAME data model.
+    
+![Graph of asset and metadata objects in
+BigchainDB](images/assets-metadata.png){#fig:rbac}
 
 Role-Based Access Control in BigchainDB
 ---------------------------------------
@@ -560,12 +628,15 @@ being used and an asset to represent an admin group for admin users who
 can create other groups and users and assign permissions. BigchainDB
 RBAC employs two reserved keys, `link` and `can_link` that are used to
 create a dependency graph of users and asset types or groups. This graph
-is illustrated in Figure [4](#f:rbac2){reference-type="ref"
-reference="f:rbac2"}. Proper usage of these linkage keys is validated
+is illustrated in +@fig:rbac2. Proper usage of these linkage keys is validated
 when a transaction is sent to the BigchainDB server, and a transaction
 is rejected if it violates the logic of the permissions
-scheme [@dhameja-17-role]. The application logic proceeds according to
-the following steps:
+scheme [@dhameja-17-role]. 
+
+![Graph of permissions in BigchainDB using Role-Based Access
+Control](images/rbac-graph.png){#f:rbac2}
+
+The application logic proceeds according to the following steps:
 
 1.  User keypairs are generated for three different user types: admin
     users, catalogers, and paraprofessionals. In BigchainDB, a user's
@@ -607,8 +678,7 @@ the following steps:
     which users can CREATE instances of that group. In `rbac_demo.py`,
     for example, an asset is created to represent BIBFRAME Work
     resources. Then, the `create_instance_type()` method is invoked in
-    order to link a resource asset to its type.
-    Figure [4](#f:rbac2){reference-type="ref" reference="f:rbac2"} shows
+    order to link a resource asset to its type. +@fig:rbac2 shows
     that individual BIBFRAME Work assets are linked to the BIBFRAME Work
     Group, which has a `can_link` relationship to the Catalogers Group.
     Therefore, only users associated with a cataloger user asset can
@@ -641,8 +711,14 @@ asset. For successful transactions, the program simply outputs an HTTP
 URL that can be used to request the result of each transaction. However,
 one transaction attempts to CREATE a Work resource with a
 paraprofessional user asset. This transaction should fail with a
-`ValidationError`, as shown in
-Figure [\[c:bdb4\]](#c:bdb4){reference-type="ref" reference="c:bdb4"}.
+`ValidationError`, as shown in the following listing:
+
+```
+BIBFRAME Work (IUL Paraprofessionals):  
+(400, '{"message":"Invalid transaction (ValidationError): 
+Linking is not authorized for: 
+6GcYiCCNFsDbBicna6YCVq8RmSjGyB7MGJw9CHjDjqwh","status":400}\n'...
+```
 
 Conclusion
 ==========
@@ -681,50 +757,7 @@ needed before recommending BigchainDB as a solution for library
 catalogs, but the results of this project indicate that the possibility
 would merit further exploration.
 
-![High-Level Architecture of BigchainDB
-2.0 [@bigchaindbcontributors-18-querying][]{label="f:bdb"}](images/bdb-arch.pdf){#f:bdb
-width="\columnwidth"}
-
-![BigchainDB Sequence
-Diagram [@dhameja-18-lifecycle][]{label="f:bdb2"}](images/bdb-seq.pdf){#f:bdb2
-width="\columnwidth"}
-
-    {
-      "id": ctnull,
-      "version": version,
-      "inputs": inputs,
-      "outputs": outputs,
-      "operation": operation,
-      "asset": asset,
-      "metadata": metadata
-    }   
-
-    {
-      "data": {
-        "@context": {
-          "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-          "schema": "http://schema.org/"
-        },
-        "@type": [
-          "http://id.loc.gov/ontologies/bibframe/Work",
-          "http://id.loc.gov/ontologies/bibframe/Text"
-        ],
-        "rdfs:label": "Bible. Latin. Vulgate. 1454."
-      }
-    }
-
-![Graph of asset and metadata objects in
-BigchainDB[]{label="f:rbac"}](images/assets-metadata.pdf){#f:rbac
-width="\columnwidth"}
-
-![Graph of permissions in BigchainDB using Role-Based Access
-Control[]{label="f:rbac2"}](images/rbac-graph.pdf){#f:rbac2
-width="\columnwidth"}
-
-    BIBFRAME Work (IUL Paraprofessionals):  
-    (400, '{"message":"Invalid transaction (ValidationError): 
-    Linking is not authorized for: 
-    6GcYiCCNFsDbBicna6YCVq8RmSjGyB7MGJw9CHjDjqwh","status":400}\n'...
+## Acknowledgment
 
 The author would like to thank Dr. Gregor von Laszewski and the i523 and
 i516 teaching assistants for their support and suggestions in writing
