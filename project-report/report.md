@@ -203,16 +203,15 @@ that might meet the requirements for this use case: it supports the
 creation of assets and the direct storage of metadata objects on its
 blockchain [@bigchaindbcontributors-18-key].
 
-Project Scope
+Scope
 =============
 
-﻿The current project presents findings from an initial exploration of
-BigchainDB as a blockchain database solution for a shared library
-catalog. It provides an overview of the BigchainDB architecture and data
-model and probes some of BigchainDB's features and functionality. It
-includes a preliminary analysis of library metadata standards and
-requirements and examines whether they can be accommodated using
-BigchainDB.
+Findings are presented from an initial exploration of BigchainDB as a
+blockchain database solution for a shared library catalog. It provides an
+overview of the BigchainDB architecture and data model and probes some of
+BigchainDB's features and functionality. It includes a preliminary analysis
+of library metadata standards and requirements and examines whether they can
+be accommodated using BigchainDB.
 
 BigchainDB
 ==========
@@ -434,7 +433,7 @@ functionality [@bigchaindbcontributors-18-querying].
 Dataset
 =======
 
-The dataset for this project is intentionally small and meant to test a
+The dataset used is intentionally small and meant to test a
 potential use case for BigchainDB as a library catalog application.
 Currently, library catalog records are stored in a set of
 industry-specific formats maintained by the Library of Congress: the
@@ -454,13 +453,13 @@ with BigchainDB follows this model, known as the Bibliographic Framework
 Initiative (BIBFRAME) [@librarycongress-18-bibliographic].
 
 In the basic model proposed by BIBFRAME, descriptions of library
-resources are divided into three entity types or classes: Work (the
-abstract concept of the resource), Instance (the embodiment of a Work in
-a particular publication), and Item (a physical copy of an
-Instance) [@librarycongress-18-bibliographic]. As an example for this
-project, a catalog record from the Indiana University Library catalog
-was chosen. This record describes the Lilly Library's partial copy of
-the Gutenberg Bible. The data is divided into six files:
+resources are divided into three entity types or classes: Work (the abstract
+concept of the resource), Instance (the embodiment of a Work in a particular
+publication), and Item (a physical copy of an
+Instance) [@librarycongress-18-bibliographic]. As an example, a catalog
+record from the Indiana University Library catalog was chosen. This record
+describes the Lilly Library's partial copy of the Gutenberg Bible. The data
+is divided into six files:
 
 ```
 ocm05084045.xml
@@ -519,22 +518,22 @@ asset-based data model might also allow libraries to perform inventory
 and lending functions more efficiently. However, many functional
 components would need to be considered before determining whether a
 blockchain platform such as BigchainDB would be appropriate for the
-library catalog use case. This project focuses on one such component:
+library catalog use case. One such component is focused on here:
 namely, the management of roles and permissions for data entry.
 
-The Python component of this project implements an extension to
-BigchainDB that adds support for Role-Based Access Control (RBAC)
+The Python component implements an extension to BigchainDB that adds
+support for Role-Based Access Control (RBAC)
 functionality [@dhameja-17-role]. The code is based on a Node.js example
 created by the BigchainDB development team to demonstrate the RBAC
 extension [@github-bigchaindb-project-jannowitz]. Support for RBAC is
 important for library cataloging because library personnel roles are
 typically divided between professional librarians (catalogers) and
-paraprofessional technicians. Librarians are expected to create
-"original" descriptions of library resources, whereas paraprofessionals
-are responsible for copying existing data from a shared database such as
-OCLC WorldCat. Public blockchain systems do not usually impose write
-restrictions (allowing anyone to write to the database), so support for
-RBAC is an important consideration when evaluating BigchainDB.
+paraprofessional technicians. Librarians are expected to create "original"
+descriptions of library resources, whereas paraprofessionals are responsible
+for copying existing data from a shared database such as OCLC WorldCat.
+Public blockchain systems do not usually impose write restrictions (allowing
+anyone to write to the database), so support for RBAC is an important
+consideration when evaluating BigchainDB.
 
 Installation
 ------------
@@ -547,19 +546,19 @@ setting up a production network [@bigchaindbcontributors-18-how].
 However, for testing purposes, a full network is not necessary. A
 BigchainDB test network is currently available at
 <https://test.bigchaindb.com/>, but the testnet installation does not
-include the RBAC extension required for this project.
+include the RBAC extension required here.
 
 The official BigchainDB distribution includes a Docker Compose script
 that can be used for spinning up a single node. It also includes a shell
 script and a set of Ansible playbooks that can be used to provision a
-four-node network of virtual machines using Vagrant and VirtualBox. For
-this project, both methods were tested, but frequent errors were
-encountered when trying to install and run a network of virtual
-machines. The Docker approach was chosen for simplicity and because it
-was possible to build the container from the RBAC branch of the
-BigchainDB Server codebase. The distribution includes a Makefile, and
-Docker containers for BigchainDB Server, Tendermint, and MongoDB can be
-easily run with a simple `make run` command.
+four-node network of virtual machines using Vagrant and VirtualBox. Both
+methods were tested, but frequent errors were encountered when trying to
+install and run a network of virtual machines. The Docker approach was
+chosen for simplicity and because it was possible to build the container
+from the RBAC branch of the BigchainDB Server codebase. The distribution
+includes a Makefile, and Docker containers for BigchainDB Server,
+Tendermint, and MongoDB can be easily run with a simple `make run`
+command.
 
 Data Management
 ---------------
@@ -599,17 +598,17 @@ changed--and recording that change in the metadata object. The code in
 `rbac_demo.py` creates separate BigchainDB assets to represent the
 BIBFRAME types Work, Instance, and Item.
 
-The project data and code also illustrate how JSON-LD named graphs may
-be used to include both descriptive and administrative metadata about the
-same BigchainDB asset in a single transaction. The `rbac_demo.py` script
-inserts a second named graph into the `gutenberg-work.json` file so that it
-contains two named graphs: one representing the Work entity and one
-representing a separate Record entity (which is not part of the core
-BIBFRAME model). Within the named graph for the Record entity, there is an
-RDF property (`foaf:topic`) that links to the URI for the named graph
-representing the Work entity. +@fig:rbac illustrates this pattern,
-indicating how BigchainDB metadata objects may be used to create internal
-linkages among assets conforming to the BIBFRAME data model.
+The data and code also illustrate how JSON-LD named graphs may be used
+to include both descriptive and administrative metadata about the same
+BigchainDB asset in a single transaction. The `rbac_demo.py` script inserts
+a second named graph into the `gutenberg-work.json` file so that it contains
+two named graphs: one representing the Work entity and one representing a
+separate Record entity (which is not part of the core BIBFRAME model).
+Within the named graph for the Record entity, there is an RDF property
+(`foaf:topic`) that links to the URI for the named graph representing the
+Work entity. +@fig:rbac illustrates this pattern, indicating how BigchainDB
+metadata objects may be used to create internal linkages among assets
+conforming to the BIBFRAME data model.
     
 ![Graph of asset and metadata objects in
 BigchainDB](images/assets-metadata.png){#fig:rbac}
@@ -696,12 +695,12 @@ The application logic proceeds according to the following steps:
     original owners (that is, the CREATE transaction must be signed with
     two private keys): the cataloger as well as the admin user. The
     admin user could then TRANSFER the asset when needed. This is the
-    approach taken by the demo developed for this project. However, in
-    practice, it would have to be handled in an automated way, so that
-    it would not be necessary for a single admin user to execute
-    multiple TRANSFER transactions whenever the need arose. In general,
-    best practices for managing public/private keypairs in the context
-    of this use case is an area that calls for further examination.
+    approach taken by the demo developed here. However, in practice, it 
+    would have to be handled in an automated way, so that it would not be 
+    necessary for a single admin user to execute multiple TRANSFER 
+    transactions whenever the need arose. In general, best practices for 
+    managing public/private keypairs in the context of this use case is 
+    an area that calls for further examination.
 
 When the `rbac_demo.py` script is executed, it populates a local
 BigchainDB instance with RBAC assets and tests whether catalogers and
@@ -722,39 +721,38 @@ Linking is not authorized for:
 Conclusion
 ==========
 
-This project explored BigchainDB, a new blockchain-based solution for
-managing big data, and undertook a preliminary examination of whether
-BigchainDB could be adapted for use as a library catalog database. The
-primary advantage of using a blockchain system instead of a conventional
-or distributed database is that it enables peer-to-peer interaction and
-exchange in a more fundamental way. Participants in a BigchainDB network
-are required to collaborate and coordinate their work very directly.
-Doing so would allow data scientists to access library metadata at scale
-and to more easily process, clean, and study it, potentially connecting
-it to other datasets. This could be particularly useful in large-scale
-text mining projects. In the current centralized scenario, library
-metadata remains locked away and can only be used for machine learning
-and complex analysis by the central service providers who control it.
+BigchainDB is a new blockchain-based solution for managing big data,
+and undertook a preliminary examination of whether BigchainDB could be
+adapted for use as a library catalog database. The primary advantage of
+using a blockchain system instead of a conventional or distributed database
+is that it enables peer-to-peer interaction and exchange in a more
+fundamental way. Participants in a BigchainDB network are required to
+collaborate and coordinate their work very directly. Doing so would allow
+data scientists to access library metadata at scale and to more easily
+process, clean, and study it, potentially connecting it to other datasets.
+This could be particularly useful in large-scale text mining projects. In
+the current centralized scenario, library metadata remains locked away and
+can only be used for machine learning and complex analysis by the central
+service providers who control it.
 
 A blockchain data model also allows for richer data modeling. Rather
 than a repository of records, a library catalog can be modeled as a
-collection of assets: actual books, journals, and multimedia resources,
-as well as the records that describe them. This could facilitate
-operations beyond cataloging, such as interlibrary lending, and make it
-easier to determine which library holds copies of which books, or
-subscribes to which journals. BigchainDB is flexible enough to
-accommodate the semantic data models, such as BIBFRAME, that are
-currently being developed by research libraries. BigchainDB itself is
-not a semantic data store, so additional solutions for semantically
-enriched information retrieval (such as graph databases) would also need
-to be explored. However, BigchainDB's incorporation of MongoDB allows
-users to take advantage of the indexing and querying capabilities
-internal to MongoDB. Extensions to BigchainDB provide support for
-features such as Role-Based Access Control, which would be important for
-enabling library cataloging workflows. More systemic analysis would be
-needed before recommending BigchainDB as a solution for library
-catalogs, but the results of this project indicate that the possibility
-would merit further exploration.
+collection of assets: actual books, journals, and multimedia resources, as
+well as the records that describe them. This could facilitate operations
+beyond cataloging, such as interlibrary lending, and make it easier to
+determine which library holds copies of which books, or subscribes to which
+journals. BigchainDB is flexible enough to accommodate the semantic data
+models, such as BIBFRAME, that are currently being developed by research
+libraries. BigchainDB itself is not a semantic data store, so additional
+solutions for semantically enriched information retrieval (such as graph
+databases) would also need to be explored. However, BigchainDB's
+incorporation of MongoDB allows users to take advantage of the indexing and
+querying capabilities internal to MongoDB. Extensions to BigchainDB provide
+support for features such as Role-Based Access Control, which would be
+important for enabling library cataloging workflows. More systemic analysis
+would be needed before recommending BigchainDB as a solution for library
+catalogs, but the results indicate that the possibility would merit further
+exploration.
 
 ## Acknowledgment
 
