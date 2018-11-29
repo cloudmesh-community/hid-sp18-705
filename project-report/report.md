@@ -207,11 +207,11 @@ Scope
 =============
 
 Findings are presented from an initial exploration of BigchainDB as a
-blockchain database solution for a shared library catalog. It provides an
-overview of the BigchainDB architecture and data model and probes some of
-BigchainDB's features and functionality. It includes a preliminary analysis
-of library metadata standards and requirements and examines whether they can
-be accommodated using BigchainDB.
+blockchain database solution for a shared library catalog. An overview of
+the BigchainDB architecture and data model and is provided, and some of
+BigchainDB's features and functionality are probed. A preliminary analysis
+of library metadata standards and requirements is included, and the question
+of whether they can be accommodated using BigchainDB is examined.
 
 BigchainDB
 ==========
