@@ -455,7 +455,7 @@ publication), and Item (a physical copy of an
 Instance) [@librarycongress-18-bibliographic]. As an example, a catalog
 record from the Indiana University Library catalog was chosen. This record
 describes the Lilly Library's partial copy of the Gutenberg Bible. The data
-is divided into six files in the `project_data` directory:
+is divided into six files in the `project-data` directory:
 
 ```
 ocm05084045.xml
