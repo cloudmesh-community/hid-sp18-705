@@ -195,7 +195,7 @@ be represented exclusively by a token--it also needs to be stored in a
 decentralized system optimized for read and write transactions. Public
 blockchains such as Ethereum have been designed for exchange, not
 storage. At the current price of the Ethereum blockchain's native token,
-Ether (ETH), at approximately \$200.00, storing 1 Gigabyte of data on
+Ether (ETH), at approximately \$200.00, storing 1 gigabyte of data on
 the blockchain would cost over \$7,000,000.00 [@hess-16-reply]. A
 decentralized system for library metadata must be able to scale and
 store big data out of the box. BigchainDB is a production-ready solution
