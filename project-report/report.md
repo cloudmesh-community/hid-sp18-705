@@ -564,8 +564,8 @@ object to represent the asset being recorded on the blockchain. The `asset`
 field of a CREATE transaction takes an object with the required key `data`.
 The content of the `asset` field is treated as immutable--it cannot be
 changed once a CREATE transaction has been committed, or when ownership of
-an asset is subsequently changed using a TRANSFER transaction. The following
-listing shows how a Work asset might be represented in BigchainDB:
+an asset is subsequently changed using a TRANSFER transaction. The following 
+shows how a Work asset might be represented in BigchainDB:
 
 ```
 {
@@ -703,7 +703,7 @@ asset. For successful transactions, the program simply outputs an HTTP
 URL that can be used to request the result of each transaction. However,
 one transaction attempts to CREATE a Work resource with a
 paraprofessional user asset. This transaction should fail with a
-`ValidationError`, as shown in the following listing:
+`ValidationError`, as shown in the following:
 
 ```
 BIBFRAME Work (IUL Paraprofessionals):  
