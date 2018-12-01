@@ -234,7 +234,7 @@ BigchainDB whitepaper, released in June 2016, focused on the scalability
 limitations of traditional blockchain networks such as Bitcoin and
 claimed that it should be possible to develop a blockchain-based
 distributed database that would enable "1 million writes per second
-throughput, storing petabytes of data, and sub-second latency"---in
+throughput, storing petabytes of data, and sub-second latency"--in
 contrast to the storage restrictions and 7 transaction-per-second (tps)
 limit of the Bitcoin network [@github-bigchaindb-whitepaper-a]. The
 advantages of adding a blockchain layer to an existing distributed
