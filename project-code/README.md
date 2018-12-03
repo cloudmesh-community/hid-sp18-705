@@ -11,8 +11,8 @@ Artifacts Developed by Author
 
 *It's unclear what is meant by concrete links. Should these be BibTeX
 citations or direct hyperlinks? I have added hyperlinks to the individual
-artifacts listed here and will do the same in the project report. Is this
-sufficient?*
+artifacts listed here and can do the same in the project report if desired. 
+Is this sufficient?*
 
 ## Artifacts Developed by Author
 
