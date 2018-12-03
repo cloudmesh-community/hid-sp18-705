@@ -41,7 +41,7 @@ directory:
 
 * [`graphviz/assets-metadata.dot`](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-code/graphviz/assets-metadata.dot): illustrates how data for a library catalog might be modeled and linked
 in BigchainDB.
-  
+
 * [`graphviz/rbac-graph.dot`](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-code/graphviz/rbac-graph.dot): illustrates the dependency tree and validation scheme used to enforce
 role-based access control constraints in BigchainDB.
 
@@ -71,12 +71,14 @@ transactions.
 Once stopped, the containers can be reset with `make reset`.
 
 In order to run the demo Python code, the BigchainDB Python driver must
-first be installed:
+first be installed. The `RDFLIb` Python library must be installed to run
+the [`demo/convert_rdf.py`](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-code/demo/convert_rdf.py) script.
 
 ``` 
 $ pip install bigchaindb_driver
+$ pip install rdflib
 ```
 
 Once the containers are running and the driver has been installed, the
-Python script `rbac_demo.py` in the `demo` directory can then be executed
+Python script [`demo/rbac_demo.py`](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-code/demo/rbac_demo.py) in the `demo` directory can then be executed
 and will send a series of transactions to the BigchainDB server.
