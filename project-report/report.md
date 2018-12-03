@@ -9,19 +9,31 @@
 
 :o: as you can see from the epub your section headings are wrong make sure they show up in the TOC correctly 
 
+_I checked the epub, and all section headings appear correct in the TOC._
+
 :o: urls in text must be replaced with bibtex entries
 
+_I will do this._
+
 :o: are last two figures self created? or do they need citations.
+
+_The last two figures are self created. Original graphviz files are in
+`project-code/graphviz`._
 
 :o: quotes are wrong. If highligt use italic if quote use
 
 > "This is a quote" [@citation].
+
+_Changed._
 
 :o: it is unclear what code you developed, please add a section with 
 
 Artifacts Developed by Author
 
 * list in that in bullet form what they are and what they do
+
+_I have added the section requested and attempted to detail all functionality._
+
 
 ---
 
@@ -174,7 +186,7 @@ consistent state across all transactions [@bkm-18-latest].
 The Proof-of-Stake consensus algorithm, employed by some blockchain
 networks as an alternative to Bitcoin's resource-intensive Proof-of-Work
 mechanism, is similar to the membership fee model in that validator
-nodes are elected based on their share of "stake" in the network,
+nodes are elected based on their share of _stake_ in the network,
 measured by their willingness to commit or stake an allocation of
 network tokens as a proof of honesty [@marin-18-understanding]. For
 research library applications, a variation of Proof-of-Stake known as
@@ -182,9 +194,11 @@ Proof-of-Authority may be the most appropiate
 solution [@marin-18-understanding; @buterin-15-public]. In contrast to
 public blockchains such as Ethereum and Bitcoin, or fully private
 blockchains restricted to a single organization, so-called consortium
-blockchains may be the preferred approach, one in which consensus "is
-controlled by a pre-selected set of nodes" [@buterin-15-public]. The
-model implemented by the BigchainDB project fits the parameters of a
+blockchains may be the preferred approach, one in which consensus 
+
+> "is controlled by a pre-selected set of nodes" [@buterin-15-public]. 
+
+The model implemented by the BigchainDB project fits the parameters of a
 consortium blockchain that implements a Proof-of-Authority approach to
 consensus [@mcconaghy-18-reply].
 
@@ -207,9 +221,9 @@ be represented exclusively by a token--it also needs to be stored in a
 decentralized system optimized for read and write transactions. Public
 blockchains such as Ethereum have been designed for exchange, not
 storage. At the current price of the Ethereum blockchain's native token,
-Ether (ETH), at approximately \$200.00, storing 1 gigabyte of data on
-the blockchain would cost over \$7,000,000.00 [@hess-16-reply]. A
-decentralized system for library metadata must be able to scale and
+Ether (ETH), at approximately $200.00, storing 1 gigabyte of data on
+the blockchain would cost over $7,000,000.00 [@hess-16-reply]. A
+decentralized system for librar qy metadata must be able to scale and
 store big data out of the box. BigchainDB is a production-ready solution
 that might meet the requirements for this use case: it supports the
 creation of assets and the direct storage of metadata objects on its
@@ -238,18 +252,22 @@ MongoDB [@killerstorm-16-bigchaindb; @bigchaindbgmbh-18-bigchaindb].
 
 The early focus of BigchainDB development was to create an architecture
 that would allow existing big data databases to be
-"blockchainified" [@github-bigchaindb-whitepaper-a]. The original
+enhanced with blockchain features [@github-bigchaindb-whitepaper-a]. The original
 BigchainDB whitepaper, released in June 2016, focused on the scalability
 limitations of traditional blockchain networks such as Bitcoin and
 claimed that it should be possible to develop a blockchain-based
-distributed database that would enable "1 million writes per second
-throughput, storing petabytes of data, and sub-second latency"--in
-contrast to the storage restrictions and 7 transaction-per-second (tps)
-limit of the Bitcoin network [@github-bigchaindb-whitepaper-a]. The
-advantages of adding a blockchain layer to an existing distributed
-database would be to incorporate "decentralized control, immutability,
-and creation \[and\] movement of digital
-assets" [@github-bigchaindb-whitepaper-a].
+distributed database that would enable 
+
+> "1 million writes per second throughput, storing petabytes of data,
+> and sub-second latency" [@github-bigchaindb-whitepaper-a].
+
+This is in contrast to the storage restrictions and 7
+transaction-per-second (tps) limit of the Bitcoin network
+[@github-bigchaindb-whitepaper-a]. The advantages of adding a blockchain
+layer to an existing distributed database would be to incorporate 
+
+> "decentralized control, immutability, and creation \[and\] movement 
+> of digital > assets" [@github-bigchaindb-whitepaper-a].
 
 The primary challenge in designing a decentralized system is how to
 defend against both arbitrary failure and malicious actors. In so-called
@@ -315,10 +333,13 @@ created by the BigchainDB development team. Each node in the network is
 self-contained and includes its own MongoDB database and Tendermint
 application server. Tendermint is used to manage consensus, communication,
 and state replication among nodes, whereas the software that is unique to
-BigchainDB is responsible for "registering and tracking the ownership of
-'assets'" [@mcconaghy-18-bigchaindb]. In BigchainDB 2.0, as is the case in
-general with systems that are Byzantine Fault Tolerant, $3f + 1$ nodes are
-necessary to run a network, where $f$ is the number of faulty nodes to be
+BigchainDB is responsible for 
+
+> "registering and tracking the ownership of 'assets'" [@mcconaghy-18-bigchaindb]. 
+
+In BigchainDB 2.0, as is the case in general with systems that are
+Byzantine Fault Tolerant, `3f + 1` nodes are necessary to run a network,
+where `f` is the number of faulty nodes to be
 tolerated [@mcconaghy-18-reply-a]. Therefore, at least four nodes are
 required in order to run a BigchainDB network: if one of the four nodes
 becomes unresponsive or attempts to approve an invalid transaction, the
@@ -345,7 +366,7 @@ transfer of assets) using cryptographic signatures [@trh-17-crypto].
 All objects in BigchainDB are modeled as *assets*. Two transaction
 types are available for managing assets: CREATE and
 TRANSFER [@github-bigchaindb-beps-a]. Each transaction must be
-cryptographically signed with the private key of its "owner" (the agent who
+cryptographically signed with the private key of its _owner_ (the agent who
 created an asset through a CREATE transaction or to whom an asset was
 assigned through a TRANSFER transaction). Public/private keypairs are
 implemented using the Edwards-curve Digital Signature Algorithm
@@ -369,12 +390,12 @@ here:
 ```
 
 Conditions for fulfillment and asset transfer are defined in the values
-of the "inputs" and "outputs" keys. An object representing the asset
-itself is stored as the value of the "asset" key and cannot be modified
+of the _inputs_ and _outputs_ keys. An object representing the asset
+itself is stored as the value of the _asset_ key and cannot be modified
 once an asset has been created and committed to a block in the
-BigchainDB blockchain. The "metadata" key is used to store an arbitrary
+BigchainDB blockchain. The _metadata_ key is used to store an arbitrary
 object that records additional information about the asset or its state:
-in contrast to the asset object, the metadata object *can* be modified
+in contrast to the asset object, the metadata object _can_ be modified
 with each TRANSFER transaction [@github-bigchaindb-beps-a].
 
 #### Tendermint
@@ -528,7 +549,7 @@ created by the BigchainDB development team to demonstrate the RBAC
 extension [@github-bigchaindb-project-jannowitz]. Support for RBAC is
 important for library cataloging because library personnel roles are
 typically divided between professional librarians (catalogers) and
-paraprofessional technicians. Librarians are expected to create "original"
+paraprofessional technicians. Librarians are expected to create _original_
 descriptions of library resources, whereas paraprofessionals are responsible
 for copying existing data from a shared database such as OCLC WorldCat.
 Public blockchain systems do not usually impose write restrictions (allowing
@@ -590,7 +611,7 @@ represent it simply using its RDF type (in this case, it is a BIBFRAME
 Work with a subtype of Text), as well as a human-readable label. Any
 BigchainDB transaction may also include an optional `metadata` key that
 takes as its value an arbitrary JSON-serializable object. This flexible
-design makes it possible to effectively "update" data by using a
+design makes it possible to effectively update data by using a
 TRANSFER transaction to indicate that the state of an asset has
 changed--and recording that change in the metadata object. The code in
 `rbac_demo.py` creates separate BigchainDB assets to represent the
@@ -650,7 +671,7 @@ The application logic proceeds according to the following steps:
 3.  The admin user can then call the `create_type()` method of
     `BigchainRbac()` to instantiate new roles for the application. In
     `rbac_demo.py`, two roles have been created: one to represent
-    "catalogers" and one to represent "paraprofessionals." In the
+    _catalogers_ and one to represent _paraprofessionals_. In the
     definition of each type asset, the `asset` object includes the
     `link` key, which takes as its value the app asset ID. This linkage
     sets the scope of permissions to the current application context.
@@ -661,10 +682,10 @@ The application logic proceeds according to the following steps:
     user's respective group ID (such as that of the catalogers group).
     It is important to distinguish between a user--identified by a
     public key--and a user asset, which is the result of a BigchainDB
-    CREATE transaction. In the RBAC scheme, when a user *asset* is
+    CREATE transaction. In the RBAC scheme, when a user _asset_ is
     created, it must then be assigned to the user's public key through a
     TRANSFER transaction. This can be described as placing the asset in
-    the user's "wallet" [@dhameja-17-role].
+    the user's wallet [@dhameja-17-role].
 
 4.  The most important step occurs when an admin user creates a type to
     represent a resource group and then assigns permissions to restrict
