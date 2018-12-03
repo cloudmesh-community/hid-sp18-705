@@ -30,10 +30,14 @@ catalog might be modeled and linked in BigchainDB.
 validation scheme used to enforce role-based access controll constraints in
 BigchainDB.
 
+## External Code
+
 The BigchainDB repository has been added here as a submodule. When
 cloning the repository, include the `--recursive` switch to ensure that the
 submodule contents are cloned as well, or run `git submodule update --init
 --recursive` if the repository has already been cloned.
+
+## Execution
 
 ```
 $ git clone --recursive https://github.com/cloudmesh-community/hid-sp18-705.git
