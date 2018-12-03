@@ -1,4 +1,4 @@
-# New Approaches to Managing Metadata at Scale in Research Libraries :wave: hid-sp18-705
+# New Approaches to Managing Metadata at Scale in Research Libraries :smiley: hid-sp18-705
 
 | Timothy A. Thompson
 | timathom@indiana.edu
