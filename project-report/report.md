@@ -13,6 +13,10 @@
 
 :o: are last two figures self created? or do they need citations.
 
+:o: quotes are wrong. If highligt use italic if quote use
+
+> "This is a quote" [@citation].
+
 ---
 
 Keywords: i523, Research Libraries, Library Catalogs, Blockchain, BigchainDB
