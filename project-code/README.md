@@ -1,5 +1,7 @@
 # Demo of BigchainDB's Role-Based Access Control Extension
 
+:o: it is unclear what code you developed
+
 The BigchainDB repository has been added here as a submodule. When
 cloning the repository, include the `--recursive` switch to ensure that the
 submodule contents are cloned as well, or run `git submodule update --init
