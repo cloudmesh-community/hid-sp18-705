@@ -21,6 +21,10 @@ features of BigchainDB could be employed. The use case is that of data and
 workflow management for a library catalog. This script sends a series of
 transactions to a BigchainDB server instance.
 
+* `demo/convert_rdf.py`: simple Python script provided to illustrate
+how data in the `project-data` directory was converted using the Python
+RDFLib library.
+
 Two original graphviz files (used to generate the last two figures in
 the project report) are included for reference in the `graphviz` directory:
 
