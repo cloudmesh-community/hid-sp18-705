@@ -17,6 +17,12 @@
 
 > "This is a quote" [@citation].
 
+:o: it is unclear what code you developed, please add a section with 
+
+Artifacts Developed by Author
+
+* list in that in bullet form what they are and what they do
+
 ---
 
 Keywords: i523, Research Libraries, Library Catalogs, Blockchain, BigchainDB
