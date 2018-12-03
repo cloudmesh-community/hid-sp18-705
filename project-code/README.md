@@ -19,7 +19,7 @@ BigchainDB.
 `BigchainRbac()` class to illustrate how the role-based access control
 features of BigchainDB could be employed. The use case is that of data and
 workflow management for a library catalog. This script sends a series of
-transactions to a BigchainDB server instance.
+transactions to a BigchainDB server node.
 
 * `demo/convert_rdf.py`: simple Python script provided to illustrate
 how data in the `project-data` directory was converted using the Python
