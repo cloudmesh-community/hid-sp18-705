@@ -39,7 +39,7 @@ submodule contents are cloned as well, or run `git submodule update --init
 --recursive` if the repository has already been cloned.
 
 The BigchainDB repository includes a Docker Compose script for spinning
-up the Docker containers need to run a BigchainDB test node.
+up the Docker containers needed to run a BigchainDB test node.
 
 ## Execution
 
