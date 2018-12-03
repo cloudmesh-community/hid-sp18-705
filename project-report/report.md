@@ -9,6 +9,8 @@
 
 :o: as you can see from the epub your section headings are wrong make sure they show up in the TOC correctly 
 
+:o: urls in text must be replaced with bibtex entries
+
 ---
 
 Keywords: i523, Research Libraries, Library Catalogs, Blockchain, BigchainDB
