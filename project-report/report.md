@@ -1,4 +1,4 @@
-# New Approaches to Managing Metadata at Scale in Research Libraries :hand: hid-sp18-705
+# New Approaches to Managing Metadata at Scale in Research Libraries :wave: hid-sp18-705
 
 | Timothy A. Thompson
 | timathom@indiana.edu
@@ -10,6 +10,8 @@
 :o: as you can see from the epub your section headings are wrong make sure they show up in the TOC correctly 
 
 :o: urls in text must be replaced with bibtex entries
+
+:o: are last two figures self created? or do they need citations.
 
 ---
 
