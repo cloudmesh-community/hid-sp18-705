@@ -71,8 +71,8 @@ shared database for records created by another cataloging agency, but
 that describe identical publications that have been acquired by one's
 local institution [@dm-17-measuring]. In the current environment, a
 single company, the Online Computer Library Center
-(OCLC [oclc-18-oclc]), is the only viable platform for global
-cooperative cataloging [@turner-10-oclc].
+(OCLC), is the only viable platform for global
+cooperative cataloging [@oclc-18-oclc; @turner-10-oclc].
 
 ﻿﻿OCLC provides data aggregation and warehousing services that allow
 libraries to effectively share their data, but its business model does
@@ -94,8 +94,8 @@ within the context of data science and machine learning. Sophisticated
 algorithms for string comparison and probabilistic record linkage have long
 been available, but are not widely used by libraries, with the exception of
 large-scale projects such as the Social Networks and Archival Context
-Project (SNAC) [snacp-18-social] and the Virtual International Authority
-File (VIAF) [oclc-18-viaf], itself a project of OCLC. The former has
+Project (SNAC) [@snacp-18-social] and the Virtual International Authority
+File (VIAF) [@oclc-18-viaf], itself a project of OCLC. The former has
 employed methods based on Naive Bayes classification algorithms to aggregate
 and disambiguate data from across a wide range of libraries and archives
 (the reported accuracy of the approach fell with the range of 80-90
@@ -139,7 +139,7 @@ technology may need to be used in conjunction with other technologies in
 order to enable decentralized exchange. Several efforts are underway to
 develop systems for decentralized file storage using distributed hash
 tables, one of the most prominent being the Interplanetary File System
-(IPFS) [ipfs-18-ipfs]. In a way similar to the software versioning
+(IPFS) [@ipfs-18-ipfs]. In a way similar to the software versioning
 protocol Git, IPFS uses hash values to capture the state of a file at a
 particular point in time and then serves it on a peer-to-peer network.
 IPFS hashes might be referenced as links in blockchain transactions in
@@ -564,7 +564,7 @@ BigchainDB documentation provides instructions for those interested in
 setting up a production network [@bigchaindbcontributors-18-how].
 However, for testing purposes, a full network is not necessary. A
 BigchainDB test network is currently available at
-[bigchaindbcontributors-18-bigchaindb-a], but the testnet installation does not
+[@bigchaindbcontributors-18-bigchaindb-a], but the testnet installation does not
 include the RBAC extension required here.
 
 The official BigchainDB distribution includes a Docker Compose script
