@@ -9,9 +9,11 @@ Artifacts Developed by Author
 
 :o: add concrete links to the artifacts into your git repo
 
-*It's unclear what is meant by concrete links. I have added hyperlinks to the individual
-artifacts listed here and can do the same in the project report if desired (if so, should 
-they be BibTeX citations or direct hyperlinks?). Is this sufficient?*
+*It's unclear what is meant by concrete links. I have added hyperlinks
+to the individual artifacts listed here. Is this sufficient?*
+  
+*I can do the same in the project report if desired (if so, should
+they be BibTeX citations or direct hyperlinks?).*
 
 ## Artifacts Developed by Author
 
