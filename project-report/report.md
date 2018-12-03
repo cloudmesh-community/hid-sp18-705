@@ -342,7 +342,7 @@ becomes unresponsive or attempts to approve an invalid transaction, the
 network will continue to function based on the majority consensus of the
 other three nodes [@mcconaghy-18-reply-a].
 
-![High-Level Architecture of BigchainDB 2.0 [@bigchaindbcontributors-18-querying]](images/bdb-arch.png){#fig:bdb}
+![High-Level Architecture of BigchainDB 2.0 [@bigchaindbcontributors-18-querying]](images/hid-sp18-705-bdb-arch.png){#fig:bdb}
 
 A BigchainDB client can potentially connect to any node in the network.
 Each MongoDB instance contains a full replication of the data stored in
@@ -422,7 +422,7 @@ database and used for replicating transaction state to network
 peers [@tendermintcontributors-18-tendermint;
 @bigchaindbgmbh-18-bigchaindb].
 
-![BigchainDB Sequence Diagram [@dhameja-18-lifecycle]](images/bdb-seq.png){#fig:bdb2}
+![BigchainDB Sequence Diagram [@dhameja-18-lifecycle]](images/hid-sp18-705-bdb-seq.png){#fig:bdb2}
 
 #### MongoDB
 
@@ -625,7 +625,7 @@ Work entity. +@fig:rbac illustrates this pattern, indicating how BigchainDB
 metadata objects may be used to create internal linkages among assets
 conforming to the BIBFRAME data model.
     
-![Graph of asset and metadata objects in BigchainDB](images/assets-metadata.png){#fig:rbac}
+![Graph of asset and metadata objects in BigchainDB](images/hid-sp18-705-assets-metadata.png){#fig:rbac}
 
 ### Role-Based Access Control in BigchainDB
 
@@ -644,7 +644,7 @@ when a transaction is sent to the BigchainDB server, and a transaction
 is rejected if it violates the logic of the permissions
 scheme [@dhameja-17-role]. 
 
-![Graph of permissions in BigchainDB using Role-Based Access Control](images/rbac-graph.png){#fig:rbac2}
+![Graph of permissions in BigchainDB using Role-Based Access Control](images/hid-sp18-705-rbac-graph.png){#fig:rbac2}
 
 The application logic proceeds according to the following steps:
 
