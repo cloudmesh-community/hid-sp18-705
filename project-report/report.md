@@ -32,7 +32,7 @@ Artifacts Developed by Author
 
 * list in that in bullet form what they are and what they do
 
-_I have added the section requested and attempted to detail all functionality._
+_I have added the section requested and attempted to detail all functionality. I added this in the `project-code` directory, but should it be added here to the report too? This is not clear._
 
 
 ---
