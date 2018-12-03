@@ -6,9 +6,9 @@ submodule contents are cloned as well, or run `git submodule update --init
 --recursive` if the repository has already been cloned.
 
 ```
-git clone --recursive https://github.com/cloudmesh-community/hid-sp18-705.git
-cd hid-sp18-705/project-code/bigchaindb/
-make run
+$ git clone --recursive https://github.com/cloudmesh-community/hid-sp18-705.git
+$ cd hid-sp18-705/project-code/bigchaindb/
+$ make run
 ```
 
 Executing `make run` will launch three Docker containers, one for each

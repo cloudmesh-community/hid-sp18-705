@@ -1,4 +1,4 @@
-# New Approaches to Managing Metadata at Scale in Research Libraries :hand: hid-sp18-705
+# New Approaches to Managing Metadata at Scale in Research Libraries :wave: hid-sp18-705
 
 | Timothy A. Thompson
 | timathom@indiana.edu
@@ -6,6 +6,12 @@
 | hid: hid-sp18-705
 | github: [:cloud:](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-report/report.md)
 | code: [:cloud:](https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project-code)
+
+:o: as you can see from the epub your section headings are wrong make sure they show up in the TOC correctly 
+
+:o: urls in text must be replaced with bibtex entries
+
+:o: are last two figures self created? or do they need citations.
 
 ---
 
@@ -31,8 +37,7 @@ solutions points toward an alternative approach, one that would allow
 libraries to share their data directly without having to pay an expensive
 intermediary.
 
-Introduction
-============
+## Introduction
 
 The problem of entity resolution (also known as record linkage or data
 matching [@christen-12-data]) is one that has a direct impact on the
@@ -58,8 +63,7 @@ becomes subject to potential licensing restrictions, as well as the
 expectation that future dissemination of the data will include
 attribution of OCLC [@oclc-12-worldcat; @oclc-10-worldcat].
 
-New Approaches to Metadata Management
-=====================================
+## New Approaches to Metadata Management
 
 Libraries have a tradition of experience with record matching and
 automation [@mcqueen-92-record], but now stand to benefit from the
@@ -129,8 +133,7 @@ blockchain network of BigchainDB nodes [@buterin-15-public], libraries
 could be empowered to abandon centralized models and begin managing
 their data collectively.
 
-Blockchains for Research Libraries
-==================================
+## Blockchains for Research Libraries
 
 Some in the library profession have been skeptical of blockchain
 applications for their domain, arguing that they have been overhyped as
@@ -175,8 +178,7 @@ model implemented by the BigchainDB project fits the parameters of a
 consortium blockchain that implements a Proof-of-Authority approach to
 consensus [@mcconaghy-18-reply].
 
-Design Requirements
-===================
+## Design Requirements
 
 A blockchain-based catalog for research libraries should support the
 creation of a decentralized marketplace for library metadata. Rather
@@ -195,7 +197,7 @@ be represented exclusively by a token--it also needs to be stored in a
 decentralized system optimized for read and write transactions. Public
 blockchains such as Ethereum have been designed for exchange, not
 storage. At the current price of the Ethereum blockchain's native token,
-Ether (ETH), at approximately \$200.00, storing 1 Gigabyte of data on
+Ether (ETH), at approximately \$200.00, storing 1 gigabyte of data on
 the blockchain would cost over \$7,000,000.00 [@hess-16-reply]. A
 decentralized system for library metadata must be able to scale and
 store big data out of the box. BigchainDB is a production-ready solution
@@ -203,8 +205,7 @@ that might meet the requirements for this use case: it supports the
 creation of assets and the direct storage of metadata objects on its
 blockchain [@bigchaindbcontributors-18-key].
 
-Scope
-=============
+## Scope
 
 Findings are presented from an initial exploration of BigchainDB as a
 blockchain database solution for a shared library catalog. An overview of
@@ -213,11 +214,9 @@ BigchainDB's features and functionality are probed. A preliminary analysis
 of library metadata standards and requirements is included, and the question
 of whether they can be accommodated using BigchainDB is examined.
 
-BigchainDB
-==========
+## BigchainDB
 
-Evolution
----------
+### Evolution
 
 BigchainDB was created to address the scalability and storage
 limitations of traditional blockchains such as Bitcoin and Ethereum and
@@ -234,7 +233,7 @@ BigchainDB whitepaper, released in June 2016, focused on the scalability
 limitations of traditional blockchain networks such as Bitcoin and
 claimed that it should be possible to develop a blockchain-based
 distributed database that would enable "1 million writes per second
-throughput, storing petabytes of data, and sub-second latency"---in
+throughput, storing petabytes of data, and sub-second latency"--in
 contrast to the storage restrictions and 7 transaction-per-second (tps)
 limit of the Bitcoin network [@github-bigchaindb-whitepaper-a]. The
 advantages of adding a blockchain layer to an existing distributed
@@ -284,8 +283,7 @@ As a result of implementing Byzantine fault tolerance through
 Tendermint, BigchainDB's original goal of supporting 1 million tps was
 no longer viable.
 
-Benchmark
----------
+### Benchmark
 
 A recent benchmark of BigchainDB 2.0 throughput performed by the
 BigchainDB development team indicated that the system was able to
@@ -300,8 +298,7 @@ default settings. Results showed an average rate of 299.0 tps and a
 median rate of 309.0 tps. All 1 million transactions were finalized in
 56 minutes with no failures [@github-bigchaindb-beps].
 
-Architecture
-------------
+### Architecture
 
 The architecture of a BigchainDB 2.0 network is shown in +@fig:bdb,
 created by the BigchainDB development team. Each node in the network is
@@ -326,7 +323,7 @@ the network [@mcconaghy-18-reply-a]. The BigchainDB project officially
 supports three client drivers to connect to a node server (in Python,
 Node.js, and Java) [@bigchaindbcontributors-18-drivers].
 
-### BigchainDB Server
+#### BigchainDB Server
 
 The BigchainDB Server, written in Python, implements the logic to model,
 validate, and store transactions in the BigchainDB
@@ -370,7 +367,7 @@ object that records additional information about the asset or its state:
 in contrast to the asset object, the metadata object *can* be modified
 with each TRANSFER transaction [@github-bigchaindb-beps-a].
 
-### Tendermint
+#### Tendermint
 
 Tendermint provides an application interface and BFT consensus algorithm
 for replicating application state across the nodes in a decentralized
@@ -381,28 +378,26 @@ Interface (ABCI) provides a language-agnostic interface for blockchain
 applications to use when validating and processing
 transactions [@tendermintcontributors-18-tendermint].
 
-+@fig:bdb2 is a 
-sequence diagram, created by the BigchainDB development team, that
-illustrates the role of Tendermint in processing BigchainDB
-transactions. After a client prepares and signs a transaction, typically
-using a BigchainDB driver, the transaction is submitted to the
-BigchainDB server for initial validation. The server then sends the
-transaction to Tendermint, which includes it in a local memory pool.
-Tendermint returns its own validation request to the server and, upon
-confirmation, proposes a new block and begins a round of voting as part
-of its consensus algorithm. Each node in the network votes on the order
-and validity of transactions in the block, and if consensus is reached,
-the block is committed to the application's
-blockchain [@dhameja-18-lifecycle; @bigchaindbgmbh-18-bigchaindb].
-BigchainDB stores a queryable copy of each block in MongoDB, while
-Tendermint appends each block to its canonical blockchain, which is
-stored in an internal LevelDB database and used for replicating
-transaction state to network
-peers [@tendermintcontributors-18-tendermint; @bigchaindbgmbh-18-bigchaindb].
++@fig:bdb2 is a sequence diagram, created by the BigchainDB development
+team, that illustrates the role of Tendermint in processing BigchainDB
+transactions. After a client prepares and signs a transaction, typically using
+a BigchainDB driver, the transaction is submitted to the BigchainDB server for
+initial validation. The server then sends the transaction to Tendermint, which
+includes it in a local memory pool. Tendermint returns its own validation
+request to the server and, upon confirmation, proposes a new block and begins
+a round of voting as part of its consensus algorithm. Each node in the network
+votes on the order and validity of transactions in the block, and if consensus
+is reached, the block is committed to the application's
+blockchain [@dhameja-18-lifecycle; @bigchaindbgmbh-18-bigchaindb]. BigchainDB
+stores a queryable copy of each block in MongoDB, while Tendermint appends
+each block to its canonical blockchain, which is stored in an internal LevelDB
+database and used for replicating transaction state to network
+peers [@tendermintcontributors-18-tendermint;
+@bigchaindbgmbh-18-bigchaindb].
 
 ![BigchainDB Sequence Diagram [@dhameja-18-lifecycle]](images/bdb-seq.png){#fig:bdb2}
 
-### MongoDB
+#### MongoDB
 
 MongoDB is an enterprise-grade NoSQL database optimized for storing JSON
 objects as documents. It supports both high availability (replication)
@@ -428,8 +423,7 @@ for querying MongoDB, but it also allows node administrators to create
 custom indexes and leverage the full range of MongoDB query
 functionality [@bigchaindbcontributors-18-querying].
 
-Dataset
-=======
+## Dataset
 
 The dataset used is intentionally small and meant to test a
 potential use case for BigchainDB as a library catalog application.
@@ -457,7 +451,7 @@ publication), and Item (a physical copy of an
 Instance) [@librarycongress-18-bibliographic]. As an example, a catalog
 record from the Indiana University Library catalog was chosen. This record
 describes the Lilly Library's partial copy of the Gutenberg Bible. The data
-is divided into six files:
+is divided into six files in the `project-data` directory:
 
 ```
 ocm05084045.xml
@@ -497,11 +491,9 @@ Server Error (HTTP 500). This bug was subsequently reported and has
 since been fixed by a BigchainDB core
 developer [@github-bigchaindb-bigchaindb].
 
-Implementation
-==============
+## Implementation
 
-Use Case
---------
+### Use Case
 
 Currently, most large library catalogs are stored in enterprise
 relational databases such as Oracle. The catalog is one module in a
@@ -533,8 +525,7 @@ Public blockchain systems do not usually impose write restrictions (allowing
 anyone to write to the database), so support for RBAC is an important
 consideration when evaluating BigchainDB.
 
-Installation
-------------
+### Installation
 
 BigchainDB was designed to be a federated network of distributed nodes.
 In an ideal setup, each node would be maintained in a different location
@@ -558,16 +549,15 @@ includes a Makefile, and Docker containers for BigchainDB Server,
 Tendermint, and MongoDB can be easily run with a simple `make run`
 command.
 
-Data Management
----------------
+### Data Management
 
 All BigchainDB CREATE transactions must include a JSON-serializable
 object to represent the asset being recorded on the blockchain. The `asset`
 field of a CREATE transaction takes an object with the required key `data`.
 The content of the `asset` field is treated as immutable--it cannot be
 changed once a CREATE transaction has been committed, or when ownership of
-an asset is subsequently changed using a TRANSFER transaction. The following
-listing shows how a Work asset might be represented in BigchainDB:
+an asset is subsequently changed using a TRANSFER transaction. The following 
+shows how a Work asset might be represented in BigchainDB:
 
 ```
 {
@@ -610,8 +600,7 @@ conforming to the BIBFRAME data model.
     
 ![Graph of asset and metadata objects in BigchainDB](images/assets-metadata.png){#fig:rbac}
 
-Role-Based Access Control in BigchainDB
----------------------------------------
+### Role-Based Access Control in BigchainDB
 
 The file `rbac.py` contains a single Python class, `BigchainRbac()`,
 that provides an interface to create new assets, users, types, and type
@@ -705,7 +694,7 @@ asset. For successful transactions, the program simply outputs an HTTP
 URL that can be used to request the result of each transaction. However,
 one transaction attempts to CREATE a Work resource with a
 paraprofessional user asset. This transaction should fail with a
-`ValidationError`, as shown in the following listing:
+`ValidationError`, as shown in the following:
 
 ```
 BIBFRAME Work (IUL Paraprofessionals):  
@@ -714,8 +703,7 @@ Linking is not authorized for:
 6GcYiCCNFsDbBicna6YCVq8RmSjGyB7MGJw9CHjDjqwh","status":400}\n'...
 ```
 
-Conclusion
-==========
+## Conclusion
 
 BigchainDB is a new blockchain-based solution for managing big data. A
 preliminary examination was undertaken to explore whether BigchainDB could
