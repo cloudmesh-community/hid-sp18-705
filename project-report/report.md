@@ -33,8 +33,7 @@ solutions points toward an alternative approach, one that would allow
 libraries to share their data directly without having to pay an expensive
 intermediary.
 
-Introduction
-============
+## Introduction
 
 The problem of entity resolution (also known as record linkage or data
 matching [@christen-12-data]) is one that has a direct impact on the
@@ -60,8 +59,7 @@ becomes subject to potential licensing restrictions, as well as the
 expectation that future dissemination of the data will include
 attribution of OCLC [@oclc-12-worldcat; @oclc-10-worldcat].
 
-New Approaches to Metadata Management
-=====================================
+## New Approaches to Metadata Management
 
 Libraries have a tradition of experience with record matching and
 automation [@mcqueen-92-record], but now stand to benefit from the
@@ -131,8 +129,7 @@ blockchain network of BigchainDB nodes [@buterin-15-public], libraries
 could be empowered to abandon centralized models and begin managing
 their data collectively.
 
-Blockchains for Research Libraries
-==================================
+## Blockchains for Research Libraries
 
 Some in the library profession have been skeptical of blockchain
 applications for their domain, arguing that they have been overhyped as
@@ -177,8 +174,7 @@ model implemented by the BigchainDB project fits the parameters of a
 consortium blockchain that implements a Proof-of-Authority approach to
 consensus [@mcconaghy-18-reply].
 
-Design Requirements
-===================
+## Design Requirements
 
 A blockchain-based catalog for research libraries should support the
 creation of a decentralized marketplace for library metadata. Rather
@@ -205,8 +201,7 @@ that might meet the requirements for this use case: it supports the
 creation of assets and the direct storage of metadata objects on its
 blockchain [@bigchaindbcontributors-18-key].
 
-Scope
-=============
+## Scope
 
 Findings are presented from an initial exploration of BigchainDB as a
 blockchain database solution for a shared library catalog. An overview of
@@ -215,11 +210,9 @@ BigchainDB's features and functionality are probed. A preliminary analysis
 of library metadata standards and requirements is included, and the question
 of whether they can be accommodated using BigchainDB is examined.
 
-BigchainDB
-==========
+## BigchainDB
 
-Evolution
----------
+### Evolution
 
 BigchainDB was created to address the scalability and storage
 limitations of traditional blockchains such as Bitcoin and Ethereum and
@@ -286,8 +279,7 @@ As a result of implementing Byzantine fault tolerance through
 Tendermint, BigchainDB's original goal of supporting 1 million tps was
 no longer viable.
 
-Benchmark
----------
+### Benchmark
 
 A recent benchmark of BigchainDB 2.0 throughput performed by the
 BigchainDB development team indicated that the system was able to
@@ -302,8 +294,7 @@ default settings. Results showed an average rate of 299.0 tps and a
 median rate of 309.0 tps. All 1 million transactions were finalized in
 56 minutes with no failures [@github-bigchaindb-beps].
 
-Architecture
-------------
+### Architecture
 
 The architecture of a BigchainDB 2.0 network is shown in +@fig:bdb,
 created by the BigchainDB development team. Each node in the network is
@@ -328,7 +319,7 @@ the network [@mcconaghy-18-reply-a]. The BigchainDB project officially
 supports three client drivers to connect to a node server (in Python,
 Node.js, and Java) [@bigchaindbcontributors-18-drivers].
 
-### BigchainDB Server
+#### BigchainDB Server
 
 The BigchainDB Server, written in Python, implements the logic to model,
 validate, and store transactions in the BigchainDB
@@ -372,7 +363,7 @@ object that records additional information about the asset or its state:
 in contrast to the asset object, the metadata object *can* be modified
 with each TRANSFER transaction [@github-bigchaindb-beps-a].
 
-### Tendermint
+#### Tendermint
 
 Tendermint provides an application interface and BFT consensus algorithm
 for replicating application state across the nodes in a decentralized
@@ -402,7 +393,7 @@ peers [@tendermintcontributors-18-tendermint;
 
 ![BigchainDB Sequence Diagram [@dhameja-18-lifecycle]](images/bdb-seq.png){#fig:bdb2}
 
-### MongoDB
+#### MongoDB
 
 MongoDB is an enterprise-grade NoSQL database optimized for storing JSON
 objects as documents. It supports both high availability (replication)
@@ -428,8 +419,7 @@ for querying MongoDB, but it also allows node administrators to create
 custom indexes and leverage the full range of MongoDB query
 functionality [@bigchaindbcontributors-18-querying].
 
-Dataset
-=======
+## Dataset
 
 The dataset used is intentionally small and meant to test a
 potential use case for BigchainDB as a library catalog application.
@@ -497,11 +487,9 @@ Server Error (HTTP 500). This bug was subsequently reported and has
 since been fixed by a BigchainDB core
 developer [@github-bigchaindb-bigchaindb].
 
-Implementation
-==============
+## Implementation
 
-Use Case
---------
+### Use Case
 
 Currently, most large library catalogs are stored in enterprise
 relational databases such as Oracle. The catalog is one module in a
@@ -533,8 +521,7 @@ Public blockchain systems do not usually impose write restrictions (allowing
 anyone to write to the database), so support for RBAC is an important
 consideration when evaluating BigchainDB.
 
-Installation
-------------
+### Installation
 
 BigchainDB was designed to be a federated network of distributed nodes.
 In an ideal setup, each node would be maintained in a different location
@@ -558,8 +545,7 @@ includes a Makefile, and Docker containers for BigchainDB Server,
 Tendermint, and MongoDB can be easily run with a simple `make run`
 command.
 
-Data Management
----------------
+### Data Management
 
 All BigchainDB CREATE transactions must include a JSON-serializable
 object to represent the asset being recorded on the blockchain. The `asset`
@@ -610,8 +596,7 @@ conforming to the BIBFRAME data model.
     
 ![Graph of asset and metadata objects in BigchainDB](images/assets-metadata.png){#fig:rbac}
 
-Role-Based Access Control in BigchainDB
----------------------------------------
+### Role-Based Access Control in BigchainDB
 
 The file `rbac.py` contains a single Python class, `BigchainRbac()`,
 that provides an interface to create new assets, users, types, and type
@@ -714,8 +699,7 @@ Linking is not authorized for:
 6GcYiCCNFsDbBicna6YCVq8RmSjGyB7MGJw9CHjDjqwh","status":400}\n'...
 ```
 
-Conclusion
-==========
+## Conclusion
 
 BigchainDB is a new blockchain-based solution for managing big data. A
 preliminary examination was undertaken to explore whether BigchainDB could
