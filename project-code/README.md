@@ -11,32 +11,35 @@ Artifacts Developed by Author
 
 ## Artifacts Developed by Author
 
-All original Python code is included in the `demo` directory, as detailed in
-the project report:
+All original Python code is included in the
+[`demo`](https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project-code/demo)
+directory, as detailed in the project report:
 
-* `demo/rbac.py`: Python class (`BigchainRbac()`) that provides an
-interface for the role-based access control extension that is available for
-BigchainDB.
+* [`demo/rbac.py`](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-code/demo/rbac.py):
+Python class (`BigchainRbac()`) that provides an interface for the role-based
+access control extension that is available for BigchainDB.
 
-* `demo/rbac_demo.py`: demo Python script that calls methods from the
-`BigchainRbac()` class to illustrate how the role-based access control
-features of BigchainDB could be employed. The use case is that of data and
-workflow management for a library catalog. This script sends a series of
-transactions to a BigchainDB server node.
+* [`demo/rbac_demo.py`](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-code/demo/rbac_demo.py):
+demo Python script that calls methods from the `BigchainRbac()` class to
+illustrate how the role-based access control features of BigchainDB could be
+employed. The use case is that of data and workflow management for a library
+catalog. This script sends a series of transactions to a BigchainDB server
+node.
 
-* `demo/convert_rdf.py`: simple Python script provided to illustrate
-how data in the `project-data` directory was converted using the Python
-RDFLib library.
+* [`demo/convert_rdf.py`](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-code/demo/convert_rdf.py):
+simple Python script provided to illustrate how data in the `project-data`
+directory was converted using the Python RDFLib library. 
 
 Two original graphviz files (used to generate the last two figures in
-the project report) are included for reference in the `graphviz` directory:
+the project report) are included for reference in the
+[`graphviz`](https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project-code/graphviz)
+directory: 
 
-* `graphviz/assets-metadata.dot`: illustrates how data for a library
-catalog might be modeled and linked in BigchainDB.
-
-* `graphviz/rbac-graph.dot`: illustrates the dependency tree and
-validation scheme used to enforce role-based access control constraints in
-BigchainDB.
+* [`graphviz/assets-metadata.dot`](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-code/graphviz/assets-metadata.dot): illustrates how data for a library catalog might be modeled and linked
+in BigchainDB.
+  
+* [`graphviz/rbac-graph.dot`](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-code/graphviz/rbac-graph.dot): illustrates the dependency tree and validation scheme used to enforce
+role-based access control constraints in BigchainDB.
 
 ## External Code
 
