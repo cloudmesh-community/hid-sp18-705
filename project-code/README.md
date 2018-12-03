@@ -21,7 +21,7 @@ features of BigchainDB could be employed. The use case is that of data and
 workflow management for a library catalog.
 
 Two original graphviz files (used to generate the last two figures in
-the project report are included for reference in the `graphviz` directory:
+the project report) are included for reference in the `graphviz` directory:
 
 * `graphviz/assets-metadata.dot`: illustrates how data for a library
 catalog might be modeled and linked in BigchainDB.
