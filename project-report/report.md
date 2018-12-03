@@ -767,31 +767,36 @@ further exploration.
 
 ## Artifacts Developed by Author
 
-All original Python code is included in the `project-code/demo` directory:
+All original Python code is included in the
+[`project-code/demo`](../project-code/demo) directory:
 
-* `demo/rbac.py`: Python class (`BigchainRbac()`) that provides an
-interface for the role-based access control extension that is available for
-BigchainDB.
+* [`demo/rbac.py`](../project-code/demo/rbac.py):
+Python class (`BigchainRbac()`) that provides an interface for the role-based
+access control extension that is available for BigchainDB.
 
-* `demo/rbac_demo.py`: demo Python script that calls methods from the
-`BigchainRbac()` class to illustrate how the role-based access control
-features of BigchainDB could be employed. The use case is that of data and
-workflow management for a library catalog. This script sends a series of
-transactions to a BigchainDB server node.
+* [`demo/rbac_demo.py`](../project-code/demo/rbac_demo.py):
+demo Python script that calls methods from the `BigchainRbac()` class to
+illustrate how the role-based access control features of BigchainDB could be
+employed. The use case is that of data and workflow management for a library
+catalog. This script sends a series of transactions to a BigchainDB server
+node.
 
-* `demo/convert_rdf.py`: simple Python script provided to illustrate
-how data in the `project-data` directory was converted using the Python
+* [`demo/convert_rdf.py`](../project-code/demo/convert_rdf.py): simple
+Python script provided to illustrate how data in the
+[`project-data`](../project-data) directory was converted using the Python
 RDFLib library.
 
 Two original graphviz files (used to generate the last two figures in
-the project report) are included for reference in the `graphviz` directory:
+the project report) are included for reference in the
+[`graphviz`](../project-code/graphviz) directory:
 
-* `graphviz/assets-metadata.dot`: illustrates how data for a library
-catalog might be modeled and linked in BigchainDB.
-
-* `graphviz/rbac-graph.dot`: illustrates the dependency tree and
-validation scheme used to enforce role-based access control constraints in
+* [`graphviz/assets-metadata.dot`](../project-code/graphviz/assets-metadata.dot):
+illustrates how data for a library catalog might be modeled and linked in
 BigchainDB.
+
+* [`graphviz/rbac-graph.dot`](../project-code/graphviz/rbac-graph.dot):
+illustrates the dependency tree and validation scheme used to enforce
+role-based access control constraints in BigchainDB.
 
 ## Acknowledgment
 
