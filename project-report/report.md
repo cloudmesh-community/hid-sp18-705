@@ -9,11 +9,11 @@
 
 :o: as you can see from the epub your section headings are wrong make sure they show up in the TOC correctly 
 
-_I checked the epub, and all section headings appear correct in the TOC._
+*I checked the epub, and all section headings appear correct in the TOC.*
 
 :o: urls in text must be replaced with bibtex entries
 
-_Fixed._
+*Fixed.*
 
 :o: are last two figures self created? or do they need citations.
 
@@ -24,7 +24,7 @@ _The last two figures are self created. Original graphviz files are in
 
 > "This is a quote" [@citation].
 
-_Fixed._
+*Fixed.*
 
 :o: it is unclear what code you developed, please add a section with 
 
@@ -32,7 +32,7 @@ Artifacts Developed by Author
 
 * list in that in bullet form what they are and what they do
 
-_I have added the section requested and attempted to detail all functionality._
+*I have added the section requested and attempted to detail all functionality*.
 
 ---
 
@@ -184,7 +184,7 @@ consistent state across all transactions [@bkm-18-latest].
 The Proof-of-Stake consensus algorithm, employed by some blockchain
 networks as an alternative to Bitcoin's resource-intensive Proof-of-Work
 mechanism, is similar to the membership fee model in that validator
-nodes are elected based on their share of _stake_ in the network,
+nodes are elected based on their share of *stake* in the network,
 measured by their willingness to commit or stake an allocation of
 network tokens as a proof of honesty [@marin-18-understanding]. For
 research library applications, a variation of Proof-of-Stake known as
@@ -269,21 +269,20 @@ layer to an existing distributed database would be to incorporate
 
 The primary challenge in designing a decentralized system is how to
 defend against both arbitrary failure and malicious actors. In so-called
-Sybil attacks, an attacker attempts to generate false identities in
-order to gain majority control over a network [@douceur-02-sybil]. To
-address Sybil attacks, BigchainDB proposes a governance model that would
-create a federation of trusted nodes. Because all participants are
-known, any attempt by one participant to gain control over the network
-would be obvious. A more pervasive vulnerability comes in the form of
-the so-called Byzantine Generals'
-Problem [@github-bigchaindb-whitepaper-a]. Nodes in a distributed
+Sybil attacks, an attacker attempts to generate false identities in order to
+gain majority control over a network [@douceur-02-sybil]. To address Sybil
+attacks, BigchainDB proposes a governance model that would create a
+federation of trusted nodes. Because all participants are known, any attempt
+by one participant to gain control over the network would be obvious. A more
+pervasive vulnerability comes in the form of the so-called Byzantine
+Generals' Problem [@github-bigchaindb-whitepaper-a]. Nodes in a distributed
 network must be able to reach consensus about the final order of
 transactions at each state of the system, even in the presence of node
-failure or malicious attempts to manipulate system state in order to
-gain an unfair advantage--for example, in double-spending, in which a
-transaction is replayed so that the same asset can be used again (a
-particular problem in the case of financial
-transactions) [@github-bigchaindb-whitepaper-a; @antonopoulos-17-mastering].
+failure or malicious attempts to manipulate system state in order to gain an
+unfair advantage--for example, in double-spending, in which a transaction is
+replayed so that the same asset can be used again (a particular problem in
+the case of financial transactions) [@github-bigchaindb-whitepaper-a;
+@antonopoulos-17-mastering].
 
 In its original design, BigchainDB relied on the consensus algorithm of
 its underlying database to manage benign node failure and incorporated
@@ -300,14 +299,13 @@ gained control over a single node would have been able to drop the
 entire database, which was shared among all nodes in the
 network [@killerstorm-16-bigchaindb; @bigchaindbgmbh-18-bigchaindb].
 
-BigchainDB 2.0, released in June 2018, underwent a complete redesign and
-incorporated full Byzantine fault tolerance through integration with
+BigchainDB 2.0, released in June 2018, underwent a complete redesign
+and incorporated full Byzantine fault tolerance through integration with
 Tendermint, an application for managing consensus and state machine
-replication in blockchain
-systems [@mcconaghy-18-bigchaindb; @tendermintcontributors-18-tendermint].
-As a result of implementing Byzantine fault tolerance through
-Tendermint, BigchainDB's original goal of supporting 1 million tps was
-no longer viable.
+replication in blockchain systems [@mcconaghy-18-bigchaindb;
+@tendermintcontributors-18-tendermint]. As a result of implementing
+Byzantine fault tolerance through Tendermint, BigchainDB's original goal of
+supporting 1 million tps was no longer viable.
 
 ### Benchmark
 
@@ -364,7 +362,7 @@ transfer of assets) using cryptographic signatures [@trh-17-crypto].
 All objects in BigchainDB are modeled as *assets*. Two transaction
 types are available for managing assets: CREATE and
 TRANSFER [@github-bigchaindb-beps-a]. Each transaction must be
-cryptographically signed with the private key of its _owner_ (the agent who
+cryptographically signed with the private key of its *owner* (the agent who
 created an asset through a CREATE transaction or to whom an asset was
 assigned through a TRANSFER transaction). Public/private keypairs are
 implemented using the Edwards-curve Digital Signature Algorithm
@@ -388,12 +386,12 @@ here:
 ```
 
 Conditions for fulfillment and asset transfer are defined in the values
-of the _inputs_ and _outputs_ keys. An object representing the asset
-itself is stored as the value of the _asset_ key and cannot be modified
+of the *inputs* and *outputs* keys. An object representing the asset
+itself is stored as the value of the *asset* key and cannot be modified
 once an asset has been created and committed to a block in the
-BigchainDB blockchain. The _metadata_ key is used to store an arbitrary
+BigchainDB blockchain. The *metadata* key is used to store an arbitrary
 object that records additional information about the asset or its state:
-in contrast to the asset object, the metadata object _can_ be modified
+in contrast to the asset object, the metadata object *can* be modified
 with each TRANSFER transaction [@github-bigchaindb-beps-a].
 
 #### Tendermint
@@ -547,7 +545,7 @@ created by the BigchainDB development team to demonstrate the RBAC
 extension [@github-bigchaindb-project-jannowitz]. Support for RBAC is
 important for library cataloging because library personnel roles are
 typically divided between professional librarians (catalogers) and
-paraprofessional technicians. Librarians are expected to create _original_
+paraprofessional technicians. Librarians are expected to create *original*
 descriptions of library resources, whereas paraprofessionals are responsible
 for copying existing data from a shared database such as OCLC WorldCat.
 Public blockchain systems do not usually impose write restrictions (allowing
@@ -669,7 +667,7 @@ The application logic proceeds according to the following steps:
 3.  The admin user can then call the `create_type()` method of
     `BigchainRbac()` to instantiate new roles for the application. In
     `rbac_demo.py`, two roles have been created: one to represent
-    _catalogers_ and one to represent _paraprofessionals_. In the
+    *catalogers* and one to represent *paraprofessionals*. In the
     definition of each type asset, the `asset` object includes the
     `link` key, which takes as its value the app asset ID. This linkage
     sets the scope of permissions to the current application context.
@@ -680,7 +678,7 @@ The application logic proceeds according to the following steps:
     user's respective group ID (such as that of the catalogers group).
     It is important to distinguish between a user--identified by a
     public key--and a user asset, which is the result of a BigchainDB
-    CREATE transaction. In the RBAC scheme, when a user _asset_ is
+    CREATE transaction. In the RBAC scheme, when a user *asset* is
     created, it must then be assigned to the user's public key through a
     TRANSFER transaction. This can be described as placing the asset in
     the user's wallet [@dhameja-17-role].
