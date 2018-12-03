@@ -4,7 +4,10 @@
 
 :o: it is unclear what code you developed, please add a section with 
 Artifacts Developed by Author
+
 * list in that in bullet form what they are and what they do
+
+:o: add concrete links to the artifacts into your git repo
 
 ## Artifacts Developed by Author
 
