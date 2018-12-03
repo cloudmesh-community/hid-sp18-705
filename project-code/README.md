@@ -27,7 +27,7 @@ the project report) are included for reference in the `graphviz` directory:
 catalog might be modeled and linked in BigchainDB.
 
 * `graphviz/rbac-graph.dot`: illustrates the dependency tree and
-validation scheme used to enforce role-based access controll constraints in
+validation scheme used to enforce role-based access control constraints in
 BigchainDB.
 
 ## External Code
@@ -36,6 +36,9 @@ The BigchainDB repository has been added here as a submodule. When
 cloning the repository, include the `--recursive` switch to ensure that the
 submodule contents are cloned as well, or run `git submodule update --init
 --recursive` if the repository has already been cloned.
+
+The BigchainDB repository includes a Docker Compose script for spinning
+up the Docker containers need to run a BigchainDB test node.
 
 ## Execution
 
