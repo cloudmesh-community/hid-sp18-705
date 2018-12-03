@@ -7,6 +7,8 @@
 | github: [:cloud:](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-report/report.md)
 | code: [:cloud:](https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project-code)
 
+:o: as you can see from the epub your section headings are wrong make sure they show up in the TOC correctly 
+
 ---
 
 Keywords: i523, Research Libraries, Library Catalogs, Blockchain, BigchainDB
