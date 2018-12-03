@@ -60,6 +60,13 @@ transactions.
 
 Once stopped, the containers can be reset with `make reset`.
 
-Once the containers are running, the Python script `rbac_demo.py` in
-the `demo` directory can the be executed and will send a series of 
-transactions to the BigchainDB server.
+In order to run the demo Python code, the BigchainDB Python driver must
+first be installed:
+
+``` 
+$ pip install bigchaindb_driver
+```
+
+Once the containers are running and the driver has been installed, the
+Python script `rbac_demo.py` in the `demo` directory can then be executed
+and will send a series of transactions to the BigchainDB server.
