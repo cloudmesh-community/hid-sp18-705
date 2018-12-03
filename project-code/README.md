@@ -79,6 +79,6 @@ $ pip install rdflib
 ```
 
 Once the containers are running and the driver has been installed, the
-Python script [`demo/rbac_demo.py`](demo/rbac_demo.py) in the `demo` directory
-can then be executed and will send a series of transactions to the BigchainDB
-server.
+Python script [`demo/rbac_demo.py`](demo/rbac_demo.py) in the [`demo`](demo) 
+directory can then be executed and will send a series of transactions to 
+the BigchainDB server.
