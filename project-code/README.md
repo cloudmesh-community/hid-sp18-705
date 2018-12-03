@@ -1,6 +1,10 @@
 # Demo of BigchainDB's Role-Based Access Control Extension
 
 :o: it is unclear what code you developed
+All original code is included in the `demo` directory, as detailed in
+the project report (two original graphviz files used to generate the last
+two figures in the report are also included for reference in the `graphviz`
+directory).
 
 The BigchainDB repository has been added here as a submodule. When
 cloning the repository, include the `--recursive` switch to ensure that the
