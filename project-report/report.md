@@ -17,8 +17,8 @@
 
 :o: are last two figures self created? or do they need citations.
 
-_The last two figures are self created. Original graphviz files are in
-`project-code/graphviz`._
+*The last two figures are self created. Original graphviz files are in
+`project-code/graphviz`.*
 
 :o: quotes are wrong. If highligt use italic if quote use
 
@@ -32,7 +32,7 @@ Artifacts Developed by Author
 
 * list in that in bullet form what they are and what they do
 
-*I have added the section requested and attempted to detail all functionality*.
+*I have added the section requested and attempted to detail all functionality.*
 
 ---
 
