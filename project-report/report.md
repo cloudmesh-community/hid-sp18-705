@@ -13,7 +13,7 @@ _I checked the epub, and all section headings appear correct in the TOC._
 
 :o: urls in text must be replaced with bibtex entries
 
-_I will do this._
+_Fixed._
 
 :o: are last two figures self created? or do they need citations.
 
@@ -24,7 +24,7 @@ _The last two figures are self created. Original graphviz files are in
 
 > "This is a quote" [@citation].
 
-_Changed._
+_Fixed._
 
 :o: it is unclear what code you developed, please add a section with 
 
@@ -71,7 +71,7 @@ shared database for records created by another cataloging agency, but
 that describe identical publications that have been acquired by one's
 local institution [@dm-17-measuring]. In the current environment, a
 single company, the Online Computer Library Center
-(OCLC--<http://www.oclc.org>), is the only viable platform for global
+(OCLC [oclc-18-oclc]), is the only viable platform for global
 cooperative cataloging [@turner-10-oclc].
 
 ﻿﻿OCLC provides data aggregation and warehousing services that allow
@@ -89,21 +89,20 @@ attribution of OCLC [@oclc-12-worldcat; @oclc-10-worldcat].
 
 Libraries have a tradition of experience with record matching and
 automation [@mcqueen-92-record], but now stand to benefit from the
-increasingly mainstream availability of algorithms and routines
-developed within the context of data science and machine learning.
-Sophisticated algorithms for string comparison and probabilistic record
-linkage have long been available, but are not widely used by libraries,
-with the exception of large-scale projects such as the Social Networks
-and Archival Context Project (SNAC) (<http://snaccooperative.org/>) and
-the Virtual International Authority File (VIAF) (<http://viaf.org/>),
-itself a project of OCLC. The former has employed methods based on Naive
-Bayes classification algorithms to aggregate and disambiguate data from
-across a wide range of libraries and archives (the reported accuracy of
-the approach fell with the range of 80-90 percent) [@lj-11-connecting].
-More recent approaches to record matching have improved on probabilistic
-methods such as Naive Bayes by using Artificial Neural Networks,
-improving accuracy rates in some cases to 98 percent or
-more [@rph+-17-supervised].
+increasingly mainstream availability of algorithms and routines developed
+within the context of data science and machine learning. Sophisticated
+algorithms for string comparison and probabilistic record linkage have long
+been available, but are not widely used by libraries, with the exception of
+large-scale projects such as the Social Networks and Archival Context
+Project (SNAC) [snacp-18-social] and the Virtual International Authority
+File (VIAF) [oclc-18-viaf], itself a project of OCLC. The former has
+employed methods based on Naive Bayes classification algorithms to aggregate
+and disambiguate data from across a wide range of libraries and archives
+(the reported accuracy of the approach fell with the range of 80-90
+percent) [@lj-11-connecting]. More recent approaches to record matching have
+improved on probabilistic methods such as Naive Bayes by using Artificial
+Neural Networks, improving accuracy rates in some cases to 98 percent or
+more [@rph-17-supervised].
 
 As machine learning tools and methods have become more accessible,
 however, large-scale, real-time access to library metadata has not
@@ -140,7 +139,7 @@ technology may need to be used in conjunction with other technologies in
 order to enable decentralized exchange. Several efforts are underway to
 develop systems for decentralized file storage using distributed hash
 tables, one of the most prominent being the Interplanetary File System
-(IPFS) (<https://ipfs.io>). In a way similar to the software versioning
+(IPFS) [ipfs-18-ipfs]. In a way similar to the software versioning
 protocol Git, IPFS uses hash values to capture the state of a file at a
 particular point in time and then serves it on a peer-to-peer network.
 IPFS hashes might be referenced as links in blockchain transactions in
@@ -221,8 +220,8 @@ be represented exclusively by a token--it also needs to be stored in a
 decentralized system optimized for read and write transactions. Public
 blockchains such as Ethereum have been designed for exchange, not
 storage. At the current price of the Ethereum blockchain's native token,
-Ether (ETH), at approximately $200.00, storing 1 gigabyte of data on
-the blockchain would cost over $7,000,000.00 [@hess-16-reply]. A
+Ether (ETH), at approximately \$200.00, storing 1 gigabyte of data on
+the blockchain would cost over \$7,000,000.00 [@hess-16-reply]. A
 decentralized system for librar qy metadata must be able to scale and
 store big data out of the box. BigchainDB is a production-ready solution
 that might meet the requirements for this use case: it supports the
@@ -267,7 +266,7 @@ transaction-per-second (tps) limit of the Bitcoin network
 layer to an existing distributed database would be to incorporate 
 
 > "decentralized control, immutability, and creation \[and\] movement 
-> of digital > assets" [@github-bigchaindb-whitepaper-a].
+> of digital assets" [@github-bigchaindb-whitepaper-a].
 
 The primary challenge in designing a decentralized system is how to
 defend against both arbitrary failure and malicious actors. In so-called
@@ -471,7 +470,7 @@ Description Framework
 (RDF) [@librarycongress-18-bibliographic; @cwl-14-rdf]. A new
 domain-specific data model and ontology for library metadata, expressed
 using the W3C's OWL standard for semantic ontologies, is currently being
-developed and implemented [@hkp+-12-owl]. The data used here for testing
+developed and implemented [@hkp-12-owl]. The data used here for testing
 with BigchainDB follows this model, known as the Bibliographic Framework
 Initiative (BIBFRAME) [@librarycongress-18-bibliographic].
 
@@ -565,7 +564,7 @@ BigchainDB documentation provides instructions for those interested in
 setting up a production network [@bigchaindbcontributors-18-how].
 However, for testing purposes, a full network is not necessary. A
 BigchainDB test network is currently available at
-<https://test.bigchaindb.com/>, but the testnet installation does not
+[bigchaindbcontributors-18-bigchaindb-a], but the testnet installation does not
 include the RBAC extension required here.
 
 The official BigchainDB distribution includes a Docker Compose script
