@@ -9,6 +9,10 @@ Artifacts Developed by Author
 
 :o: add concrete links to the artifacts into your git repo
 
+*It's unclear what is meant by concrete links, but I have added
+hyperlinks to the individual artifacts listed here and will do the same in the
+project report. Is this sufficient?*
+
 ## Artifacts Developed by Author
 
 All original Python code is included in the
