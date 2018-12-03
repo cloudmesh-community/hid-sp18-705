@@ -18,7 +18,8 @@ BigchainDB.
 * `demo/rbac_demo.py`: demo Python script that calls methods from the
 `BigchainRbac()` class to illustrate how the role-based access control
 features of BigchainDB could be employed. The use case is that of data and
-workflow management for a library catalog.
+workflow management for a library catalog. This script sends a series of
+transactions to a BigchainDB server instance.
 
 Two original graphviz files (used to generate the last two figures in
 the project report) are included for reference in the `graphviz` directory:
