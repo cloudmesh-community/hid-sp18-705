@@ -7,33 +7,6 @@
 | github: [:cloud:](https://github.com/cloudmesh-community/hid-sp18-705/blob/master/project-report/report.md)
 | code: [:cloud:](https://github.com/cloudmesh-community/hid-sp18-705/tree/master/project-code)
 
-:o: as you can see from the epub your section headings are wrong make sure they show up in the TOC correctly 
-
-*I checked the epub, and all section headings appear correct in the TOC.*
-
-:o: urls in text must be replaced with bibtex entries
-
-*Fixed.*
-
-:o: are last two figures self created? or do they need citations.
-
-*The last two figures are self created. Original graphviz files are in
-`project-code/graphviz`.*
-
-:o: quotes are wrong. If highligt use italic if quote use
-
-> "This is a quote" [@citation].
-
-*Fixed.*
-
-:o: it is unclear what code you developed, please add a section with 
-
-Artifacts Developed by Author
-
-* list in that in bullet form what they are and what they do
-
-*I have added the section requested and attempted to detail all functionality.*
-
 ---
 
 Keywords: i523, Research Libraries, Library Catalogs, Blockchain, BigchainDB
